@@ -1,0 +1,474 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>方案设计平台</title>
+<link rel="stylesheet" href="css/style.default-red.css" type="text/css">
+<script type="text/javascript" src="../js/plugins/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery.validate.min.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery.tagsinput.min.js"></script>
+<script type="text/javascript" src="../js/plugins/charCount.js"></script>
+<script type="text/javascript" src="../js/plugins/ui.spinner.min.js"></script>
+<script type="text/javascript" src="../js/plugins/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="../js/custom/general.js"></script>
+<script type="text/javascript" src="../js/custom/forms.js"></script>
+
+<!--[if IE 9]>
+    <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
+<![endif]-->
+<!--[if IE 8]>
+    <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
+<![endif]-->
+<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+
+
+<body>
+
+    <div class="bodywrapper">
+        <div class="topheader">
+            <div class="left">
+                <h1 class="logo"><span>CAPOL 华阳国际</span></h1>
+                <span class="slogan">户型库</span>
+
+                <div class="search" style="display:none">
+                    <form action="" method="post">
+                        <input type="text" name="keyword" id="keyword" value="Enter keyword(s)" />
+                        <button class="submitbutton"></button>
+                    </form>
+                </div>
+                <!--search-->
+
+                <br clear="all" />
+
+            </div>
+            <!--left-->
+
+            <div class="right">
+                <!--<div class="notification">
+                <a class="count" href="notifications.html"><span>9</span></a>
+        	</div>
+			-->
+                <div class="userinfo">
+                    <img src="../images/thumbs/avatar.png" alt="" />
+                    <span>管理员</span>
+                </div>
+                <!--userinfo-->
+
+                <div class="userinfodrop">
+                    <div class="avatar">
+                        <a href=""><img src="../images/thumbs/avatarbig.png" alt="" />
+                        </a>
+                        <div class="changetheme">
+                            Change theme:
+                            <br />
+                            <a class="default"></a>
+                            <a class="blueline"></a>
+                            <a class="greenline"></a>
+                            <a class="contrast"></a>
+                            <a class="custombg"></a>
+                        </div>
+                    </div>
+                    <!--avatar-->
+                    <div class="userdata">
+                        <h4>管理员</h4>
+                        <span class="email">youremail@yourdomain.com</span>
+                        <ul>
+                            <li><a href="editprofile.html">Edit Profile</a>
+                            </li>
+                            <li><a href="accountsettings.html">Account Settings</a>
+                            </li>
+                            <li><a href="help.html">Help</a>
+                            </li>
+                            <li><a href="index.html">Sign Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--userdata-->
+                </div>
+                <!--userinfodrop-->
+            </div>
+            <!--right-->
+        </div>
+        <ul class="breadcrumbs">
+            <li><a href="../app.html">知识中心</a>
+            </li>
+            <li><a href="index.html">户型库</a>
+            </li>
+
+        </ul>
+
+
+        <div class="contentwrapper" >
+    	</br>
+		
+        <div class="tableproject">
+		<form action="" method="post">
+            	<select name="select" class="uniformselect" style="opacity: 0;">
+                            	<option value="">我参与的</option>
+                                <option value="">我负责的</option>
+                                <option value="">全部</option>
+                            </select>
+							
+                	<input type="text" name="input2" class="mediuminput">
+                    <a href="" class="btn btn_search radius50"><span>Search</span></a>
+                </form>
+				
+						
+                    
+                
+</div>
+                <table cellpadding="0" cellspacing="0" border="0" class="stdtable" id="dyntable2">
+                    <colgroup>
+                        <col class="con0" style="width: 5%" />
+                        <col class="con1" style="width: 10%" />
+                        <col class="con0" style="width: 30%" />
+                        <col class="con1" style="width: 5%" />
+                        <col class="con0" style="width: 10%" />
+                        <col class="con1" style="width: 10%" />
+                        <col class="con0" style="width: 10%" />
+                        <col class="con1" style="width: 10%" />
+                        <col class="con0" style="width: 10%" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            
+                            <th class="head0">序号</th>
+                                <th class="head1">项目编号</th>
+                                <th class="head0">项目名称</th>
+                                <th class="head1">年份</th>
+                                <th class="head0">项目等级</th>
+                                <th class="head1">所属公司</th>
+                                <th class="head0">部门</th>
+								<th class="head1">负责人</th>
+                                <th class="head0">工程状态</th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            
+                            <th class="head0">序号</th>
+                                <th class="head1">项目编号</th>
+                                <th class="head0">项目名称</th>
+                                <th class="head1">年份</th>
+                                <th class="head0">项目等级</th>
+                                <th class="head1">所属公司</th>
+                                <th class="head0">部门</th>
+								<th class="head1">负责人</th>
+                                <th class="head0">工程状态</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+						<td>1</td>
+						<td>GC150235</td>
+						<td>
+							<a href="work.html" >清华大学深圳研究生院创新基地建设工程（二期）</a>
+						</td>
+						<td>2015</td>
+						<td>集团级</td>
+						<td>深圳公司</td>
+						
+						<td>公建部</td>
+						<td>张三</td>
+						<td>方案配合</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>GC150233</td>
+						<td>
+							<a href="#">都市部施工图研发项目</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>GC150234</td>
+						<td>
+							<a href="#">信和阳江项目</a>
+						</td>
+						<td>2015</td>
+						<td>公司级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>GC150236</td>
+						<td>
+							<a href="#">都市部方案研发项目 </a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>GC150238</td>
+						<td>
+							<a href="#">万科留仙洞学校</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>GC150293</td>
+						<td>
+							<a href="#">万科车公庙捷荣创富厂区地块</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>GC150273</td>
+						<td>
+							<a href="#">华为松山湖终端项目2#地块</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>GC150294</td>
+						<td>
+							<a href="#">万科公明项目</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>GC150231</td>
+						<td>
+							<a href="#">招商海上世界双玺花园二期顶层复式设计</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>GC150223</td>
+						<td>
+							<a href="#">六合坪山文化广场及联旺二街项目补充协议</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>GC150218</td>
+						<td>
+							<a href="#">贵阳中天假日方舟（一期单体）</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>GC150206</td>
+						<td>
+							<a href="#">惠州党校南(修改)</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>GC150222</td>
+						<td>
+							<a href="#">大中华红海湾项目二期（概念规划）</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td>GC150319</td>
+						<td>
+							<a href="#">深圳坑梓龙田项目</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>GC150318</td>
+						<td>
+							<a href="#">东莞茶山产业园</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>GC150315</td>
+						<td>
+							<a href="#">厚街悦山花园项目</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>17</td>
+						<td>GC150291</td>
+						<td>
+							<a href="#">泡泡海酒店</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>18</td>
+						<td>GC150279</td>
+						<td>
+							<a href="#">莱蒙南京红山动物园南门地块项目</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>19</td>
+						<td>GC150250</td>
+						<td>
+							<a href="#">二单元五街坊（附建式变电站）项目</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+					<tr>
+						<td>20</td>
+						<td>GC150221</td>
+						<td>
+							<a href="#">昆明香格里拉酒店</a>
+						</td>
+						<td>2015</td>
+						<td>部门级</td>
+						<td>深圳公司</td>
+						<td>都市部</td>
+						<td>张三</td>
+						<td>方案</td>
+					</tr>
+						<tr class="gradeX">
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td ><a href="work.html"></a></td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+							<td align="center"></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+            
+         </div>
+
+
+           
+
+
+    </div>
+    <!--bodywrapper-->
+
+</body>
+
+</html>

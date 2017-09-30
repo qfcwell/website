@@ -1,0 +1,68 @@
+Sub ºê1()
+    With ThisWorkbook.Sheets(1).UsedRange
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = True
+        .RowHeight = 32
+    End With
+    With ThisWorkbook.Sheets(1)
+        .Range("A:Q").ColumnWidth = 10
+        .Range("B:B").ColumnWidth = 40
+        .Range("B:B").HorizontalAlignment = xlLeft
+        .Range("E:E").ColumnWidth = 15
+        .Range("F:F").ColumnWidth = 20
+        .Range("J:J").ColumnWidth = 24
+        .Range("J:J").HorizontalAlignment = xlLeft
+        .Range("L:L").ColumnWidth = 12
+        .Range("L:L").HorizontalAlignment = xlLeft
+        .Range("M:O").ColumnWidth = 6
+        .Range("P:P").ColumnWidth = 20
+        .Range("P:P").HorizontalAlignment = xlLeft
+        .Range("Q:Q").ColumnWidth = 15
+        .Range("Q:Q").HorizontalAlignment = xlLeft
+    End With
+    
+    Rows("1:1").HorizontalAlignment = xlCenter
+    
+    With ThisWorkbook.Sheets(1).UsedRange
+    With .Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With .Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With .Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With .Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With .Borders(xlInsideVertical)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With .Borders(xlInsideHorizontal)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    End With
+    
+End Sub
+
+
