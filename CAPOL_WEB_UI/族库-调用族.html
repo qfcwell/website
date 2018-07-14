@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+    <title>CAPOL_WEB_UI</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+        $(document).ready(function() {
+        $('#example1').DataTable( { "scrollY":"500px","paging":true,"searching": false,"info": false});} );
+        $(document).ready(function() {
+        $('#family_select').DataTable( { "scrollY":"540px","scrollCollapse": true,"paging":false,"searching": false,"info": false} );} );
+        $(document).ready(function() {
+        $('#para_select').DataTable( { "scrollX":true,"scrollY":"540px","scrollCollapse": true,"paging":false,"searching": false,"info": false,"columns": [ 
+            { "width": "40px"},{ "width": "65px"},{ "width": "150px"},
+            { "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"},{ "width": "65px"}
+            ]} );} );
+    </script>
+    <link rel="stylesheet" href="./CAPOL_WEB_UI.css">
+    <style type="text/css">
+        .table-bordered {border: 1px solid #777;}
+        .table-bordered tbody tr td, .table-bordered tbody tr th, .table-bordered tfoot tr td, .table-bordered tfoot tr th, .table-bordered thead tr td, .table-bordered thead tr th{height:24px;border-color: #777;}
+        .table-bordered tbody tr th,.table-bordered thead tr td, .table-bordered thead tr th{background-color: #EEE;}
+        .table>tbody>tr.active>td, .table>tbody>tr.active>th, .table>tbody>tr>td.active, .table>tbody>tr>th.active, .table>tfoot>tr.active>td, .table>tfoot>tr.active>th, .table>tfoot>tr>td.active, .table>tfoot>tr>th.active, .table>thead>tr.active>td, .table>thead>tr.active>th, .table>thead>tr>td.active, .table>thead>tr>th.active {background-color: #319aff;COLOR:#FFF;}
+        .table-bordered tbody tr td.left{text-align: left;}
+    </style>
+  </head>
+
+  <body>
+    
+
+    <div>
+        
+        <div id="window" style="width:1600px;margin-left:10px;">
+            <div class="form-window-title"> 
+                <h4>
+                <span class="title">插入构件</span>
+                <span id="close" class="glyphicon glyphicon-remove close-button"></span>  
+                </h4>
+            </div>
+            <div class="form-window-content" style="height:800px;">
+                <form method="post" action="" style="padding:10px;">
+                    <div style="height:60px;">
+                        <div class="select-item" style="margin-right:12px;">
+                            <span style="margin-right: 32px;">专业</span>
+                            <select id="filter-company" class="combobox" style="width:100px;">
+                                <option value="">建筑</option>
+                                <option value="">结构</option>
+                                <option value="">给排水</option>
+                                <option value="" selected="selected">暖通</option>
+                                <option value="">电气</option>
+                            </select>
+                        </div>
+                        <div class="select-item" style="margin-right:12px;">
+                            <span>构件类型</span>
+                            <select id="filter-company" class="combobox" style="width:100px;">
+                                <option value="">01-风管</option>
+                                <option value="">02-风管管件</option>
+                                <option value="">03-风管附件</option>
+                                <option value="">04-水管</option>
+                                <option value="">05-水管管件</option>
+                                <option value="">06-水管附件</option>
+                                <option value="">07-水管阀件</option>
+                                <option value="" selected="selected">08水系统设备</option>
+                                <option value="">09-风系统设备</option>
+                                <option value="">10-冷媒系统设备</option>
+                                <option value="">11-净化器</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="position: relative;float:left;width:400px;">
+
+                        <div style="height: 80px">
+                            <div class="table-title clearFix">选择族：</div>
+                           
+                            <div style="height:48px;">
+                                <div class="select-item" style="margin-right:12px;">
+                                    <span>一级分类</span>
+                                    <select id="filter-company" class="combobox" style="width:100px;">
+                                        <option value=""  selected="selected">不限</option>
+                                        <option value="">01-锅炉</option>
+                                        <option value="">02-制冷机组</option>
+                                        <option value="">03-冷却塔</option>
+                                        <option value="">04-水泵</option>
+                                        <option value="">05-换热器</option>
+                                        <option value="">06-散热器</option>
+                                        <option value="">07-分集水箱</option>
+                                        <option value="">08-水箱</option>
+                                        <option value="">09-蓄冰槽</option>
+                                        <option value="">10-水处理设备</option>
+                                    </select>
+                                </div>
+                                <div class="select-item" style="margin-right:12px;">
+                                    <span>二级分类</span>
+                                    <select id="filter-company" class="combobox" style="width:100px;">
+                                        <option value="" selected="selected">不限</option>
+                                        <option value="">横流式</option>
+                                        <option value="">逆流式</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <table border="1" class="table table-bordered" id="family_select">
+                          <thead>
+                            <tr style="text-align: right;">
+                              <th style="width: 40px;">序号</th>
+                              <th style="width: 100px;">族编号</th>
+                              <th style="width: 240px;">族名称</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>NZ0801-001</td>
+                              <td>立式+D11:D34热水锅炉</td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>NZ0801-002</td>
+                              <td>卧式热水锅炉</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>NZ0801-003</td>
+                              <td>立式蒸汽锅炉</td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>NZ0801-004</td>
+                              <td>卧式蒸汽锅炉</td>
+                            </tr>
+                            <tr>
+                              <td>5</td>
+                              <td>NZ0802-001</td>
+                              <td>活塞式制冷机组</td>
+                            </tr>
+                            <tr>
+                              <td>6</td>
+                              <td>NZ0802-002</td>
+                              <td>涡旋式制冷机组</td>
+                            </tr>
+                            <tr>
+                              <td>7</td>
+                              <td>NZ0802-003</td>
+                              <td>螺杆式制冷机组</td>
+                            </tr>
+                            <tr>
+                              <td>8</td>
+                              <td>NZ0802-004</td>
+                              <td>离心式制冷机组</td>
+                            </tr>
+                            <tr>
+                              <td>9</td>
+                              <td>NZ0802-005</td>
+                              <td>蒸汽型溴化锂吸收式制冷机组</td>
+                            </tr>
+                            <tr>
+                              <td>10</td>
+                              <td>NZ0802-006</td>
+                              <td>热水型溴化锂吸收式制冷机组</td>
+                            </tr>
+                            <tr>
+                              <td>11</td>
+                              <td>NZ0802-007</td>
+                              <td>直燃型溴化锂吸收式制冷机组</td>
+                            </tr>
+                            <tr class="active">
+                              <td>12</td>
+                              <td>NZ0803-001</td>
+                              <td>横流式冷却塔</td>
+                            </tr>
+                            <tr>
+                              <td>13</td>
+                              <td>NZ0803-002</td>
+                              <td>方形逆流式冷却塔</td>
+                            </tr>
+                            <tr>
+                              <td>14</td>
+                              <td>NZ0803-003</td>
+                              <td>圆形逆流式冷却塔</td>
+                            </tr>
+                            <tr>
+                              <td>15</td>
+                              <td>NZ0804-001</td>
+                              <td>卧式端吸泵</td>
+                            </tr>
+                            <tr>
+                              <td>16</td>
+                              <td>NZ0804-002</td>
+                              <td>卧式双吸泵</td>
+                            </tr>
+                            <tr>
+                              <td>17</td>
+                              <td>NZ0804-003</td>
+                              <td>立式双吸泵</td>
+                            </tr>
+                            <tr>
+                              <td>18</td>
+                              <td>NZ0805-001</td>
+                              <td>立式容积式换热器</td>
+                            </tr>
+                            <tr>
+                              <td>19</td>
+                              <td>NZ0805-002</td>
+                              <td>卧式容积式换热器</td>
+                            </tr>
+                            <tr>
+                              <td>20</td>
+                              <td>NZ0805-003</td>
+                              <td>立式管壳式换热器</td>
+                            </tr>
+                            <tr>
+                              <td>21</td>
+                              <td>NZ0805-004</td>
+                              <td>卧式管壳式换热器</td>
+                            </tr>
+                            <tr>
+                              <td>22</td>
+                              <td>NZ0805-005</td>
+                              <td>套筒式换热器</td>
+                            </tr>
+                            <tr>
+                              <td>23</td>
+                              <td>NZ0805-006</td>
+                              <td>板式换热器</td>
+                            </tr>
+                            <tr>
+                              <td>24</td>
+                              <td>NZ0806-001</td>
+                              <td>钢制散热器</td>
+                            </tr>
+                            <tr>
+                              <td>25</td>
+                              <td>NZ0806-002</td>
+                              <td>铜制散热器</td>
+                            </tr>
+                            <tr>
+                              <td>26</td>
+                              <td>NZ0806-003</td>
+                              <td>铸铁散热器</td>
+                            </tr>
+                            <tr>
+                              <td>27</td>
+                              <td>NZ0806-004</td>
+                              <td>铝制散热器</td>
+                            </tr>
+                            <tr>
+                              <td>28</td>
+                              <td>NZ0806-005</td>
+                              <td>铝塑散热器</td>
+                            </tr>
+                            <tr>
+                              <td>29</td>
+                              <td>NZ0807-001</td>
+                              <td>分水器</td>
+                            </tr>
+                            <tr>
+                              <td>30</td>
+                              <td>NZ0807-002</td>
+                              <td>集水器</td>
+                            </tr>
+                            <tr>
+                              <td>31</td>
+                              <td>NZ0808-001</td>
+                              <td>膨胀水箱</td>
+                            </tr>
+                            <tr>
+                              <td>32</td>
+                              <td>NZ0809-001</td>
+                              <td>蓄冰槽</td>
+                            </tr>
+                            <tr>
+                              <td>33</td>
+                              <td>NZ0810-001</td>
+                              <td>软水装置</td>
+                            </tr>
+                            <tr>
+                              <td>34</td>
+                              <td>NZ0810-002</td>
+                              <td>加药装置</td>
+                            </tr>
+                            <tr>
+                              <td>35</td>
+                              <td>NZ0810-003</td>
+                              <td>电子除垢器</td>
+                            </tr>
+                          </tbody>
+                        </table>                  
+                    </div>
+                    <div style="position: relative;float:left;width:1px;height:660px;margin-left:10px;margin-right: 10px;background-color: #ccc;"></div>
+                    <div style="position: relative;float:left;width:1155px;">
+                         <div style="height: 80px">
+                            <div class="table-title clearFix">选择参数：</div>
+                            <div style="height: 5px;"></div>
+                            <!--div style="padding: 3px;width: 240px;"> 
+                                <span style="font-weight: bold;margin-top: 5px;">当前选型范围：&nbsp;</span>
+                                <span>全部</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a class="btn btn-default btn-xs right-buttons" href="#" role="button">
+                                    <span class="glyphicon glyphicon-pencil"></span> 修改
+                                </a>
+                            </div-->
+                             <div style="width:66%;display: inline-block;height:42px;">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active" ><a href="#" class="sm">通用族参数</a></li>
+                                    <li role="presentation"><a href="./产品族参数.html" class="sm">产品族参数</a></li>
+                                </ul>
+                            </div>
+                            <div style="float:right;width:34%;height:34px;border-bottom:1px solid #a40000;">
+                                <div style="font-weight: bold;display: inline-block;">当前选型范围：</div>
+                                <!--div style="font-weight: bold;margin-top: 5px;display: inline-block;width: 110px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">全部111111111111111111111111111111</div-->
+                                <input type="text" class="form-control" style="width: 220px;display: inline-block;height: 28px;" value="[制造商] IN ('良机','康明','马利')">
+                                <a class="btn btn-default btn-xs right-buttons" href="#" role="button" style="margin-right: 5px;padding: 6px 8px;">
+                                    <span class="glyphicon glyphicon-pencil"></span> 修改
+                                </a>
+                            </div>
+                        </div>
+                       
+                        <table border="1" class="table table-bordered" id="para_select">
+                          <thead>
+                            <tr style="text-align: right;">
+                              <th>序号</th>
+                              <th>制造商</th>
+                              <th>名称</th>
+                              <th>冷却水量</th>
+                              <th>湿球温度</th>
+                              <th>入口温度</th>
+                              <th>出口温度</th>
+                              <th>型号</th>
+                              <th>电压</th>
+                              <th>功率</th>
+                              <th>长度</th>
+                              <th>宽度</th>
+                              <th>主体高度</th>
+                              <th>风扇组高度</th>
+                              <th>进水管直径</th>
+                              <th>出水管直径</th>
+                              <th>排污管直径</th>
+                              <th>溢水管直径</th>
+                              <th>补水管直径</th>
+                              <th>电机高度</th>
+                              <th>水盘高度</th>
+                              <th>水盘直径</th>
+                              <th>进水管位置</th>
+                              <th>设备噪声</th>
+                              <th>运行重量</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>T-通用</td>
+                              <td>200_28℃_37℃/32℃</td>
+                              <td>200</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NZ0803-001-T01</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>2875</td>
+                              <td>4800</td>
+                              <td>2900</td>
+                              <td>960</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>3910</td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>T-通用</td>
+                              <td>225_28℃_37℃/32℃</td>
+                              <td>225</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NZ0803-001-T02</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>2875</td>
+                              <td>5450</td>
+                              <td>2900</td>
+                              <td>960</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>4640</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>T-通用</td>
+                              <td>250_28℃_37℃/32℃</td>
+                              <td>250</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NZ0803-001-T03</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>2875</td>
+                              <td>5450</td>
+                              <td>3300</td>
+                              <td>960</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>5510</td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>T-通用</td>
+                              <td>300_28℃_37℃/32℃</td>
+                              <td>300</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NZ0803-001-T04</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>3385</td>
+                              <td>6050</td>
+                              <td>3700</td>
+                              <td>1100</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>6420</td>
+                            </tr>
+                            <tr>
+                              <td>5</td>
+                              <td>T-通用</td>
+                              <td>350_28℃_37℃/32℃</td>
+                              <td>350</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NZ0803-001-T05</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>3385</td>
+                              <td>6050</td>
+                              <td>4600</td>
+                              <td>1200</td>
+                              <td>125</td>
+                              <td>250</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>6830</td>
+                            </tr>
+                            <tr>
+                              <td>6</td>
+                              <td>良机</td>
+                              <td>良机_200_28℃_37℃/32℃</td>
+                              <td>200</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>LRCM-HS-200</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>2875</td>
+                              <td>4735</td>
+                              <td>2900</td>
+                              <td>960</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>3910</td>
+                            </tr>
+                            <tr>
+                              <td>7</td>
+                              <td>良机</td>
+                              <td>良机_225_28℃_37℃/32℃</td>
+                              <td>225</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>LRCM-HS-225</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>2875</td>
+                              <td>5435</td>
+                              <td>2900</td>
+                              <td>960</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>4640</td>
+                            </tr>
+                            <tr>
+                              <td>8</td>
+                              <td>良机</td>
+                              <td>良机_250_28℃_37℃/32℃</td>
+                              <td>250</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>LRCM-HS-250</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>2875</td>
+                              <td>5435</td>
+                              <td>3300</td>
+                              <td>960</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>5510</td>
+                            </tr>
+                            <tr>
+                              <td>9</td>
+                              <td>良机</td>
+                              <td>良机_300_28℃_37℃/32℃</td>
+                              <td>300</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>LRCM-HS-300</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>3385</td>
+                              <td>6035</td>
+                              <td>3700</td>
+                              <td>1100</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>6420</td>
+                            </tr>
+                            <tr>
+                              <td>10</td>
+                              <td>良机</td>
+                              <td>良机_350_28℃_37℃/32℃</td>
+                              <td>350</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>LRCM-HS-350</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>3385</td>
+                              <td>6035</td>
+                              <td>4600</td>
+                              <td>1200</td>
+                              <td>125</td>
+                              <td>250</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>6830</td>
+                            </tr>
+                            <tr>
+                              <td>11</td>
+                              <td>康明</td>
+                              <td>康明_200_28℃_37℃/32℃</td>
+                              <td>200</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NaN</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>2875</td>
+                              <td>4735</td>
+                              <td>2900</td>
+                              <td>960</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>3910</td>
+                            </tr>
+                            <tr>
+                              <td>12</td>
+                              <td>康明</td>
+                              <td>康明_225_28℃_37℃/32℃</td>
+                              <td>225</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NaN</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>2875</td>
+                              <td>5435</td>
+                              <td>2900</td>
+                              <td>960</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>4640</td>
+                            </tr>
+                            <tr>
+                              <td>13</td>
+                              <td>康明</td>
+                              <td>康明_250_28℃_37℃/32℃</td>
+                              <td>250</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NaN</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>2875</td>
+                              <td>5435</td>
+                              <td>3300</td>
+                              <td>960</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>5510</td>
+                            </tr>
+                            <tr>
+                              <td>14</td>
+                              <td>康明</td>
+                              <td>康明_300_28℃_37℃/32℃</td>
+                              <td>300</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NaN</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>3385</td>
+                              <td>6035</td>
+                              <td>3700</td>
+                              <td>1100</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>6420</td>
+                            </tr>
+                            <tr>
+                              <td>15</td>
+                              <td>康明</td>
+                              <td>康明_350_28℃_37℃/32℃</td>
+                              <td>350</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NaN</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>3385</td>
+                              <td>6035</td>
+                              <td>4600</td>
+                              <td>1200</td>
+                              <td>125</td>
+                              <td>250</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>6830</td>
+                            </tr>
+                            <tr>
+                              <td>16</td>
+                              <td>马利</td>
+                              <td>马利_200_28℃_37℃/32℃</td>
+                              <td>200</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NaN</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>2875</td>
+                              <td>4735</td>
+                              <td>2900</td>
+                              <td>960</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>3910</td>
+                            </tr>
+                            <tr>
+                              <td>17</td>
+                              <td>马利</td>
+                              <td>马利_225_28℃_37℃/32℃</td>
+                              <td>225</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NaN</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>2875</td>
+                              <td>5435</td>
+                              <td>2900</td>
+                              <td>960</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>4640</td>
+                            </tr>
+                            <tr>
+                              <td>18</td>
+                              <td>马利</td>
+                              <td>马利_250_28℃_37℃/32℃</td>
+                              <td>250</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NaN</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>2875</td>
+                              <td>5435</td>
+                              <td>3300</td>
+                              <td>960</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>5510</td>
+                            </tr>
+                            <tr>
+                              <td>19</td>
+                              <td>马利</td>
+                              <td>马利_300_28℃_37℃/32℃</td>
+                              <td>300</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NaN</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>3385</td>
+                              <td>6035</td>
+                              <td>3700</td>
+                              <td>1100</td>
+                              <td>125</td>
+                              <td>200</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>6420</td>
+                            </tr>
+                            <tr>
+                              <td>20</td>
+                              <td>马利</td>
+                              <td>马利_350_28℃_37℃/32℃</td>
+                              <td>350</td>
+                              <td>28</td>
+                              <td>37</td>
+                              <td>32</td>
+                              <td>NaN</td>
+                              <td>380</td>
+                              <td>NaN</td>
+                              <td>3385</td>
+                              <td>6035</td>
+                              <td>4600</td>
+                              <td>1200</td>
+                              <td>125</td>
+                              <td>250</td>
+                              <td>50</td>
+                              <td>50</td>
+                              <td>32</td>
+                              <td>250</td>
+                              <td>450</td>
+                              <td>1300</td>
+                              <td>500</td>
+                              <td>NaN</td>
+                              <td>6830</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                     
+                    </div>
+                    <div style="text-align:center;margin-top: 660px;"><button class="btn btn-default btn-submit" type="submit">确定</button>
+                      </div>
+                </form>
+            
+            </div>
+        </div>
+
+
+
+   
+  
+</body>
+</html>

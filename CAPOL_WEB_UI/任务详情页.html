@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+    <title>CAPOL_WEB_UI</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+        $(document).ready(function() {
+        $('#example1').DataTable();} );
+        $(document).ready(function() {
+        $('#example2').DataTable( { "scrollY":"500px","scrollCollapse": true,"paging":false} );} );
+    </script>
+    <link rel="stylesheet" href="./CAPOL_WEB_UI.css">
+</head>
+
+  <body>
+
+
+    <div class="container theme-showcase" role="main" >
+            
+        <ul class="breadcrumb" role="tablist">
+            <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
+            <li><a href="#">工作空间</a></li>
+            <li><a href="./任务工作平台图形.html">任务工作平台</a></li>
+            <li>RW1800024 - 技术及平台建设</li>
+        </ul>
+        <div class="subject_title-box">
+            <h1 class="subject_title">
+                技术及平台建设
+               
+            </h1>
+            <a class="btn btn-default btn-xs right-buttons" href="#" role="button"><span class="glyphicon glyphicon-trash"></span> 废弃任务</a>
+            <a class="btn btn-default btn-xs right-buttons" href="#" role="button"><span class="glyphicon glyphicon-pencil"></span> 修改</a>
+            <div class="task_info"> 
+                <span class="bold">所属公司：</span><span>华阳设计-集团公司</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="bold">所属部门：</span> <span>运营管理中心</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="bold">二级部门：</span><span>（无）</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="bold">密级：</span><span>一级（不公开）</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="bold">创建人：</span><span>漆枋晨1</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="bold">创建时间：</span><span>2018-05-21 17:30:47</span>  
+            </div>
+		    	
+        </div>
+        <div class="toggle-box">
+            <div class="toggle-bar"> 
+                <h4 class="toggle-bar">
+                <span class="border-bottom">任务目的及内容摘要</span>&nbsp;&nbsp;
+                <a class=" btn-xs under-line" href="#" role="button"><span class="glyphicon glyphicon-pencil"></span>&nbsp;编辑</a>
+                <span class="toggle-icon glyphicon glyphicon-chevron-down"></span>  
+                </h4>
+            </div>
+            <div class="toggle-content">
+                
+                
+            </div>
+        </div>
+        <div class="toggle-box">
+            <div class="toggle-bar"> 
+                <h4 class="toggle-bar">
+                <span class="border-bottom">任务负责人及成员</span>
+                <span class="toggle-icon glyphicon glyphicon-chevron-down"></span>  
+                </h4>
+            </div>
+            <div class="toggle-content">
+                <div class="project_member" style="width: 250px;">
+                    <span class="badge_cy">负责人[2]</span>
+                    <ul class="project_member_list"> 
+                        <li>
+                          <img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9">
+                          <span class="sys_person_user_name">漆枋晨1</span>
+                        </li>
+                        <li>
+                          <img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9">
+                          <span class="sys_person_user_name">刘凤杰</span>
+                        </li>
+                        <li>
+                          <div id="project_headPerson_add" class="project_members_add" title="添加负责人">+</div>
+                        </li>
+                        
+                    </ul>
+                </div>
+                 <div class="project_member" style="width: 250px;">
+                    <span class="badge_cy">成员[2]</span>
+                    <ul class="project_member_list"> 
+                        <li>
+                          <img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9">
+                          <span class="sys_person_user_name">张三</span>
+                        </li>
+                        <li>
+                          <img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9">
+                          <span class="sys_person_user_name">李四</span>
+                        </li>
+                        <li>
+                          <div id="project_members_add" class="project_members_add" title="添加成员">+</div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="toggle-box">
+            <div class="toggle-bar"> 
+                <h4 class="toggle-bar">
+                <span class="border-bottom">子任务安排</span>
+                <span class="toggle-icon glyphicon glyphicon-chevron-down"></span>  
+                </h4>
+            </div>
+            <div class="toggle-content">
+                <div class="table-title clearFix">
+                    <a class="btn btn-default btn-xs right-buttons" href="#" role="button"><span class="glyphicon glyphicon-plus"></span> 新建</a>
+                    <span class="ifShowDelete">
+                        <input type="checkbox">
+                        <span id="ifShowDelete">显示已废弃的子任务</span>        
+                    </span> 
+                </div>
+                <div class="margin1">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="header">
+                                <th style="width:40px"><input type="checkbox"></th>
+                                <th style="width:40px">序号</th>
+                                <th style="width:100px">子任务编号</th>
+                                <th style="width:500px">子任务名称</th>
+                                <th style="width:100px">负责人</th>
+                                <th style="width:100px">拟完成时间</th>
+                                <th style="width:250px">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="js-show">
+                          <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                            <td><input type="checkbox"></td>
+                            <td>1</td>
+                            <td>RW1800024-01</td>
+                            <td>会议纪要</td>
+                            <td>漆枋晨1</td>
+                            <td>2018-12-31</td>
+                            <td class="textLeft">
+                                <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">修改</a>
+                                <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">废弃</a>
+                                <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">复制链接</a>
+                            </td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>  
+                    </div>
+            </div>
+        </div>
+        <div class="toggle-box">
+            <div class="toggle-bar"> 
+                <h4 class="toggle-bar">
+                <span class="border-bottom">任务文档</span>
+                <span class="toggle-icon glyphicon glyphicon-chevron-down"></span>  
+                </h4>
+            </div>
+            <div class="toggle-content">
+                <div class="margin1" style="width:240px;float:left;">
+                    <div class="table-title clearFix"> 子任务列表：
+                    </div>
+                    <div style="border:1px solid #ccc;height:300px;">
+                        
+                    </div>
+                </div>
+                <div class="margin1" style="width:875px;float:right;">
+                    <div class="table-title clearFix">文件列表：
+                        <a class="btn btn-default btn-xs right-buttons" href="#" role="button"><span class="glyphicon glyphicon-floppy-open"></span> 上传</a>
+                        <a class="btn btn-default btn-xs right-buttons" href="#" role="button"><span class="glyphicon glyphicon-plus"></span> 新建</a>
+                        <span class="ifShowDelete">
+                            <input type="checkbox">
+                            <span id="ifShowDelete">显示已删除的文件</span>        
+                        </span> 
+                    </div>
+                   
+                    
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="header">
+                                    <th style="width:40px"><input type="checkbox"></th>
+                                    <th style="width:40px">序号</th>
+                                    <th style="width:140px">文件编号</th>
+                                    <th style="width:200px">文件名称</th>
+                                    <th style="width:40px">类型</th>
+                                    <th style="width:60px">创建人</th>
+                                    <th style="width:80px">创建时间</th>
+                                    <th style="width:80px">最后更新时间</th>
+                                    <th style="width:175px">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="js-show">
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>1</td>
+                                <td>RW1800024-01-0005</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>2</td>
+                                <td>RW1800024-01-0004</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>3</td>
+                                <td>RW1800024-01-0003</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>4</td>
+                                <td>RW1800024-01-0002</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              
+                            </tbody>
+                        </table>  
+                    
+                </div>
+            </div>
+         </div>
+        
+        
+        
+    
+
+
+
+    </div> <!-- /container -->
+
+
+   
+  
+</body>
+</html>

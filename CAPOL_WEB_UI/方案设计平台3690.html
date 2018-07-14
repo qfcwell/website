@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+    <title>CAPOL_WEB_UI</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+        $(document).ready(function() {
+        $('#example1').DataTable( { "scrollY":"500px","paging":true,"searching": false,"info": false});} );
+        $(document).ready(function() {
+        $('#example2').DataTable( { "scrollY":"500px","scrollCollapse": true,"paging":false,"searching": false,"info": false} );} );
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $("#close").click(function(){
+        $("#window").hide();});});
+        $(document).ready(function(){
+        $("#open").click(function(){
+        $("#window").show();});});
+    </script>
+    <link rel="stylesheet" href="./CAPOL_WEB_UI.css">
+  </head>
+
+  <body>
+    <div class="top_banner">
+        <div class="navigate">
+            <div class="logo" style="cursor:pointer;">
+                <img onclick="Com_openHomePageFunc();" alt="" src="http://cip.capol.cn/capol/homepage/resource/img/logo.png">
+            </div>
+            <div class="c_nav">
+                <ul>
+                    <li> <span class="personalspace c_nav_info">个人空间</span></li>
+                    <li> <span class="workspace c_nav_info active">工作空间</span></li>
+                    <li> <span class="knowledge">知识中心</span></li>
+                    <li> <span class="cultur">企业文化</span></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input id="fullSearch_input" type="text" placeholder="请输入关键字搜索全系统 " >
+                <span class="search-btn"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <ul class="breadcrumb" role="tablist">
+            <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
+            <li><a href="#">工作空间</a></li>
+            <li><a href="#">方案设计平台</a></li>
+            <li>GC170383 方案设计平台研发项目</li>
+        </ul>
+        <div style="height:42px;">
+            <ul class="nav nav-tabs" role="tablist" >
+                <li role="presentation"><a href="#">设计协作</a></li>
+                <li role="presentation"><a href="#">项目管理</a></li>
+                <li role="presentation" class="active" ><a href="#">3690</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav nav-tree" style="width:240px;position: absolute;margin-left:5px;margin-top:10px;">
+            <ul>
+                <li><a href="#" class="lv1" >方案3690工作指引<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display:none;"></span></a>
+                    <ul style="display: block;">
+                        <li><a href="#" class="active">0~30阶段</a></li>
+                        <li><a href="#">30~60阶段</a></li>
+                        <li><a href="#">60~90阶段</a></li>
+                        <li><a href="#">90~100阶段</a></li>
+                    </ul>
+                </li>      
+            </ul>
+        </div>
+        <div style="padding-left:250px;padding-right: 5px;">
+            <div style="width:25%;margin-top: 10px;float:left;">
+                <div class="box-title">
+                    <span class="title">03阶段</span>
+                </div>
+                <div class="box-content" style="height:600px;">
+                    <table class="table table-bordered" id="">
+                        <thead>
+                            <tr class="header">
+                                <th style="width:35px;">序号</th>
+                                <th >表单名称</th>
+                                <th style="width:120px;">负责人</th>
+                                <th style="width:45px;">已确认</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>专业间配合内容</td>
+                                <td></td>
+                                <td style ="text-align:right;">9.0%</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>方案工作手册</td>
+                                <td></td>
+                                <td style ="text-align:right;">0.0%</td>
+                            </tr>
+                            <tr style="background-color: #f9ecec;">
+                                <td>3</td>
+                                <td>建筑工作手册</td>
+                                <td>漆枋晨1 <a href="#" class="btn-xs under-line"  style="float:right;"></span> 修改</a></td>
+                                <td style ="text-align:right;">0.0%</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>结构工作手册</td>
+                                <td></td>
+                                <td style ="text-align:right;">0.0%</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>给排水工作手册</td>
+                                <td></td>
+                                <td style ="text-align:right;">0.0%</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>暖通工作手册</td>
+                                <td></td>
+                                <td style ="text-align:right;">0.0%</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>电气工作手册</td>
+                                <td></td>
+                                <td style ="text-align:right;">0.0%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div style="width:75%;margin-top: 10px;float:left;padding-left: 5px;">
+                <div class="box-title">
+                    <span class="title">03阶段 - 建筑工作手册</span>
+                        <span style="font-weight: normal;margin-left: 30px;">设计类型：</span>
+                        <select id="filter-company" class="combobox" style="width:100px;height:24px;margin-top: 8px;">
+                            <option value="">住宅</option>
+                            <option value="">公建</option>
+                            <option value="">综合体</option>
+                        </select>
+                   
+                </div>
+
+                <div class="box-content" style="height:600px;">
+                    
+                    <table class="table table-bordered" id="">
+                        <thead>
+                            <tr class="header">
+                                <th style="width:20%;" colspan="2">配合内容</th>
+                                <th style="width:25%;" >配合要点</th>
+                                <th style="width:15%;">确认状态</th>
+                                <th style="width:20%;">备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="4">收集及熟悉依据性文件</td>
+                                <td rowspan="3">客户</td>
+                                <td style="text-align: left;">1.设计任务书是否齐全</td>
+                                <td>
+                                    <button class="btn btn-default btn-xs traffic-light-green"><span class="glyphicon glyphicon-ok-sign"></span> 已确认</button>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-question-sign"></span> 待确认</button>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-remove-sign"></span> 有问题</button>
+                                </td>
+                                <td><a href="#" class="btn-xs under-line" style="float:right;"></span> 修改</a></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">2.是否有类似对标项目</td>
+                                <td>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-ok-sign"></span> 已确认</button>
+                                    <button class="btn btn-default btn-xs traffic-light-yellow"><span class="glyphicon glyphicon-question-sign"></span> 待确认</button>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-remove-sign"></span> 有问题</button>
+                                </td>
+                                <td><a href="#" class="btn-xs under-line" style="float:right;"></span> 修改</a></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">3.是否有书面及口头的特殊要求</td>
+                               <td>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-ok-sign"></span> 已确认</button>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-question-sign"></span> 待确认</button>
+                                    <button class="btn btn-default btn-xs traffic-light-red"><span class="glyphicon glyphicon-remove-sign"></span> 有问题</button>
+                                </td>
+                                <td><a href="#" class="btn-xs under-line" style="float:right;"></span> 修改</a></td>
+                            </tr>
+                            <tr>
+                                <td>当地或本项目特殊情况</td>
+                                <td style="text-align: left;">1.是否有当地特殊计算面积规则</td>
+                                <td>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-ok-sign"></span> 已确认</button>
+                                    <button class="btn btn-default btn-xs traffic-light-yellow"><span class="glyphicon glyphicon-question-sign"></span> 待确认</button>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-remove-sign"></span> 有问题</button>
+                                </td>
+                                <td><a href="#" class="btn-xs under-line" style="float:right;"></span> 修改</a></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">规划布局</td>
+                                <td rowspan="3">消防</td>
+                                <td style="text-align: left;">1.建筑与周边的各类性质建筑的防火间距是否满足要求</td>
+                               <td>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-ok-sign"></span> 已确认</button>
+                                    <button class="btn btn-default btn-xs traffic-light-yellow"><span class="glyphicon glyphicon-question-sign"></span> 待确认</button>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-remove-sign"></span> 有问题</button>
+                                </td>
+                                <td><a href="#" class="btn-xs under-line" style="float:right;"></span> 修改</a></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">2.消防车道是否满足要求</td>
+                                <td>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-ok-sign"></span> 已确认</button>
+                                    <button class="btn btn-default btn-xs traffic-light-yellow"><span class="glyphicon glyphicon-question-sign"></span> 待确认</button>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-remove-sign"></span> 有问题</button>
+                                </td>
+                                <td><a href="#" class="btn-xs under-line" style="float:right;"></span> 修改</a></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">3.消防登高场地、消防登高面是否满足要求</td>
+                                <td>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-ok-sign"></span> 已确认</button>
+                                    <button class="btn btn-default btn-xs traffic-light-yellow"><span class="glyphicon glyphicon-question-sign"></span> 待确认</button>
+                                    <button class="btn btn-default btn-xs gray"><span class="glyphicon glyphicon-remove-sign"></span> 有问题</button>
+                                </td>
+                                <td><a href="#" class="btn-xs under-line" style="float:right;"></span> 修改</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+
+   
+  
+</body>
+</html>

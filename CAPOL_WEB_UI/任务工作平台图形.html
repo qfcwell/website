@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+    <title>CAPOL_WEB_UI</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+        $(document).ready(function() {
+        $('#example1').DataTable();} );
+        $(document).ready(function() {
+        $('#example2').DataTable( { "scrollY":"500px","scrollCollapse": true,"paging":false} );} );
+    </script>
+    <link rel="stylesheet" href="./CAPOL_WEB_UI.css">
+</head>
+
+  <body>
+    <div class="top_banner">
+        <div class="navigate">
+            <div class="logo" style="cursor:pointer;">
+                <img onclick="Com_openHomePageFunc();" alt="" src="http://cip.capol.cn/capol/homepage/resource/img/logo.png">
+            </div>
+            <div class="c_nav">
+                <ul>
+                    <li> <span class="personalspace c_nav_info">个人空间</span></li>
+                    <li> <span class="workspace c_nav_info active">工作空间</span></li>
+                    <li> <span class="knowledge">知识中心</span></li>
+                    <li> <span class="cultur">企业文化</span></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input id="fullSearch_input" type="text" placeholder="请输入关键字搜索全系统 " >
+                <span class="search-btn"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container theme-showcase" role="main" >
+        <ul class="breadcrumb" role="tablist">
+            <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
+            <li><a href="#">工作空间</a></li>
+            <li>任务工作平台</li>
+        </ul>
+        <div style="width:75%;display: inline-block;height:42px;">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active" ><a href="#">我负责的</a></li>
+                <li role="presentation"><a href="#">我参与的</a></li>
+                <li role="presentation"><a href="#">我关注的</a></li>
+                <li role="presentation"><a href="#">全部任务</a></li>
+            </ul>
+        </div>
+        <div style="float:right;width:25%;height:42px;border-bottom:1px solid #a40000; padding-top:5px;">
+            <button type="button" class="btn btn-default btn-sm btn-red" style="float:right;" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新建任务</button>
+        </div>
+        
+        <div style="height:50px;"> 
+            <div class="select-item" style="margin-right:20px;">
+                <span>公司</span>
+                <select id="filter-company" class="combobox" style="width:150px;"><option value="">不限</option><option value="15d7e1c4ecea83be52b071c4cdd81eba">华阳设计-润阳联合智造</option><option value="1491759803a76dbea2ee20b44d98b8a4">华阳设计-集团公司</option><option value="1491759803a3796fedf4783400da64bf">华阳设计-深圳公司</option><option value="1491759803a19c2f9a8c26942b2b7b17">华阳设计-广州公司</option><option value="1491759803a76e732720b4b40208454d">华阳设计-长沙公司</option><option value="1491759803a6a6244ee9de04ec49ec29">华阳设计-重庆公司</option><option value="1491759803a17bc0d9c18cc4a21b82d0">华阳设计-上海公司</option><option value="149175980694ceb3beeb5474f56ac7fe">华阳设计-建筑产业化公司</option><option value="149175980b7b0364e4b1d4c4d00905eb">华阳设计-BIM研究院</option><option value="154c950de0c711134548cf44cefbf3ef">华阳设计-东莞产业园</option><option value="1560375bed6e6826c54ebf3454b8e390">华阳设计-华泰盛工程建设公司</option><option value="149175980498287068aec7d4f6b8efc5">华阳造价-深圳公司</option><option value="14917598049b48a5b72e004480c81ea6">华阳造价-长沙公司</option><option value="149175980b76c595c8093cb4637be624">华阳造价-佛山公司</option><option value="16055532626ac259a0527a646fdaaeac">华阳设计-规划设计研究院</option></select>
+            </div>
+            <div class="select-item">
+                <span>部门</span>
+                <select id="filter-dept" class="combobox" style="width:150px;"><option value="">不限</option></select>
+            </div>
+            
+            <div class="select-item" style="margin-right:20px;">
+                <span>二级部门</span>
+                <select id="filter-module" class="combobox" style="width:150px;"><option value="">不限</option></select>
+            </div>                  
+            <div class="select-item" id="so" style="margin-right: 10px"> 
+                <span class="float">关键字</span> 
+                <div class="input-group">  
+                    <input class="form-control input-sm" type="text" placeholder="名称、内容、负责人……" style="width:250px;border-right:0px;"> 
+                    <span  class="input-group-search-btn"> 搜索</span> 
+                </div>  
+            </div> 
+
+            <div style="margin-top: 10px;float:right;"> 
+                <a href="./任务工作平台表格.html" class="btn btn-default btn-sm btn-red"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 列表显示</a>  
+            </div>
+        </div>
+        <ul id="image_div_task" class="image_div doc_div scrollbar ui-sortable" align="center">
+            <li title="可拖拽排序" class="doc_li doc_li_last" id="163a568d649d2705e7b648547f692fd0">
+                <div class="doc_img_div"></div>
+                <div class="doc_title_div" title="线上流程平台需求">线上流程平台需求</div>
+                <div class="update_date_div">最近更新：三天前</div>
+                <div title="漆枋晨1" class="head_person_div">负 责 人：漆枋晨1</div>
+                <div class="security_level_div">密　　级：一级/非公开</div>
+                <div class="person_div">
+                    <div class="project_members_img"><div></div></div>
+                    <div class="project_members_img"><div></div></div>
+                    <div class="project_members_img"><div></div></div>
+                    <div class="project_members_img"><div></div></div>
+                    <div class="project_members_img"><div></div></div>
+                    <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9"></div>
+                    <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=15b48b6fe831375da9a04164a559d1ff"></div>
+                </div>
+                <div style="margin-left:227px;margin-top:5px;">
+                    <div class="red" title="置顶" onclick="event.cancelBubble = true" style="display:none;">置顶</div>
+                </div>
+            </li>
+            <li title="可拖拽排序" class="doc_li" id="163820973ee7eedbcc0c74f411f93153">
+                <div class="doc_img_div"></div><div class="doc_title_div" title="技术及平台建设">技术及平台建设</div>
+                <div class="update_date_div">最近更新：三天前</div>
+                <div title="漆枋晨1" class="head_person_div">负 责 人：漆枋晨1</div>
+                <div class="security_level_div">密　　级：一级/非公开</div>
+                <div class="person_div">
+                    <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9"></div>
+                    <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=149175985586e03eff4db1d4f6eb3bd5"></div>
+                    <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=149175985c505d266aa6211414299c88"></div>
+                    <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=149175987c829b33367cfdb4f72a82e2"></div>
+                    <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=15b48b6fe831375da9a04164a559d1ff"></div>
+                    <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=1570a1928b4c36e113665ed443f93b32"></div>
+                    <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=157523231ad3f1fe1f3695644bfa6e3a"></div>
+                    <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=149175986a0019dd024b8324f14b47f9"></div>
+                    <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=1491759856824ba7575dbd4402a94894"></div>
+                    <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=149175986ee485536ea385140d7818af"></div>
+                </div>
+                <div style="margin-left:227px;margin-top:5px;">
+                    <div class="red" title="置顶" onclick="event.cancelBubble = true">置顶</div>
+                </div>
+            </li>
+            <li title="可拖拽排序" class="doc_li" id="1638193948311c07c70a13e491e96faf"><div class="doc_img_div"></div><div class="doc_title_div" title="华阳标准图库软件发布">华阳标准图库软件发布</div><div class="update_date_div">最近更新：三天前</div><div title="漆枋晨1" class="head_person_div">负 责 人：漆枋晨1</div><div class="security_level_div">密　　级：三级</div><div class="person_div"><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9"></div></div><div style="margin-left:227px;margin-top:5px;"><div class="red" title="置顶" onclick="event.cancelBubble = true">置顶</div></div></li>
+            <li title="可拖拽排序" class="doc_li" id="16371fec861c5c07efc3e2340c499221"><div class="doc_img_div"></div><div class="doc_title_div" title="协同平台2.0培训资料">协同平台2.0培训资料</div><div class="update_date_div">最近更新：三天前</div><div title="漆枋晨1" class="head_person_div">负 责 人：漆枋晨1</div><div class="security_level_div">密　　级：二级</div><div class="person_div"><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9"></div></div><div style="margin-left:227px;margin-top:5px;"><div class="red" title="置顶" onclick="event.cancelBubble = true">置顶</div></div></li>
+            <li title="可拖拽排序" class="doc_li doc_li_last" id="16366f2efa39740d7fcc85f458c9a097"><div class="doc_img_div"></div><div class="doc_title_div" title="集团平台建设管理工作">集团平台建设管理工作</div><div class="update_date_div">最近更新：三天前</div><div title="漆枋晨1" class="head_person_div">负 责 人：漆枋晨1</div><div class="security_level_div">密　　级：一级/非公开</div><div class="person_div"><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=149175987c829b33367cfdb4f72a82e2"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=15b48b6fe831375da9a04164a559d1ff"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=1570a1928b4c36e113665ed443f93b32"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=157523231ad3f1fe1f3695644bfa6e3a"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14917598568a7d8fd4489a1479f96b1a"></div></div><div style="margin-left:227px;margin-top:5px;"><div class="red" title="置顶" onclick="event.cancelBubble = true">置顶</div></div></li>
+            <li title="可拖拽排序" class="doc_li" id="1636294d59eb27f6537eabc4fd8a9763"><div class="doc_img_div"></div><div class="doc_title_div" title="天正软件测试、试用及推广">天正软件测试、试用及推广</div><div class="update_date_div">最近更新：三天前</div><div title="漆枋晨1" class="head_person_div">负 责 人：漆枋晨1</div><div class="security_level_div">密　　级：三级</div><div class="person_div"><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=149175985c5fcacadda01f2488583084"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=15896a2d27c7f25987f2f4a4f5eb63d6"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=15b48b6fe831375da9a04164a559d1ff"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=15d50d950b3f6d43709212e42828a761"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=162afdb4936f513897e098848f5af26c"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=149175987f7f40627b71e954510b03b1"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=15b18bd85c2f52bde7b0dd84fce96f19"></div></div><div style="margin-left:227px;margin-top:5px;"><div class="red" title="置顶" onclick="event.cancelBubble = true">置顶</div></div></li>
+            <li title="可拖拽排序" class="doc_li" id="1635c510256a67a5dedb0d84d5a9f8a8"><div class="doc_img_div"></div><div class="doc_title_div" title="恒大事业部工作会议资料">恒大事业部工作会议资料</div><div class="update_date_div">最近更新：三天前</div><div title="漆枋晨1" class="head_person_div">负 责 人：漆枋晨1</div><div class="security_level_div">密　　级：一级/非公开</div><div class="person_div"><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14917598568a7d8fd4489a1479f96b1a"></div></div><div style="margin-left:227px;margin-top:5px;"><div class="red" title="置顶" onclick="event.cancelBubble = true">置顶</div></div></li>
+            <li title="可拖拽排序" class="doc_li" id="1635c4dc152980a17d852b645e58ce57"><div class="doc_img_div"></div><div class="doc_title_div" title="CIP管理平台分类框架">CIP管理平台分类框架</div><div class="update_date_div">最近更新：三天前</div><div title="漆枋晨1" class="head_person_div">负 责 人：漆枋晨1</div><div class="security_level_div">密　　级：一级/非公开</div><div class="person_div"><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9"></div></div><div style="margin-left:227px;margin-top:5px;"><div class="red" title="置顶" onclick="event.cancelBubble = true">置顶</div></div></li>
+            <li title="可拖拽排序" class="doc_li doc_li_last" id="16357131d57370abe0f43514eac84bb3"><div class="doc_img_div"></div><div class="doc_title_div" title="工程管理平台需求确定">工程管理平台需求确定</div><div class="update_date_div">最近更新：三天前</div><div title="漆枋晨1" class="head_person_div">负 责 人：漆枋晨1</div><div class="security_level_div">密　　级：三级</div><div class="person_div"><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=15ccaf3e89376f7b109eec94d10b7988"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=1628feee2565ebd62d87d3e4738895c0"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=15b48b6fe831375da9a04164a559d1ff"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14917598568a7d8fd4489a1479f96b1a"></div></div><div style="margin-left:227px;margin-top:5px;"><div class="red" title="置顶" onclick="event.cancelBubble = true">置顶</div></div></li>
+            <li title="可拖拽排序" class="doc_li" id="1633a6d8c175d736e4b1f5449d08d71e"><div class="doc_img_div"></div><div class="doc_title_div" title="华阳BIM平台-（族库和Rvt文件）分别与独立数据库关联-测试">华阳BIM平台-（族库和Rvt文件）分别与独立数据库关联-测试</div><div class="update_date_div">最近更新：三天前</div><div title="漆枋晨1" class="head_person_div">负 责 人：漆枋晨1</div><div class="security_level_div">密　　级：三级</div><div class="person_div"><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><div></div></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=157523231ad3f1fe1f3695644bfa6e3a"></div><div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=1626f6cc92a17087ef903254c19a5956"></div></div><div style="margin-left:227px;margin-top:5px;"><div class="red" title="置顶" onclick="event.cancelBubble = true">置顶</div></div></li>
+        </ul>
+
+    </div> <!-- /container -->
+
+
+   
+  
+</body>
+</html>

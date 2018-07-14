@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+    <title>CAPOL_WEB_UI</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+        $(document).ready(function() {
+        $('#example1').DataTable();} );
+        $(document).ready(function() {
+        $('#example2').DataTable( { "scrollY":"500px","scrollCollapse": true,"paging":false} );} );
+    </script>
+    <link rel="stylesheet" href="./CAPOL_WEB_UI.css">
+  </head>
+
+  <body>
+    <div class="top_banner">
+        <div class="navigate">
+            <div class="logo" style="cursor:pointer;">
+                <img onclick="Com_openHomePageFunc();" alt="" src="http://cip.capol.cn/capol/homepage/resource/img/logo.png">
+            </div>
+            <div class="c_nav">
+                <ul>
+                    <li> <span class="personalspace c_nav_info">个人空间</span></li>
+                    <li> <span class="workspace c_nav_info active">工作空间</span></li>
+                    <li> <span class="knowledge">知识中心</span></li>
+                    <li> <span class="cultur">企业文化</span></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input id="fullSearch_input" type="text" placeholder="请输入关键字搜索全系统 " >
+                <span class="search-btn"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container theme-showcase" role="main" >
+        <ul class="breadcrumb" role="tablist">
+            <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
+            <li><a href="#">工作空间</a></li>
+            <li>任务工作平台</li>
+        </ul>
+        <div style="width:75%;display: inline-block;height:42px;">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active" ><a href="#">我负责的</a></li>
+                <li role="presentation"><a href="#">我参与的</a></li>
+                <li role="presentation"><a href="#">我关注的</a></li>
+                <li role="presentation"><a href="#">全部任务</a></li>
+            </ul>
+        </div>
+        <div style="float:right;width:25%;height:42px;border-bottom:1px solid #a40000; padding-top:5px;">
+            <button type="button" class="btn btn-default btn-sm btn-red" style="float:right;" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新建任务</button>
+        </div>
+        
+        <div style="height:50px;"> 
+            <div class="select-item" style="margin-right:20px;">
+                <span>公司</span>
+                <select id="filter-company" class="combobox" style="width:150px;"><option value="">不限</option><option value="15d7e1c4ecea83be52b071c4cdd81eba">华阳设计-润阳联合智造</option><option value="1491759803a76dbea2ee20b44d98b8a4">华阳设计-集团公司</option><option value="1491759803a3796fedf4783400da64bf">华阳设计-深圳公司</option><option value="1491759803a19c2f9a8c26942b2b7b17">华阳设计-广州公司</option><option value="1491759803a76e732720b4b40208454d">华阳设计-长沙公司</option><option value="1491759803a6a6244ee9de04ec49ec29">华阳设计-重庆公司</option><option value="1491759803a17bc0d9c18cc4a21b82d0">华阳设计-上海公司</option><option value="149175980694ceb3beeb5474f56ac7fe">华阳设计-建筑产业化公司</option><option value="149175980b7b0364e4b1d4c4d00905eb">华阳设计-BIM研究院</option><option value="154c950de0c711134548cf44cefbf3ef">华阳设计-东莞产业园</option><option value="1560375bed6e6826c54ebf3454b8e390">华阳设计-华泰盛工程建设公司</option><option value="149175980498287068aec7d4f6b8efc5">华阳造价-深圳公司</option><option value="14917598049b48a5b72e004480c81ea6">华阳造价-长沙公司</option><option value="149175980b76c595c8093cb4637be624">华阳造价-佛山公司</option><option value="16055532626ac259a0527a646fdaaeac">华阳设计-规划设计研究院</option></select>
+            </div>
+            <div class="select-item">
+                <span>部门</span>
+                <select id="filter-dept" class="combobox" style="width:150px;"><option value="">不限</option></select>
+            </div>
+            
+            <div class="select-item" style="margin-right:20px;">
+                <span>二级部门</span>
+                <select id="filter-module" class="combobox" style="width:150px;"><option value="">不限</option></select>
+            </div>                  
+            <div class="select-item" id="so" style="margin-right: 10px;"> 
+                <span class="float">关键字</span> 
+                <div class="input-group">  
+                    <input class="form-control input-sm" type="text" placeholder="名称、内容、负责人……" style="width:250px;border-right:0px;"> 
+                    <span  class="input-group-search-btn"> 搜索</span> 
+                </div>  
+            </div> 
+
+            <div style="margin-top: 10px;float:right;"> 
+                <a href="./任务工作平台图形.html" class="btn btn-default btn-sm btn-red"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> 图文显示</a>  
+            </div>
+        </div>
+        <table class="table table-bordered">
+                    <thead>
+                        <tr class="header">
+                            <th style="width:40px">序号</th>
+                            <th style="width:80px">任务编号</th>
+                            <th style="width:250px">任务名称</th>
+                            <th style="width:115px">公司</th>
+                            <th style="width:90px">部门</th>
+                            <th style="width:80px">二级部门</th>
+                            
+                            <!-- <th class="sorting" data="fHeadPerson">负责人</th> -->
+                            <th style="width:60px">负责人</th>
+                            <th class="sorting" data="fSecurityLevel" style="width:60px">密级</th>
+                            <th class="sorting" data="fPublicFlag" style="width:65px">是否公开</th>
+                            <!-- <th class="sorting" data="controlledNumber">受控编号</th> -->
+                            <th style="width:80px">受控编号</th>
+                            <th class="sorting" data="fCreatePerson" style="width:60px">创建人</th>
+                            <th class="sorting desc" data="fCreateTime" style="width:80px">创建时间</th>
+                            <th style="width:80px">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody class="js-show">
+                      <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                        <td>1</td>
+                        <td>RW1800025</td>
+                        <td class="textLeft"><a class="under-line" href="./任务详情页.html">线上流程平台需求</a></td><td>华阳设计-集团公司</td>
+                        <td>运营管理中心</td>
+                        <td></td>
+                        <td title="漆枋晨1"><div class="headPerson">漆枋晨1</div></td>
+                        <td>一级</td><td>不公开</td><td>SK-18-0021</td><td>漆枋晨1</td>
+                        <td>2018-05-28</td>
+                        <td><button type="button" class="btn btn-default btn-xs btn-active btn-no-radius" style="width:68px">- 取消关注</button></td>
+                      </tr>
+                      <tr projectid="163820973ee7eedbcc0c74f411f93153" status="1" firstnotpublic="0">
+                        <td>2</td>
+                        <td>RW1800024</td>
+                        <td class="textLeft"><a class="under-line" href="#">技术及平台建设</a></td>
+                        <td>华阳设计-集团公司</td>
+                        <td>运营管理中心</td>
+                        <td></td>
+                        <td title="漆枋晨1"><div class="headPerson">漆枋晨1</div></td>
+                        <td>一级</td>
+                        <td>不公开</td>
+                        <td>SK-18-0020</td>
+                        <td>漆枋晨1</td>
+                        <td>2018-05-21</td>
+                        <td><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                      </tr>
+                      <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                        <td>3</td>
+                        <td>RW1800023</td>
+                        <td class="textLeft"><a class="under-line" href="#">华阳标准图库软件发布</a></td><td>华阳设计-集团公司</td>
+                        <td>运营管理中心</td>
+                        <td></td>
+                        <td title="漆枋晨1"><div class="headPerson">漆枋晨1</div></td>
+                        <td>三级</td><td>公开</td><td></td><td>漆枋晨1</td>
+                        <td>2018-05-28</td>
+                        <td><button type="button" class="btn btn-default btn-xs btn-active btn-no-radius" style="width:68px">- 取消关注</button></td>
+                      </tr>
+                      <tr projectid="163820973ee7eedbcc0c74f411f93153" status="1" firstnotpublic="0">
+                        <td>4</td>
+                        <td>RW1800022</td>
+                        <td class="textLeft"><a class="under-line" href="#">协同平台2.0培训资料</a></td>
+                        <td>华阳设计-集团公司</td>
+                        <td>运营管理中心</td>
+                        <td></td>
+                        <td title="漆枋晨1"><div class="headPerson">漆枋晨1</div></td>
+                        <td>二级</td>
+                        <td>公开</td>
+                        <td>SK-18-0019</td>
+                        <td>漆枋晨1</td>
+                        <td>2018-05-21</td>
+                        <td><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                      </tr>
+                      <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                        <td></td>
+                        <td></td>
+                        <td class="textLeft"><a class="under-line" href="#">预留两行空间（40px），绝大部分情况不会超出两行，如果超出两行则显示为……</a></td><td></td>
+                        <td></td>
+                        <td></td>
+                        <td title="漆枋晨1"><div class="headPerson"></div></td>
+                        <td></td><td></td><td></td><td></td>
+                        <td></td>
+                        <td><span class=" btn_remove js-cancel-collect-pro"></span></td>
+                      </tr>
+                    </tbody>
+                </table>
+
+    </div> <!-- /container -->
+
+
+   
+  
+</body>
+</html>

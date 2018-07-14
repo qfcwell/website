@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+    <title>CAPOL_WEB_UI</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+        $(document).ready(function() {
+        $('#example1').DataTable();} );
+        $(document).ready(function() {
+        $('#example2').DataTable( { "scrollY":"500px","scrollCollapse": true,"paging":false} );} );
+    </script>
+    <link rel="stylesheet" href="./CAPOL_WEB_UI.css">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top"  style="display:none;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Bootstrap theme</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main" >
+            <div class="page-header">
+        <h3>路径导航</h3>
+      </div>
+      <ul class="breadcrumb" role="tablist">
+        <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
+        <li><a href="#">工作空间</a></li>
+        <li>任务工作平台</li>
+      </ul>
+      
+      
+      <div class="page-header">
+        <h3>标签页</h3>
+      </div>
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active" ><a href="#">我负责的</a></li>
+        <li role="presentation"><a href="#">我参与的</a></li>
+        <li role="presentation"><a href="#">我关注的</a></li>
+        <li role="presentation"><a href="#">全部任务</a></li>
+      </ul>
+      <div class="page-header">
+        <h3>带数字的标签页</h3>
+      </div>
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active" ><a href="#">我发起的&nbsp;[4]</a></li>
+        <li role="presentation"><a href="#">待我审核&nbsp;[2]</a></li>
+        <li role="presentation"><a href="#">待完成的&nbsp;[6]</a></li>
+      </ul>
+       <div class="page-header">
+        <h3>小号标签页</h3>
+      </div>
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active" ><a href="#" class="sm">1</a></li>
+        <li role="presentation"><a href="#" class="sm">2</a></li>
+        <li role="presentation"><a href="#" class="sm">3</a></li>
+      </ul>
+      <div class="page-header">
+        <h3>下拉和搜索</h3>
+      </div>
+      
+        <div class="col-md-12" style="height:80px">
+            
+			<div class="select-item" style="margin-right:50px;">
+                <span>公司</span>
+                <select id="filter-company" class="combobox" style="width:150px;"><option value="">不限</option><option value="15d7e1c4ecea83be52b071c4cdd81eba">华阳设计-润阳联合智造</option><option value="1491759803a76dbea2ee20b44d98b8a4">华阳设计-集团公司</option><option value="1491759803a3796fedf4783400da64bf">华阳设计-深圳公司</option><option value="1491759803a19c2f9a8c26942b2b7b17">华阳设计-广州公司</option><option value="1491759803a76e732720b4b40208454d">华阳设计-长沙公司</option><option value="1491759803a6a6244ee9de04ec49ec29">华阳设计-重庆公司</option><option value="1491759803a17bc0d9c18cc4a21b82d0">华阳设计-上海公司</option><option value="149175980694ceb3beeb5474f56ac7fe">华阳设计-建筑产业化公司</option><option value="149175980b7b0364e4b1d4c4d00905eb">华阳设计-BIM研究院</option><option value="154c950de0c711134548cf44cefbf3ef">华阳设计-东莞产业园</option><option value="1560375bed6e6826c54ebf3454b8e390">华阳设计-华泰盛工程建设公司</option><option value="149175980498287068aec7d4f6b8efc5">华阳造价-深圳公司</option><option value="14917598049b48a5b72e004480c81ea6">华阳造价-长沙公司</option><option value="149175980b76c595c8093cb4637be624">华阳造价-佛山公司</option><option value="16055532626ac259a0527a646fdaaeac">华阳设计-规划设计研究院</option></select>
+            </div>
+            <div class="select-item">
+                <span>部门</span>
+                <select id="filter-dept" class="combobox" style="width:150px;"><option value="">不限</option></select>
+            </div>
+            
+            <div class="select-item" style="margin-right:50px;">
+                <span>二级部门</span>
+                <select id="filter-module" class="combobox" style="width:150px;"><option value="">不限</option></select>
+            </div>	                
+            <div class="select-item" id="so"> 
+                <span class="float" >关键字</span> 
+                <div class="input-group">  
+                    <input class="form-control input-sm" type="text" placeholder="名称、内容、负责人……" style="width:250px;border-right:0px;"> 
+                    <span  class="input-group-search-btn"> 搜索</span> 
+                </div>  
+            </div> 
+        </div>
+       <div class="page-header">
+        <h3>图文和列表切换按钮</h3>
+      </div> 
+      <button type="button" class="btn btn-default btn-sm btn-red"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> 图文显示</button>
+      <button type="button" class="btn btn-default btn-sm btn-red"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 列表显示</button>  
+      <button type="button" class="btn btn-default btn-sm btn-red"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新建任务</button>  
+      
+    <div class="page-header">
+        <h3>图形</h3>
+    </div>
+    <ul id="image_div_task" class="image_div doc_div scrollbar ui-sortable" align="center">
+        <li title="可拖拽排序" class="doc_li doc_li_last" id="163a568d649d2705e7b648547f692fd0">
+            <div class="doc_img_div"></div>
+            <div class="doc_title_div" title="线上流程平台需求">线上流程平台需求</div>
+            <div class="update_date_div">最近更新：三天前</div>
+            <div title="漆枋晨1" class="head_person_div">负 责 人：漆枋晨1</div>
+            <div class="security_level_div">密　　级：一级/非公开</div>
+            <div class="person_div">
+                <div class="project_members_img"><div></div></div>
+                <div class="project_members_img"><div></div></div>
+                <div class="project_members_img"><div></div></div>
+                <div class="project_members_img"><div></div></div>
+                <div class="project_members_img"><div></div></div>
+                <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9"></div>
+                <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=15b48b6fe831375da9a04164a559d1ff"></div>
+            </div>
+            <div style="margin-left:227px;margin-top:5px;">
+                <div class="red" title="置顶" onclick="event.cancelBubble = true" style="display:none;">置顶</div>
+            </div>
+        </li>
+        <li title="可拖拽排序" class="doc_li" id="163820973ee7eedbcc0c74f411f93153">
+            <div class="doc_img_div"></div><div class="doc_title_div" title="技术及平台建设">技术及平台建设</div>
+            <div class="update_date_div">最近更新：三天前</div>
+            <div title="漆枋晨1" class="head_person_div">负 责 人：漆枋晨1</div>
+            <div class="security_level_div">密　　级：一级/非公开</div>
+            <div class="person_div">
+                <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9"></div>
+                <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=149175985586e03eff4db1d4f6eb3bd5"></div>
+                <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=149175985c505d266aa6211414299c88"></div>
+                <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=149175987c829b33367cfdb4f72a82e2"></div>
+                <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=15b48b6fe831375da9a04164a559d1ff"></div>
+                <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=1570a1928b4c36e113665ed443f93b32"></div>
+                <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=157523231ad3f1fe1f3695644bfa6e3a"></div>
+                <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=149175986a0019dd024b8324f14b47f9"></div>
+                <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=1491759856824ba7575dbd4402a94894"></div>
+                <div class="project_members_img"><img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=149175986ee485536ea385140d7818af"></div>
+            </div>
+            <div style="margin-left:227px;margin-top:5px;">
+                <div class="red" title="置顶" onclick="event.cancelBubble = true">置顶</div>
+            </div>
+        </li>
+    </ul>
+      
+      
+        <div class="page-header">
+            <h3>表格</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12" >
+                <div class="table-title clearFix">任务列表
+                	<span class="ifShowDelete">
+                		<input type="checkbox">
+                		<span id="ifShowDelete">显示已废弃</span>
+                	</span>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="header">
+                            <th style="width:40px">序号</th>
+                            <th style="width:80px">任务编号</th>
+                            <th style="width:250px">任务名称</th>
+                            <th style="width:115px">公司</th>
+                            <th style="width:90px">部门</th>
+                            <th style="width:80px">二级部门</th>
+                            
+                            <!-- <th class="sorting" data="fHeadPerson">负责人</th> -->
+                            <th style="width:60px">负责人</th>
+                            <th class="sorting" data="fSecurityLevel"  style="width:60px">密级</th>
+                            <th class="sorting" data="fPublicFlag"  style="width:65px">是否公开</th>
+                            <!-- <th class="sorting" data="controlledNumber">受控编号</th> -->
+                            <th  style="width:80px">受控编号</th>
+                            <th class="sorting" data="fCreatePerson"  style="width:60px">创建人</th>
+                            <th class="sorting desc" data="fCreateTime"  style="width:80px">创建时间</th>
+                            <th  style="width:80px">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody class="js-show">
+                      <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                        <td>1</td>
+                        <td>RW1800025</td>
+                        <td class="textLeft"><a class="under-line" href="#">线上流程平台需求</a></td><td>华阳设计-集团公司</td>
+                        <td>运营管理中心</td>
+                        <td></td>
+                        <td title="漆枋晨1"><div class="headPerson">漆枋晨1</div></td>
+                        <td>一级</td><td>不公开</td><td>SK-18-0021</td><td>漆枋晨1</td>
+                        <td>2018-05-28</td>
+                        <td><button type="button" class="btn btn-default btn-xs btn-active btn-no-radius" style="width:68px">- 取消关注</button></td>
+                      </tr>
+                      <tr projectid="163820973ee7eedbcc0c74f411f93153" status="1" firstnotpublic="0">
+                        <td>2</td>
+                        <td>RW1800024</td>
+                        <td class="textLeft"><a class="under-line" href="#">技术及平台建设</a></td>
+                        <td>华阳设计-集团公司</td>
+                        <td>运营管理中心</td>
+                        <td></td>
+                        <td title="漆枋晨1"><div class="headPerson">漆枋晨1</div></td>
+                        <td>一级</td>
+                        <td>不公开</td>
+                        <td>SK-18-0020</td>
+                        <td>漆枋晨1</td>
+                        <td>2018-05-21</td>
+                        <td><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                      </tr>
+                      <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                        <td>3</td>
+                        <td>RW1800023</td>
+                        <td class="textLeft"><a class="under-line" href="#">华阳标准图库软件发布</a></td><td>华阳设计-集团公司</td>
+                        <td>运营管理中心</td>
+                        <td></td>
+                        <td title="漆枋晨1"><div class="headPerson">漆枋晨1</div></td>
+                        <td>三级</td><td>公开</td><td></td><td>漆枋晨1</td>
+                        <td>2018-05-28</td>
+                        <td><button type="button" class="btn btn-default btn-xs btn-active btn-no-radius" style="width:68px">- 取消关注</button></td>
+                      </tr>
+                      <tr projectid="163820973ee7eedbcc0c74f411f93153" status="1" firstnotpublic="0">
+                        <td>4</td>
+                        <td>RW1800022</td>
+                        <td class="textLeft"><a class="under-line" href="#">协同平台2.0培训资料</a></td>
+                        <td>华阳设计-集团公司</td>
+                        <td>运营管理中心</td>
+                        <td></td>
+                        <td title="漆枋晨1"><div class="headPerson">漆枋晨1</div></td>
+                        <td>二级</td>
+                        <td>公开</td>
+                        <td>SK-18-0019</td>
+                        <td>漆枋晨1</td>
+                        <td>2018-05-21</td>
+                        <td><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                      </tr>
+                      <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                        <td></td>
+                        <td></td>
+                        <td class="textLeft"><a class="under-line" href="#">预留两行空间（40px），绝大部分情况不会超出两行，如果超出两行则显示为……</a></td><td></td>
+                        <td></td>
+                        <td></td>
+                        <td title="漆枋晨1"><div class="headPerson"></div></td>
+                        <td></td><td></td><td></td><td></td>
+                        <td></td>
+                        <td><span class=" btn_remove js-cancel-collect-pro"></span></td>
+                      </tr>
+                    </tbody>
+                </table>
+             
+            </div>
+           
+        
+        </div>
+        <div class="page-header">
+            <h3>翻页表格</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12" >
+                <div class="table-title clearFix">文件列表：
+                    <a class="btn btn-default btn-xs right-buttons" href="#" role="button"><span class="glyphicon glyphicon-floppy-open"></span> 上传</a>
+                    <a class="btn btn-default btn-xs right-buttons" href="#" role="button"><span class="glyphicon glyphicon-plus"></span> 新建</a>
+                    <span class="ifShowDelete">
+                        <input type="checkbox">
+                        <span id="ifShowDelete">显示已删除的文件</span>        
+                    </span> 
+                </div>
+                <table class="table table-bordered" id="example1">
+                            <thead>
+                                <tr class="header">
+                                    <th style="width:40px"><input type="checkbox"></th>
+                                    <th style="width:40px">序号</th>
+                                    <th style="width:140px">文件编号</th>
+                                    <th style="width:200px">文件名称</th>
+                                    <th style="width:40px">类型</th>
+                                    <th style="width:60px">创建人</th>
+                                    <th style="width:80px">创建时间</th>
+                                    <th style="width:80px">最后更新时间</th>
+                                    <th style="width:175px">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="js-show">
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>1</td>
+                                <td>RW1800024-01-0005</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>2</td>
+                                <td>RW1800024-01-0004</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>3</td>
+                                <td>RW1800024-01-0003</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>4</td>
+                                <td>RW1800024-01-0002</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>1</td>
+                                <td>RW1800024-01-0005</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>2</td>
+                                <td>RW1800024-01-0004</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>3</td>
+                                <td>RW1800024-01-0003</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>4</td>
+                                <td>RW1800024-01-0002</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>1</td>
+                                <td>RW1800024-01-0005</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>2</td>
+                                <td>RW1800024-01-0004</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>3</td>
+                                <td>RW1800024-01-0003</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>4</td>
+                                <td>RW1800024-01-0002</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>1</td>
+                                <td>RW1800024-01-0005</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>2</td>
+                                <td>RW1800024-01-0004</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>3</td>
+                                <td>RW1800024-01-0003</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>4</td>
+                                <td>RW1800024-01-0002</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              
+                            </tbody>
+                        </table> 
+             
+            </div>
+           
+        
+        </div>
+
+         <div class="page-header">
+            <h3>滚动表格</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12" >
+                <div class="table-title clearFix">文件列表：
+                    <a class="btn btn-default btn-xs right-buttons" href="#" role="button"><span class="glyphicon glyphicon-floppy-open"></span> 上传</a>
+                    <a class="btn btn-default btn-xs right-buttons" href="#" role="button"><span class="glyphicon glyphicon-plus"></span> 新建</a>
+                    <span class="ifShowDelete">
+                        <input type="checkbox">
+                        <span id="ifShowDelete">显示已删除的文件</span>        
+                    </span> 
+                </div>
+                <table class="table table-bordered" id="example2">
+                            <thead>
+                                <tr class="header">
+                                    <th style="width:40px"><input type="checkbox"></th>
+                                    <th style="width:40px">序号</th>
+                                    <th style="width:140px">文件编号</th>
+                                    <th style="width:200px">文件名称</th>
+                                    <th style="width:40px">类型</th>
+                                    <th style="width:60px">创建人</th>
+                                    <th style="width:80px">创建时间</th>
+                                    <th style="width:80px">最后更新时间</th>
+                                    <th style="width:175px">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="js-show">
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>1</td>
+                                <td>RW1800024-01-0005</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>2</td>
+                                <td>RW1800024-01-0004</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>3</td>
+                                <td>RW1800024-01-0003</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>4</td>
+                                <td>RW1800024-01-0002</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>1</td>
+                                <td>RW1800024-01-0005</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>2</td>
+                                <td>RW1800024-01-0004</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>3</td>
+                                <td>RW1800024-01-0003</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>4</td>
+                                <td>RW1800024-01-0002</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>1</td>
+                                <td>RW1800024-01-0005</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>2</td>
+                                <td>RW1800024-01-0004</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>3</td>
+                                <td>RW1800024-01-0003</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>4</td>
+                                <td>RW1800024-01-0002</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>1</td>
+                                <td>RW1800024-01-0005</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>2</td>
+                                <td>RW1800024-01-0004</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>3</td>
+                                <td>RW1800024-01-0003</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              <tr class="added" projectid="163a568d649d2705e7b648547f692fd0" status="1" firstnotpublic="0">
+                                <td><input type="checkbox"></td>
+                                <td>4</td>
+                                <td>RW1800024-01-0002</td>
+                                <td class="textLeft"><a class="under-line" href="">20180520华阳原基准员工座谈会会议纪要</a></td>
+                                <td>PDF</td>
+                                <td>漆枋晨1</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td>2018-12-31 17:00:00</td>
+                                <td class="textLeft">
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">查看</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">编辑</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">创建副本</a>
+                                    <a class="btn btn-default btn-xs no-border under-line" href="#" role="button">删除</a>
+                                </td>
+                              </tr>
+                              
+                            </tbody>
+                        </table> 
+             
+            </div>
+           
+        
+        </div>
+
+        <div class="page-header">
+            <h3>折叠框</h3>
+        </div>
+        <div>
+            <div class="toggle-bar"> 
+                <h4 class="toggle-bar">
+                <span class="border-bottom">任务负责人及成员</span>
+                <span class="toggle-icon glyphicon glyphicon-chevron-down"></span>  
+                </h4>
+            </div>
+            <div class="toggle-content">
+                <div class="project_member" style="width: 250px;">
+                    <span class="badge_cy">负责人[2]</span>
+                    <ul class="project_member_list"> 
+                        <li>
+                          <img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9">
+                          <span class="sys_person_user_name">漆枋晨1</span>
+                        </li>
+                        <li>
+                          <img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9">
+                          <span class="sys_person_user_name">刘凤杰</span>
+                        </li>
+                        <li>
+                          <div id="project_headPerson_add" class="project_members_add" title="添加负责人">+</div>
+                        </li>
+                        
+                    </ul>
+                </div>
+                 <div class="project_member" style="width: 250px;">
+                    <span class="badge_cy">成员[2]</span>
+                    <ul class="project_member_list"> 
+                        <li>
+                          <img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9">
+                          <span class="sys_person_user_name">张三</span>
+                        </li>
+                        <li>
+                          <img class="sys_person_userpic_img" src="http://cip.capol.cn/sys/person/image.jsp?personId=14f6a4ef37d8b244e2af02e4def9b2a9">
+                          <span class="sys_person_user_name">李四</span>
+                        </li>
+                        <li>
+                          <div id="project_members_add" class="project_members_add" title="添加成员">+</div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-header">
+            <h3>二级选择目录</h3>
+        </div>
+        <div class="nav nav-tree" style="width:240px;position: relative;">
+        	<ul>
+            	<li><a href="#" class="lv1">工程管理<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                	<ul style="display: block;">
+                   		<li><a href="#" class="active">工程台账</a></li>
+                        <li><a href="#">……</a></li>
+                        <li><a href="#">……</a></li>
+                    </ul>
+                </li>
+                <!--<li><a href="filemanager.html" class="gallery">File Manager</a></li>-->
+                <li><a href="#" class="lv1">运营管理报表<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                    <ul style="display: block;">
+                   		<li><a href="#">工程管理一览表</a></li>
+                        <li><a href="#">文件完整度一览表</a></li>
+                        <li><a href="#">……</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="lv1">……<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a></li> 
+            </ul>
+        </div>
+
+        <div class="page-header">
+            <h3>输入表单、详情页</h3>
+        </div>
+        <div>
+            <div class="form-window-title"> 
+                <h4>
+                <span class="title">工程文件盖章申请单</span>
+                <span class="glyphicon glyphicon-remove close-button"></span>  
+                </h4>
+            </div>
+            <div class="form-window-content">
+                <form class="table" method="post" action="" style="padding:10px;">
+                    <table class="table table-bordered">
+                        <tr class="title">
+                           <th colspan="10" style="background:url(http://cip.capol.cn/capol/homepage/resource/img/logo.png)no-repeat;">工程文件盖章申请单</th>
+                        </tr>
+                        <tr>
+                            <td class="bold" style="width:12%">工程编号</td>
+                            <td style="width:12%"><input class="form-control select" type="text" id="prjno" value="GC180066"></td>
+                            <td class="bold" style="width:12%">工程名称</td>
+                            <td style="width:36%" colspan="4"><input class="form-control select" type="text" id="prjname" value="广州思科智慧城"></td>
+                            <td class="bold" style="width:12%">设计阶段</td>       
+                            <td style="width:16%" colspan="2">
+                                <div class="btn-group" style="width: 100%;">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width: 100%;height:29px;text-align:left;">施工图<span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">方案</a></li>
+                                        <li><a href="#">初步设计</a></li>
+                                        <li><a href="#">施工图</a></li>
+                                        <li><a href="#">施工服务</a></li>
+                                    </ul>
+                                </div></td>
+                        </tr>
+                        <tr>
+                            <td class="bold" style="width:12%">所属公司</td>
+                            <td style="width:12%">深圳公司</td>
+                            <td class="bold" style="width:12%">所属部门</td>
+                            <td style="width:12%">公建部</td>
+                            <td class="bold" style="width:12%" colspan="2">申请人</td>
+                            <td style="width:12%">漆枋晨1</td>
+                            <td class="bold" style="width:12%">申请日期</td>
+                            <td style="width:16%" colspan="2">2018-6-4</td>
+                        </tr>
+                        <tr>
+                           <td colspan="10" style="height:10px;"></td>
+                        </tr>
+                        <tr>
+                            <td class="bold" style="width:24%" colspan="2">文件类型</td>
+                            <td class="bold" style="width:24%" colspan="2">文件名称或编号</td>
+                            <td class="bold" style="width:6%">电子<br>文件</td>
+                            <td class="bold" style="width:6%">数量</td>
+                            <td class="bold" style="width:24%" colspan="2">印章<br>类别</td>
+                            <td class="bold" style="width:8%">加盖<br>公章</td>
+                            <td class="bold" style="width:8%">加盖<br>董事长私章</td>
+                        </tr>
+                        <tr>
+                            <td style="width:24%" colspan="2"> 
+                                <div class="btn-group" style="width: 100%;">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width: 100%;height:29px;text-align:left;"><span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">设计更改通知单</a></li>
+                                        <li><a href="#">图纸会审记录<span class="caret caret-right"></span></a></li>
+                                        <li><a href="#">工程联系单<span class="caret caret-right"></span></a></li>
+                                        <!--li role="separator" class="divider"></li-->
+                                        <li><a href="#">……</a></li>
+                                        <li><a href="#">其他</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td style="width:24%" colspan="2"><input class="form-control select" type="text" id="prjname" value=""></td>
+                            <td style="width:6%"></td>
+                            <td style="width:6%">
+                                <div class="input-group spinner">  
+                                    <input type="text" class="form-control" value="1">  
+                                    <div class="input-group-btn-vertical">  
+                                        <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-up"></button>  
+                                        <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-down"></i></button>  
+                                    </div>  
+                                </div> 
+                            </td>
+                            <td style="width:24%" colspan="2"></td>
+                            <td style="width:8%"><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
+                            <td style="width:8%"><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
+                        </tr>
+                    </table>
+                    <div class="table-title clearFix">文件列表
+                    <span class="right-buttons">
+                        <button class="btn btn-default btn-xs btn-red" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>上传</button>
+                    </span>
+                    </div>
+                    <table class="table table-bordered">
+                       <tr>
+                            <td class="bold" style="width:5%">序号</td>
+                            <td class="bold" style="width:20%">文件编号</td>
+                            <td class="bold" style="width:50%">文件名</td>       
+                            <td class="bold" style="width:25%">操作</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>       
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>       
+                            <td></td>
+                        </tr>
+                    </table>
+                    <div class="table-title clearFix">交付方式
+                    
+                    </div>
+                    <table class="table table-bordered">
+                       <tr>
+                            <td class="bold" style="width:12%;text-align:left;padding-left:10px;" colspan="4">
+                                <label class="radio-inline"><input class="sm" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">申请人送达</label>
+                                <label class="radio-inline"><input class="sm" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">公司派车</label>
+                                <label class="radio-inline"><input class="sm" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">普通快递</label>
+                                <label class="radio-inline"><input class="sm" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">甲方自取</label>
+                                <label class="radio-inline"><input class="sm" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">其他：</label><input type="text" class="form-control" style="width: 100px;display: inline-block;height: 24px; margin-left: 5px;">
+                            </td>
+                            <td class="bold" style="width:12%" rowspan="3">要求交付时间</td>                              
+                            <td class="bold" style="width:16%" rowspan="3">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar" style="font-size:12px;"></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="exampleInputAmount">
+                                </div>
+                            </td> 
+                        </tr>
+                       <tr>
+                            <td class="bold" style="width:12%">甲方联系人</td>
+                            <td style="width:12%"><input type="text" class="form-control" ></td>
+                            <td class="bold" style="width:12%">电话</td>
+                            <td style="width:36%"><input type="text" class="form-control" ></td>
+                        </tr>
+                        <tr>
+                            <td class="bold" style="width:12%">地址</td>
+                            <td style="width:60%" colspan="3"><input type="text" class="form-control" ></td>
+                        </tr>
+                    </table>
+                    <p class="note">注：本申请单需要项目负责人、部门运营负责人审核；如需加盖公章，需主管领导审核；如需加盖董事长私章，还需董事长审核。</p>
+                    <div style="text-align:center;">
+                      <div class="nodes-inline nodes-inline-node"><div class="nodes nodes-green"><span class="nodes-icon glyphicon glyphicon-ok" aria-hidden="true"></span></div><span class="node_name">发起</span><span class="node_name person">漆枋晨1</span></div>
+                      <div class="nodes-inline"><div class="nodes-arrow"><span class="nodes-icon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></div></div>
+                      <div class="nodes-inline nodes-inline-node"><div class="nodes nodes-orange"></div><span class="node_name">项目负责人</span><span class="node_name person">肖睿</span></div>
+                      <div class="nodes-inline"><div class="nodes-arrow"><span class="nodes-icon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></div></div>
+                      <div class="nodes-inline nodes-inline-node"><div class="nodes nodes-red"><span class="nodes-icon glyphicon glyphicon-remove" aria-hidden="true"></span></div><span class="node_name">部门运营总</span><span class="node_name person">张胜强</span></div>
+                      <div class="nodes-inline"><div class="nodes-arrow"><span class="nodes-icon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></div></div>
+                      <div class="nodes-inline nodes-inline-node"><div class="nodes nodes-gray"></div><span class="node_name">公司主管领导</span><span class="node_name person"></span></div>
+                      <div class="nodes-inline"><div class="nodes-arrow"><span class="nodes-icon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></div></div>
+                      <div class="nodes-inline nodes-inline-node"><div class="nodes nodes-gray"></div><span class="node_name">董事长</span><span class="node_name person"></span></div>
+                      <div class="nodes-inline"><div class="nodes-arrow"><span class="nodes-icon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></div></div>
+                      <div class="nodes-inline nodes-inline-node"><div class="nodes nodes-blue"></div><span class="node_name">办理盖章</span><span class="node_name person">吴彤春</span></div>
+                      <div class="nodes-inline"><div class="nodes-arrow"><span class="nodes-icon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></div></div>
+                      <div class="nodes-inline nodes-inline-node"><div class="nodes nodes-blue"></div><span class="node_name">关联签收单</span><span class="node_name person">漆枋晨1</span></div>
+                      </div>
+                      <div style="text-align:center;"><button class="btn btn-default btn-submit" type="submit">提交</button>
+                      </div>
+                    </form>
+            
+            </div>
+        </div>
+        
+        
+        
+        </div>
+        
+        
+        
+    
+
+
+
+    </div> <!-- /container -->
+
+
+   
+  
+</body>
+</html>
