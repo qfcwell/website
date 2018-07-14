@@ -5,7 +5,7 @@ from socketserver import ThreadingMixIn
 class ThreadingHttpServer( ThreadingMixIn, HTTPServer ):
     pass
 
-port = 8080
+port = 80
 #httpd = HTTPServer(('', port), CGIHTTPRequestHandler)
 httpd = ThreadingHttpServer(('', port), CGIHTTPRequestHandler)
 
