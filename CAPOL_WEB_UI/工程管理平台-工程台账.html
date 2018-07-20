@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+    <title>CAPOL_WEB_UI</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready(function() {
+        $('#example1').DataTable({ "scrollY": "500px", "paging": true, "searching": false, "info": false });
+    });
+    $(document).ready(function() {
+        $('#all_project_project').DataTable({ "scrollY": "650px", "scrollCollapse": true, "paging": false, "searching": false, "info": false });
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#close").click(function() {
+            $("#window").hide();
+        });
+    });
+    $(document).ready(function() {
+        $("#open").click(function() {
+            $("#window").show();
+        });
+    });
+    </script>
+    <link rel="stylesheet" href="./CAPOL_WEB_UI.css">
+</head>
+
+<body>
+    <div class="top_banner">
+        <div class="navigate">
+            <div class="logo" style="cursor:pointer;">
+                <img onclick="Com_openHomePageFunc();" alt="" src="http://cip.capol.cn/capol/homepage/resource/img/logo.png">
+            </div>
+            <div class="c_nav">
+                <ul>
+                    <li> <span class="personalspace c_nav_info">个人空间</span></li>
+                    <li> <span class="workspace c_nav_info active">工作空间</span></li>
+                    <li> <span class="knowledge">知识中心</span></li>
+                    <li> <span class="cultur">企业文化</span></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input id="fullSearch_input" type="text" placeholder="请输入关键字搜索全系统 ">
+                <span class="search-btn"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <ul class="breadcrumb" role="tablist">
+            <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
+            <li><a href="#">工作空间</a></li>
+            <li>流程中心</li>
+        </ul>
+        <div style="height:42px;width:100%;display: inline-block;">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#">华阳设计</a></li>
+                <li role="presentation"><a href="#" class="disabled">华阳造价</a></li>
+                <li role="presentation"><a href="#" class="disabled">华泰盛</a></li>
+                <li role="presentation"><a href="#" class="disabled">润阳智造</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav nav-tree" style="width:240px;position: absolute;margin-left:20px;margin-top:10px;">
+            <ul>
+                <li><a href="#" class="lv1">工程管理<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                    <ul style="display: block;">
+                        <li><a href="#" class="active">工程台账</a></li>
+                        <li><a href="#">工程管理一览表</a></li>
+                        <li><a href="#">……</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="lv1">运营管理<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                    <ul style="display: block;">
+                        <li><a href="#">人员信息表</a></li>
+                        <li><a href="#">人员架构表</a></li>
+                        <li><a href="./工程管理平台-各设计阶段项目一览表.html">各设计阶段项目一览表</a></li>
+                        <li><a href="#">人员项目表</a></li>
+                        <li><a href="#">项目人员表</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div style="padding-left:280px;padding-right: 20px;">
+            <div style="height:33px;margin-top:10px;">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a class="sm" href="#">我关注的</a></li>
+                    <li role="presentation"><a href="#" class="sm">全部工程</a></li>
+                </ul>
+            </div>
+            <div style="height:48px;">
+                <div class="select-item" style="margin-right:40px;">
+                    <span>年份</span>
+                    <select id="filter-module" class="combobox" style="width:100px;">
+                        <option value="">不限</option>
+                        <option value="15d7e1c4ecea83be52b071c4cdd81eba">2018</option>
+                        <option value="1491759803a76dbea2ee20b44d98b8a4">2017</option>
+                        <option value="1491759803a3796fedf4783400da64bf">2016</option>
+                        <option value="1491759803a19c2f9a8c26942b2b7b17">2015</option>
+                        <option value="1491759803a76e732720b4b40208454d">2014</option>
+                        <option value="1491759803a6a6244ee9de04ec49ec29">2013</option>
+                        <option value="1491759803a17bc0d9c18cc4a21b82d0">2012</option>
+                        <option value="149175980694ceb3beeb5474f56ac7fe">2011</option>
+                        <option value="149175980b7b0364e4b1d4c4d00905eb">2010</option>
+                        <option value="154c950de0c711134548cf44cefbf3ef">2010以前</option>
+                    </select>
+                </div>
+                <div class="select-item">
+                    <span>公司</span>
+                    <select id="filter-company" class="combobox" style="width:150px;">
+                        <option value="">不限</option>
+                        <option value="15d7e1c4ecea83be52b071c4cdd81eba">华阳设计-润阳联合智造</option>
+                        <option value="1491759803a76dbea2ee20b44d98b8a4">华阳设计-集团公司</option>
+                        <option value="1491759803a3796fedf4783400da64bf">华阳设计-深圳公司</option>
+                        <option value="1491759803a19c2f9a8c26942b2b7b17">华阳设计-广州公司</option>
+                        <option value="1491759803a76e732720b4b40208454d">华阳设计-长沙公司</option>
+                        <option value="1491759803a6a6244ee9de04ec49ec29">华阳设计-重庆公司</option>
+                        <option value="1491759803a17bc0d9c18cc4a21b82d0">华阳设计-上海公司</option>
+                        <option value="149175980694ceb3beeb5474f56ac7fe">华阳设计-建筑产业化公司</option>
+                        <option value="149175980b7b0364e4b1d4c4d00905eb">华阳设计-BIM研究院</option>
+                        <option value="154c950de0c711134548cf44cefbf3ef">华阳设计-东莞产业园</option>
+                        <option value="1560375bed6e6826c54ebf3454b8e390">华阳设计-华泰盛工程建设公司</option>
+                        <option value="149175980498287068aec7d4f6b8efc5">华阳造价-深圳公司</option>
+                        <option value="14917598049b48a5b72e004480c81ea6">华阳造价-长沙公司</option>
+                        <option value="149175980b76c595c8093cb4637be624">华阳造价-佛山公司</option>
+                        <option value="16055532626ac259a0527a646fdaaeac">华阳设计-规划设计研究院</option>
+                    </select>
+                </div>
+                <div class="select-item">
+                    <span>部门</span>
+                    <select id="filter-dept" class="combobox" style="width:150px;">
+                        <option value="">不限</option>
+                    </select>
+                </div>
+                <div class="select-item disabled" style="padding-right: 40px;">
+                    <span>二级部门</span>
+                    <select id="filter-dept" class="combobox" style="width:150px;" disabled="disabled">
+                        <option value="">不限</option>
+                    </select>
+                </div>
+                <div class="select-item" id="so" style="margin-right: 10px;">
+                    <span class="float">关键字</span>
+                    <div class="input-group">
+                        <input class="form-control input-sm" type="text" placeholder="名称、内容、负责人……" style="width:200px;border-right:0px;">
+                        <span class="input-group-search-btn"> 搜索</span>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered table-condensed dataTable no-footer" id="all_project_project" role="grid" aria-describedby="all_project_project_info">
+                <thead>
+                    <tr role="row">
+                        <th class="sorting_disabled table-td-center" rowspan="1" colspan="1" style="width: 38px;">序号</th>
+                        <th class="sorting_disabled table-td-center" rowspan="1" colspan="1" style="width: 102px;">工程编号</th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 389px;">工程名称</th>
+                        <th class="sorting_disabled table-td-center" rowspan="1" colspan="1" style="width: 101px;">所属公司</th>
+                        <th class="sorting_disabled table-td-center" rowspan="1" colspan="1" style="width: 101px;">所属部门</th>
+                        <th class="sorting_disabled table-td-center" rowspan="1" colspan="1" style="width: 101px;">项目负责人</th>
+                        <th class="sorting_disabled table-td-center" rowspan="1" colspan="1" style="width: 101px;">项目助理</th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 198px;">项目客户名称</th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 198px;">设计阶段组合</th>
+                        <th class="sorting_disabled table-td-center" rowspan="1" colspan="1" style="width: 102px;">工程状态</th>
+                        <th class="sorting_disabled table-td-center" rowspan="1" colspan="1" style="width: 102px;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class=" table-td-center">1</td>
+                        <td class=" table-td-center">GC180259</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6298" target="_blank" >怀化恒大中央广场（规划）</a></td>
+                        <td class=" table-td-center">上海公司</td>
+                        <td class=" table-td-center">建筑部</td>
+                        <td class=" table-td-center">沈振华</td>
+                        <td class=" table-td-center">涂月梅</td>
+                        <td>怀化恒御置业有限公司</td>
+                        <td>住宅(普通别墅)-不含专项</td>
+                        <td class=" table-td-center">规划</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="even">
+                        <td class=" table-td-center">2</td>
+                        <td class=" table-td-center">GC180258</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6297" target="_blank">保利揭阳棉纺厂</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">新城市事业部</td>
+                        <td class=" table-td-center">杜卫华</td>
+                        <td class=" table-td-center">魏淑伶</td>
+                        <td></td>
+                        <td>住宅(普通别墅)-不含专项</td>
+                        <td class=" table-td-center">规划</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class=" table-td-center">3</td>
+                        <td class=" table-td-center">GC180257</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6296" target="_blank">鹤山市雅瑶镇大岗居委会地块强排</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">新城市事业部</td>
+                        <td class=" table-td-center">陈曦</td>
+                        <td class=" table-td-center">魏淑伶</td>
+                        <td></td>
+                        <td>住宅(普通别墅)-不含专项</td>
+                        <td class=" table-td-center">规划</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="even">
+                        <td class=" table-td-center">4</td>
+                        <td class=" table-td-center">GC180256</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6295" target="_blank">佛山市南海区桂城街道原桂城水厂半岛路地段一强排</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">新城市事业部</td>
+                        <td class=" table-td-center">余煜昕</td>
+                        <td class=" table-td-center">魏淑伶</td>
+                        <td></td>
+                        <td>住宅(普通别墅)-不含专项</td>
+                        <td class=" table-td-center">规划</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class=" table-td-center">5</td>
+                        <td class=" table-td-center">GC180255</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6294" target="_blank">万科谷山项目</a></td>
+                        <td class=" table-td-center">长沙公司</td>
+                        <td class=" table-td-center">建筑三部</td>
+                        <td class=" table-td-center">谢伟</td>
+                        <td class=" table-td-center">陈路漫</td>
+                        <td></td>
+                        <td>公建(普通文学体育)-不含超限只含管综</td>
+                        <td class=" table-td-center">初设</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="even">
+                        <td class=" table-td-center">6</td>
+                        <td class=" table-td-center">GC180254</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6290" target="_blank">增城保利中新镇三迳村项目(强排）</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">建筑二部</td>
+                        <td class=" table-td-center">余庆</td>
+                        <td class=" table-td-center"></td>
+                        <td>广东保利房地产开发有限公司</td>
+                        <td>住宅(普通别墅)-不含专项</td>
+                        <td class=" table-td-center">规划</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class=" table-td-center">7</td>
+                        <td class=" table-td-center">GC180253</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6291" target="_blank">南海金地里水镇（强排）</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">建筑二部</td>
+                        <td class=" table-td-center">余庆</td>
+                        <td class=" table-td-center"></td>
+                        <td>金地集团华南区域地产公司</td>
+                        <td>住宅(普通别墅)-不含专项</td>
+                        <td class=" table-td-center">规划</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="even">
+                        <td class=" table-td-center">8</td>
+                        <td class=" table-td-center">GC180252</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6292" target="_blank">佛山金地南海小塘项目</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">建筑二部</td>
+                        <td class=" table-td-center">余庆</td>
+                        <td class=" table-td-center"></td>
+                        <td>金地集团华南区域地产公司</td>
+                        <td>住宅(普通别墅)-不含专项</td>
+                        <td class=" table-td-center">规划</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class=" table-td-center">9</td>
+                        <td class=" table-td-center">GC180251</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6293" target="_blank">南海金地西樵镇强排项目</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">建筑二部</td>
+                        <td class=" table-td-center">余庆</td>
+                        <td class=" table-td-center"></td>
+                        <td>金地集团华南区域地产公司</td>
+                        <td>住宅(普通别墅)-不含专项</td>
+                        <td class=" table-td-center">规划</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="even">
+                        <td class=" table-td-center">10</td>
+                        <td class=" table-td-center">GC180250</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6289" target="_blank">金地佛山禅城强排</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">建筑三部</td>
+                        <td class=" table-td-center">左纯</td>
+                        <td class=" table-td-center">谢晓雯</td>
+                        <td></td>
+                        <td>住宅(普通别墅)-不含专项</td>
+                        <td class=" table-td-center">未开始</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class=" table-td-center">11</td>
+                        <td class=" table-td-center">GC180249</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6288" target="_blank">金地佛山狮山强排</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">建筑三部</td>
+                        <td class=" table-td-center">左纯</td>
+                        <td class=" table-td-center">谢晓雯</td>
+                        <td></td>
+                        <td>住宅(普通别墅)-不含专项</td>
+                        <td class=" table-td-center">未开始</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="even">
+                        <td class=" table-td-center">12</td>
+                        <td class=" table-td-center">GC180248</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6287" target="_blank">海南融创澄迈G区南区</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">建筑二部</td>
+                        <td class=" table-td-center">余庆</td>
+                        <td class=" table-td-center"></td>
+                        <td>海南微城实业有限公司</td>
+                        <td>住宅(普通别墅)-不含专项</td>
+                        <td class=" table-td-center">规划</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class=" table-td-center">13</td>
+                        <td class=" table-td-center">GC180247</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6286" target="_blank">保利荆州（总体规划）</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">建筑二部</td>
+                        <td class=" table-td-center">余庆</td>
+                        <td class=" table-td-center"></td>
+                        <td></td>
+                        <td>住宅(普通别墅)-不含专项</td>
+                        <td class=" table-td-center">规划</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="even">
+                        <td class=" table-td-center">14</td>
+                        <td class=" table-td-center">GC180246</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6285" target="_blank">常德恒大天玺三期</a></td>
+                        <td class=" table-td-center">长沙公司</td>
+                        <td class=" table-td-center">恒大事业部</td>
+                        <td class=" table-td-center">王小军</td>
+                        <td class=" table-td-center">彭丽</td>
+                        <td></td>
+                        <td>公建(普通文学体育)-不含超限只含管综</td>
+                        <td class=" table-td-center">初设</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class=" table-td-center">15</td>
+                        <td class=" table-td-center">GC180245</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6283" target="_blank">龙岗区宝龙街道G02405-0007宗地项目建筑方案设计（投标）</a></td>
+                        <td class=" table-td-center">深圳公司</td>
+                        <td class=" table-td-center">都市部</td>
+                        <td class=" table-td-center">曹渊</td>
+                        <td class=" table-td-center">徐僡敏1</td>
+                        <td></td>
+                        <td>100米以下普通住宅-不含超限含管综燃气</td>
+                        <td class=" table-td-center">投标</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="even">
+                        <td class=" table-td-center">16</td>
+                        <td class=" table-td-center">GC180244</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6281" target="_blank">南山赤湾地铁综合体施工图项目</a></td>
+                        <td class=" table-td-center">深圳公司</td>
+                        <td class=" table-td-center">国际部</td>
+                        <td class=" table-td-center">张建锋</td>
+                        <td class=" table-td-center">刘瑶</td>
+                        <td></td>
+                        <td>公建(普通文学体育)-不含超限只含管综</td>
+                        <td class=" table-td-center">初设</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class=" table-td-center">17</td>
+                        <td class=" table-td-center">GC180243</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6284" target="_blank">三水金科芦苞项目</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">建筑三部</td>
+                        <td class=" table-td-center">邱圳楷</td>
+                        <td class=" table-td-center">曾小冬</td>
+                        <td>广州金科房地产开发有限公司</td>
+                        <td>公建(普通文学体育)-不含超限只含管综</td>
+                        <td class=" table-td-center">初设</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="even">
+                        <td class=" table-td-center">18</td>
+                        <td class=" table-td-center">GC180242</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6282" target="_blank">万科番禺南浦村前期服务设计</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">新城市事业部</td>
+                        <td class=" table-td-center">陈曦</td>
+                        <td class=" table-td-center">何柳柳</td>
+                        <td></td>
+                        <td>100米以下公建、普通商业-不含超限含管综燃气</td>
+                        <td class=" table-td-center">方案</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class=" table-td-center">19</td>
+                        <td class=" table-td-center">GC180241</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6264" target="_blank">韶关保利政府大楼立面改造</a></td>
+                        <td class=" table-td-center">广州公司</td>
+                        <td class=" table-td-center">建筑二部</td>
+                        <td class=" table-td-center">向杰</td>
+                        <td class=" table-td-center"></td>
+                        <td>保利华南实业有限公司</td>
+                        <td>住宅(普通别墅)-不含专项</td>
+                        <td class=" table-td-center">规划</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                    <tr role="row" class="even">
+                        <td class=" table-td-center">20</td>
+                        <td class=" table-td-center">GC180240</td>
+                        <td style="text-align:left;"><a href="project_detail.html?mainId=6263" target="_blank">赤湾西牛埔施工图项目</a></td>
+                        <td class=" table-td-center">深圳公司</td>
+                        <td class=" table-td-center">国际部</td>
+                        <td class=" table-td-center">熊磊</td>
+                        <td class=" table-td-center">刘瑶</td>
+                        <td>赤湾科技（深圳）有限公司</td>
+                        <td>公建(普通文学体育)-不含超限只含管综</td>
+                        <td class=" table-td-center">初设</td>
+                        <td class=" table-td-center"><button type="button" class="btn btn-default btn-xs btn-no-radius" style="width:68px">+ 关注</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /container -->
+</body>
+
+</html>
