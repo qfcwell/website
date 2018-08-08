@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+    <title>CAPOL_WEB_UI</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready(function() {
+        $('#example1').DataTable({ "scrollY": "500px", "paging": true, "searching": false, "info": false });
+    });
+    $(document).ready(function() {
+        $('#all_project_project').DataTable({ "scrollY": "650px", "scrollCollapse": true, "paging": false, "searching": false, "info": false });
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#close").click(function() {
+            $("#window").hide();
+        });
+    });
+    $(document).ready(function() {
+        $("#open").click(function() {
+            $("#window").show();
+        });
+    });
+    </script>
+    <link rel="stylesheet" href="./CAPOL_WEB_UI.css">
+    <style type="text/css">
+    .table-bordered tbody tr td,
+    .table-bordered tbody tr th,
+    .table-bordered tfoot tr td,
+    .table-bordered tfoot tr th,
+    .table-bordered thead tr td,
+    .table-bordered thead tr th {
+        border: 1px solid #CCC;
+        font-size: 12px;
+        text-align: center;
+        vertical-align: middle;
+        padding: 3px;
+        height: 24px;
+        line-height: 1.4;
+    }
+
+    .blue-hover-red {
+        color: #337ab7;
+    }
+
+    .blue-hover-red:hover {
+        color: #A40000;
+    }
+    </style>
+    <style>
+    @font-face {
+        font-family: 'iconFont';
+        src: url('./fonts/iconFont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .icon {
+        position: relative;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+    }
+
+    .icon-file-pdf:before {
+        font-family: 'iconFont';
+        content: "\e0e8";
+    }
+
+    .icon-file-excel:before {
+        font-family: 'iconFont';
+        content: "\e0eb";
+    }
+    </style>
+</head>
+
+<body>
+    <div class="top_banner">
+        <div class="navigate">
+            <div class="logo" style="cursor:pointer;">
+                <img onclick="Com_openHomePageFunc();" alt="" src="http://cip.capol.cn/capol/homepage/resource/img/logo.png">
+            </div>
+            <div class="c_nav">
+                <ul>
+                    <li> <span class="personalspace c_nav_info">个人空间</span></li>
+                    <li> <span class="workspace c_nav_info active">工作空间</span></li>
+                    <li> <span class="knowledge">知识中心</span></li>
+                    <li> <span class="cultur">企业文化</span></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input id="fullSearch_input" type="text" placeholder="请输入关键字搜索全系统 ">
+                <span class="search-btn"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+        </div>
+    </div>
+    <div style="min-width: 1500px;">
+        <ul class="breadcrumb" role="tablist">
+            <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
+            <li><a href="#">工作空间</a></li>
+            <li>工程管理平台</li>
+        </ul>
+        <div style="height:42px;width:100%;display: inline-block;">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#">华阳设计</a></li>
+                <li role="presentation"><a href="#" class="disabled">华阳造价</a></li>
+                <li role="presentation"><a href="#" class="disabled">华泰盛</a></li>
+                <li role="presentation"><a href="#" class="disabled">润阳智造</a></li>
+            </ul>
+        </div>
+        <div class="nav nav-tree" style="width:200px;position: absolute;margin-left:20px;margin-top:10px;">
+            <ul>
+                <li><a href="#" class="lv1">工程管理<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                    <ul style="display: block;">
+                        <li><a href="./工程管理平台-工程台账.html">工程台账</a></li>
+                        <li><a href="#">项目关键节点控制一览表</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="lv1">运营管理<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                    <ul style="display: block;">
+                        <li><a href="工程管理平台-人员信息表.html" class="active">人员信息表</a></li>
+                        <li><a href="工程管理平台-人员架构表.html">人员架构表</a></li>
+                        <li><a href="工程管理平台-各设计阶段项目一览表.html">各设计阶段项目一览表</a></li>
+                        <li><a href="工程管理平台-人员项目表.html">人员项目表</a></li>
+                        <li><a href="工程管理平台-项目人员表.html">项目人员表</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div style="padding-left:240px;padding-right: 20px;margin-top:10px;">
+            
+            <div style="width:100%;height:50px; border-bottom: 1px solid #ccc;">
+                <div style="width:100%;float: left;">
+                    <div style="height:48px;">
+                        <div class="select-item">
+                            <span>所属公司</span>
+                            <select id="filter-company" class="combobox" style="width:150px;">
+                                <option value="">不限</option>
+                                <option value="1491759803a76dbea2ee20b44d98b8a4">集团公司</option>
+                                <option value="1491759803a3796fedf4783400da64bf" selected="selected">深圳公司</option>
+                                <option value="1491759803a19c2f9a8c26942b2b7b17">广州公司</option>
+                                <option value="1491759803a76e732720b4b40208454d">长沙公司</option>
+                                <option value="1491759803a17bc0d9c18cc4a21b82d0">上海公司</option>
+                                <option value="149175980694ceb3beeb5474f56ac7fe">建筑产业化公司</option>
+                            </select>
+                        </div>
+                        <div class="select-item">
+                            <span>一级部门</span>
+                            <select id="filter-dept" class="combobox" style="width:150px;">
+                                <option value="">不限</option>
+                                <option value="" selected="selected">公建部</option>
+                                <option value="">国际部</option>
+                                <option value="">都市部</option>
+                                <option value="">结构部</option>
+                                <option value="">机电部</option>
+                            </select>
+                        </div>
+                        <div class="select-item">
+                            <span>二级部门</span>
+                            <select id="filter-dept" class="combobox" style="width:150px;">
+                                <option value="" selected="selected">不限</option>
+                                <option value="">方案</option>
+                                <option value="">建筑</option>
+                            </select>
+                        </div>
+                    </div>
+                   
+                </div>
+                
+            </div>
+            <div style="text-align: center;font-size: 18px; margin-top:20px; font-weight: bold;">人员信息表
+            </div>
+            <div style="height:30px;padding:5px 0px;">
+                <div class="btn-group" role="group" aria-label="..." style="float: left;">
+                    <button type="button" class="btn btn-default btn-xs"><span class="icon icon-file-excel"></span> 导出Excel</button>
+                    <button type="button" class="btn btn-default btn-xs"><span class="icon icon-file-pdf"></span> 导出PDF</button>
+                    <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-print"></span> 打印</button>
+                </div>
+                <span style="position: relative;float: right;font-size: 12px;font-weight: normal;margin: 5px 5px 0px 5px;">日期：2018-07-20</span>
+            </div>
+            
+            <table class="table table-bordered table-condensed dataTable no-footer">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>所属公司</th>
+                        <th>一级部门</th>
+                        <th>二级部门</th>
+                        <th>工号</th>
+                        <th>姓名</th>
+                        <th>职务</th>
+                        <th>职类</th>
+                        <th>职级</th>
+                        <th>性别</th>
+                        <th>年龄</th>
+                        <th>司龄</th>
+                        <th>工龄</th>
+                        <th>学历</th>
+                        <th>毕业院校</th>
+                        <th>现有职称</th>
+                        <th>注册资格</th>
+                        <th>以往获奖情况</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>方案</td>
+                        <td>A00XXX</td>
+                        <td>张三</td>
+                        <td>主任建筑师</td>
+                        <td>技术职级</td>
+                        <td>X-X</td>
+                        <td>男</td>
+                        <td>35</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>大学本科</td>
+                        <td>天津大学</td>
+                        <td>建筑工程师</td>
+                        <td>一级注册建筑师</td>
+                        <td>2017年明星员工</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /container -->
+</body>
+
+</html>

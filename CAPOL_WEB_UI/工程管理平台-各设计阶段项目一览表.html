@@ -50,8 +50,41 @@
         height: 24px;
         line-height: 1.4;
     }
-    .blue-hover-red{color:#337ab7;}
-    .blue-hover-red:hover{color:#A40000;}
+
+    .blue-hover-red {
+        color: #337ab7;
+    }
+
+    .blue-hover-red:hover {
+        color: #A40000;
+    }
+    </style>
+    <style>
+    @font-face {
+        font-family: 'iconFont';
+        src: url('./fonts/iconFont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .icon {
+        position: relative;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+    }
+
+    .icon-file-pdf:before {
+        font-family: 'iconFont';
+        content: "\e0e8";
+    }
+
+    .icon-file-excel:before {
+        font-family: 'iconFont';
+        content: "\e0eb";
+    }
     </style>
 </head>
 
@@ -75,7 +108,7 @@
             </div>
         </div>
     </div>
-    <div>
+    <div style="min-width: 1500px;">
         <ul class="breadcrumb" role="tablist">
             <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
             <li><a href="#">工作空间</a></li>
@@ -89,628 +122,913 @@
                 <li role="presentation"><a href="#" class="disabled">润阳智造</a></li>
             </ul>
         </div>
-        <div class="nav nav-tree" style="width:240px;position: absolute;margin-left:20px;margin-top:10px;">
+        <div class="nav nav-tree" style="width:200px;position: absolute;margin-left:20px;margin-top:10px;">
             <ul>
                 <li><a href="#" class="lv1">工程管理<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
                     <ul style="display: block;">
                         <li><a href="./工程管理平台-工程台账.html">工程台账</a></li>
-                        <li><a href="#">工程管理一览表</a></li>
-                        <li><a href="#">……</a></li>
+                        <li><a href="#">项目关键节点控制一览表</a></li>
                     </ul>
                 </li>
                 <li><a href="#" class="lv1">运营管理<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
                     <ul style="display: block;">
-                        <li><a href="#">人员信息表</a></li>
-                        <li><a href="#">人员架构表</a></li>
-                        <li><a href="#" class="active">各设计阶段项目一览表</a></li>
-                        <li><a href="#">人员项目表</a></li>
-                        <li><a href="#">项目人员表</a></li>
+                        <li><a href="工程管理平台-人员信息表.html">人员信息表</a></li>
+                        <li><a href="工程管理平台-人员架构表.html">人员架构表</a></li>
+                        <li><a href="工程管理平台-各设计阶段项目一览表.html" class="active">各设计阶段项目一览表</a></li>
+                        <li><a href="工程管理平台-人员项目表.html">人员项目表</a></li>
+                        <li><a href="工程管理平台-项目人员表.html">项目人员表</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <div style="padding-left:280px;padding-right: 20px;">
-            <div style="height:48px;min-width:1250px;">
-                <div class="select-item">
-                    <span>所属公司</span>
-                    <select id="filter-company" class="combobox" style="width:150px;">
-                        <option value="">不限</option>
-                        <option value="1491759803a76dbea2ee20b44d98b8a4">集团公司</option>
-                        <option value="1491759803a3796fedf4783400da64bf" selected="selected">深圳公司</option>
-                        <option value="1491759803a19c2f9a8c26942b2b7b17">广州公司</option>
-                        <option value="1491759803a76e732720b4b40208454d">长沙公司</option>
-                        <option value="1491759803a17bc0d9c18cc4a21b82d0">上海公司</option>
-                        <option value="149175980694ceb3beeb5474f56ac7fe">建筑产业化公司</option>
-                    </select>
-                </div>
-                <div class="select-item">
-                    <span>所属部门</span>
-                    <select id="filter-dept" class="combobox" style="width:150px;">
-                        <option value="">不限</option>
-                        <option value="" selected="selected">公建部</option>
-                        <option value="">国际部</option>
-                        <option value="">都市部</option>
-                        <option value="">结构部</option>
-                        <option value="">机电部</option>
-                    </select>
-                </div>
-                <div class="checkbox" style="width: 750px;float: left;margin-top: 15px;margin-left: 20px;">
-                    <label>
-                        <input type="checkbox" checked="true">投标&nbsp;
-                    </label>
-                    <label>
-                        <input type="checkbox" checked="true">规划&nbsp;
-                    </label>
-                    <label>
-                        <input type="checkbox" checked="true">方案&nbsp;
-                    </label>
-                    <label>
-                        <input type="checkbox" checked="true">初步设计&nbsp;
-                    </label>
-                    <label>
-                        <input type="checkbox" checked="true">施工图&nbsp;
-                    </label>
-                    <label>
-                        <input type="checkbox" checked="true">施工服务&nbsp;
-                    </label>
-                    <label>
-                        <input type="checkbox" checked="true">待启动&nbsp;
-                    </label>
-                    <label>
-                        <input type="checkbox" checked="true">暂停&nbsp;
-                    </label>
-                    <label>
-                        <input type="checkbox" checked="true">投标&nbsp;
-                    </label>
-                    <label>
-                        <input type="checkbox">竣工&nbsp;
-                    </label>
-                    <label>
-                        <input type="checkbox">终止&nbsp;
-                    </label>
+        <div style="padding-left:240px;padding-right: 20px;margin-top:10px;">
+            
+            <div style="width:100%;height:90px;border-bottom: 1px solid #ccc;">
+                <div style="width:100%;float: left;">
+                    <div style="height:48px;">
+                        <div class="select-item">
+                            <span>项目所属公司</span>
+                            <select id="filter-company" class="combobox" style="width:150px;">
+                                <option value="">不限</option>
+                                <option value="1491759803a76dbea2ee20b44d98b8a4">集团公司</option>
+                                <option value="1491759803a3796fedf4783400da64bf" selected="selected">深圳公司</option>
+                                <option value="1491759803a19c2f9a8c26942b2b7b17">广州公司</option>
+                                <option value="1491759803a76e732720b4b40208454d">长沙公司</option>
+                                <option value="1491759803a17bc0d9c18cc4a21b82d0">上海公司</option>
+                                <option value="149175980694ceb3beeb5474f56ac7fe">建筑产业化公司</option>
+                            </select>
+                        </div>
+                        <div class="select-item">
+                            <span>项目所属部门</span>
+                            <select id="filter-dept" class="combobox" style="width:150px;">
+                                <option value="">不限</option>
+                                <option value="" selected="selected">公建部</option>
+                                <option value="">国际部</option>
+                                <option value="">都市部</option>
+                                <option value="">结构部</option>
+                                <option value="">机电部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="checkbox" style="margin-left: 5px;">
+                        工程状态：&nbsp;&nbsp;
+                        <label>
+                            <input type="checkbox">全选&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">投标&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">规划&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">方案&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">初步设计&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">施工图&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">施工服务&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">待启动&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">暂停&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox">合同履约完成&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox">竣工&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox">终止&nbsp;
+                        </label>
+                    </div>
                 </div>
             </div>
-            <div class="table-title clearFix"  style="min-width:1250px;">各设计阶段项目一览表
-                <a class="btn btn-default btn-xs right-buttons" href="#" role="button"><span class="glyphicon glyphicon-floppy-save"></span> 下载</a>
-                <span style="position: relative;float: right;font-size: 12px;font-weight: normal;margin: 0px 5px;">日期：201-07-20</span>
+            <div style="text-align: center;font-size: 18px; margin-top:20px; font-weight: bold;">各设计阶段项目一览表
             </div>
-            <table class="table table-bordered table-condensed dataTable no-footer" style="min-width:1250px;">
+            <div style="height:30px;padding:5px 0px;">
+                <div class="btn-group" role="group" aria-label="..." style="float: left;">
+                    <button type="button" class="btn btn-default btn-xs"><span class="icon icon-file-excel"></span> 导出Excel</button>
+                    <button type="button" class="btn btn-default btn-xs"><span class="icon icon-file-pdf"></span> 导出PDF</button>
+                    <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-print"></span> 打印</button>
+                </div>
+                <span style="position: relative;float: right;font-size: 12px;font-weight: normal;margin: 5px 5px 0px 5px;">日期：2018-07-20</span>
+            </div>
+            <table class="table table-bordered table-condensed dataTable no-footer">
                 <thead>
                     <tr style="text-align: right;">
-                        <th style="width:80px">工程阶段</th>
-                        <th style="width:40px">序号</th>
-                        <th style="width:100px">工程编号</th>
-                        <th style="width:260px">工程名称</th>
-                        <th style="width:100px">所属公司</th>
-                        <th style="width:100px">所属部门</th>
-                        <th style="width:100px">规模（万㎡）</th>
-                        <th style="width:120px">启动时间</th>
-                        <th style="width:120px">计划出图时间</th>
-                        <th style="width:120px">调整出图时间</th>
-                        <th style="width:120px">主要工作节点安排</th>
-                        <th style="width:100px">备注</th>
+                        <th style="width:80px" rowspan="2">工程阶段</th>
+                        <th style="width:40px" rowspan="2">序号</th>
+                        <th style="width:100px" rowspan="2">工程编号</th>
+                        <th style="width:260px" rowspan="2">工程名称</th>
+                        <th style="width:100px" rowspan="2">所属公司</th>
+                        <th style="width:100px" rowspan="2">所属部门</th>
+                        <th style="width:100px" rowspan="2">规模（万㎡）</th>
+                        <th style="width:120px" rowspan="2">启动时间</th>
+                        <th style="width:120px" rowspan="2">计划出图时间</th>
+                        <th style="width:120px" colspan="3">调整出图时间</th>
+                        <th style="width:120px" rowspan="2">主要工作节点安排</th>
+                        <th style="width:100px" rowspan="2">备注</th>
+                        <th style="width:100px" rowspan="2">查看工时</th>
+                    </tr>
+                    <tr>
+                        <th style="width:120px">1</th>
+                        <th style="width:120px">2</th>
+                        <th style="width:120px">3</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td rowspan="5">投标</td>
+                        <td rowspan="3">投标</td>
                         <td>1</td>
+                        <td>GC180229</td>
+                        <td style="text-align:left;"><a href="#">万科总部大厦</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>20</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>2</td>
+                        <td>GC180171</td>
+                        <td style="text-align:left;"><a href="#">碧桂园广州白鹅潭项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>29.082600</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td rowspan="5">规划</td>
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>GC180168</td>
+                        <td style="text-align:left;"><a href="#">南山科技园创新中心工程（留仙洞六街坊）方案设计</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>100.000000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td rowspan="5">方案</td>
                         <td>1</td>
+                        <td>GC180067</td>
+                        <td style="text-align:left;"><a href="#">福田区华富街道福安小区城市更新单元规划</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>9.909000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
                         <td>GC180066</td>
-                        <td style="text-align:left;"><a href="#" target="_blank">广州思科智慧城</a></td>
+                        <td style="text-align:left;"><a href="#">广州思科智慧城</a></td>
                         <td>深圳公司</td>
                         <td>公建部</td>
-                        <td>30.77</td>
+                        <td>30.767400</td>
                         <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
-                        <td>2</td>
+                        <td>3</td>
                         <td>GC170430</td>
-                        <td style="text-align:left;"><a href="#" target="_blank">郑州华南城12区项目</a></td>
+                        <td style="text-align:left;"><a href="#">郑州华南城12区项目</a></td>
                         <td>深圳公司</td>
                         <td>公建部</td>
-                        <td>69.16</td>
+                        <td>66.342400</td>
                         <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>GC170117</td>
+                        <td style="text-align:left;"><a href="#">东莞自建项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>1.300000</td>
                         <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>GC160177</td>
+                        <td style="text-align:left;"><a href="#">蛇口医院项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>7.453000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">方案配合</td>
+                        <td>1</td>
+                        <td>GC180263</td>
+                        <td style="text-align:left;"><a href="#">恒力国际大厦</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>10.619000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>GC180061</td>
+                        <td style="text-align:left;"><a href="#">华润置地总部大厦（T7）</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>21.580000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>3</td>
+                        <td>GC150367</td>
+                        <td style="text-align:left;"><a href="#">万科金蝶产业园</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>9.278000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">初设</td>
+                        <td>1</td>
                         <td>GC170280</td>
-                        <td style="text-align:left;"><a href="#" target="_blank">清华大学研究院项目</a></td>
+                        <td style="text-align:left;"><a href="#">清华大学研究院项目</a></td>
                         <td>深圳公司</td>
                         <td>公建部</td>
-                        <td>18.20</td>
+                        <td>18.200000</td>
                         <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>……</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td rowspan="5">初设</td>
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>2</td>
+                        <td>GC170275</td>
+                        <td style="text-align:left;"><a href="#">怀德航港国际项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>19.913678</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>3</td>
+                        <td>GC160167</td>
+                        <td style="text-align:left;"><a href="#">梅林街道金龙工业片区更新单元项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>7.802080</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>4</td>
+                        <td>09S13SZ</td>
+                        <td style="text-align:left;"><a href="#">深圳文学艺术中心</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>4.300000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
-                        <td>5</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td rowspan="5">施工图</td>
+                        <td rowspan="8">施工图</td>
                         <td>1</td>
+                        <td>GC180227</td>
+                        <td style="text-align:left;"><a href="#">广州思科智慧城施工图项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>30.767400</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>2</td>
+                        <td>GC180104</td>
+                        <td style="text-align:left;"><a href="#">万科空调厂改造项目（二期）</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>1.918690</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>3</td>
+                        <td>GC170418</td>
+                        <td style="text-align:left;"><a href="#">绿景凯威置业城市更新项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>43.083386</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>4</td>
+                        <td>GC170178</td>
+                        <td style="text-align:left;"><a href="#">中山大学施工图项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>49.978260</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>5</td>
+                        <td>GC170156</td>
+                        <td style="text-align:left;"><a href="#">特建发尚智科园</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>29.161401</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
-                        <td rowspan="5">施工服务</td>
+                        <td>6</td>
+                        <td>GC170058</td>
+                        <td style="text-align:left;"><a href="#">乐安居坂田</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>50.500000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>GC160217</td>
+                        <td style="text-align:left;"><a href="#">万科留仙洞绿廊(上海地块-北绿廊（06-05）)</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>2.120000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>GC150067</td>
+                        <td style="text-align:left;"><a href="#">万科留仙洞绿廊(北京地块-北绿廊-B区（05-03）)</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>1.616000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="18">施工服务</td>
                         <td>1</td>
+                        <td>GC170193</td>
+                        <td style="text-align:left;"><a href="#">前海能源中心（补充协议一）</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>6.302800</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>2</td>
+                        <td>GC160189</td>
+                        <td style="text-align:left;"><a href="#">大疆天空之城大厦</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>23.300000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>3</td>
+                        <td>GC160066</td>
+                        <td style="text-align:left;"><a href="#">中粮69区项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>18.868900</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>4</td>
+                        <td>GC160038</td>
+                        <td style="text-align:left;"><a href="#">大涌自住b区幼儿园</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>0.500000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>5</td>
+                        <td>GC160015</td>
+                        <td style="text-align:left;"><a href="#">龙华新区和平小学</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>2.559591</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
-                        <td rowspan="5">待启动</td>
+                        <td>6</td>
+                        <td>GC150293</td>
+                        <td style="text-align:left;"><a href="#">万科车公庙捷荣创富厂区地块</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>7.485000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>GC150235</td>
+                        <td style="text-align:left;"><a href="#">清华大学深圳研究生院创新基地建设工程（二期）</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>5.140000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>GC150196</td>
+                        <td style="text-align:left;"><a href="#">万科留仙洞04地块及南绿廊项目(六期)</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>37.429912</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>GC150195</td>
+                        <td style="text-align:left;"><a href="#">万科留仙洞04地块及南绿廊项目（四期）</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>7.425083</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>GC150180</td>
+                        <td style="text-align:left;"><a href="#">阿波罗1号</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>4.317978</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>GC150084</td>
+                        <td style="text-align:left;"><a href="#">万科留仙洞04地块及南绿廊项目（南绿廊）</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>8.514300</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>GC140269</td>
+                        <td style="text-align:left;"><a href="#">太子湾总部商务广场</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>12.345600</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>GC140157</td>
+                        <td style="text-align:left;"><a href="#">龙华人民医院新外科大楼</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>10.380930</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>GC140135</td>
+                        <td style="text-align:left;"><a href="#">万科留仙洞05地块</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>39.870000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>GC130210</td>
+                        <td style="text-align:left;"><a href="#">万科云城（一期）</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>49.430300</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>GC130003</td>
+                        <td style="text-align:left;"><a href="#">深业上城（南区）项目（塔楼&amp;宴会厅）</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>41.600000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>GC130002</td>
+                        <td style="text-align:left;"><a href="#">莲塘口岸</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>14.483044</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>11S06SZ</td>
+                        <td style="text-align:left;"><a href="#">罗湖区中医院莲塘新院</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>7.324686</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">待启动</td>
                         <td>1</td>
+                        <td>GC170456</td>
+                        <td style="text-align:left;"><a href="#">万科福田学校项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>28.435262</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>2</td>
+                        <td>GC170358</td>
+                        <td style="text-align:left;"><a href="#">福田区群众文化广场项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>8.900000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td rowspan="5">暂停</td>
                         <td>1</td>
+                        <td>GC180056</td>
+                        <td style="text-align:left;"><a href="#">卓越深圳办公楼施工图项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>15.000000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>2</td>
+                        <td>GC170417</td>
+                        <td style="text-align:left;"><a href="#">坪山区人民医院迁址重建项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>65.876000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>3</td>
+                        <td>GC160209</td>
+                        <td style="text-align:left;"><a href="#">宝安石岩田心项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>15.210000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>4</td>
+                        <td>GC150008</td>
+                        <td style="text-align:left;"><a href="#">万科坂田深中</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>5.255173</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
                     </tr>
                     <tr>
                         <td>5</td>
+                        <td>GC130181</td>
+                        <td style="text-align:left;"><a href="#">太东国际都汇项目</a></td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>10.000000</td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a class="right-buttons blue-hover-red"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a>查看工时</a></td>
+                    </tr>
+                    <tr>
+                        <td>合计</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1011.646854</td>
                         <td></td>
                         <td></td>
                         <td></td>

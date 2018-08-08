@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+    <title>CAPOL_WEB_UI</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready(function() {
+        $('#example1').DataTable({ "scrollY": "500px", "paging": true, "searching": false, "info": false });
+    });
+    $(document).ready(function() {
+        $('#all_project_project').DataTable({ "scrollY": "650px", "scrollCollapse": true, "paging": false, "searching": false, "info": false });
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#close").click(function() {
+            $("#window").hide();
+        });
+    });
+    $(document).ready(function() {
+        $("#open").click(function() {
+            $("#window").show();
+        });
+    });
+    </script>
+    <link rel="stylesheet" href="./CAPOL_WEB_UI.css">
+    <style type="text/css">
+    .table-bordered tbody tr td,
+    .table-bordered tbody tr th,
+    .table-bordered tfoot tr td,
+    .table-bordered tfoot tr th,
+    .table-bordered thead tr td,
+    .table-bordered thead tr th {
+        border: 1px solid #CCC;
+        font-size: 12px;
+        text-align: center;
+        vertical-align: middle;
+        padding: 3px;
+        height: 24px;
+        line-height: 1.4;
+    }
+
+    .blue-hover-red {
+        color: #337ab7;
+    }
+
+    .blue-hover-red:hover {
+        color: #A40000;
+    }
+    </style>
+    <style>
+    @font-face {
+        font-family: 'iconFont';
+        src: url('./fonts/iconFont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .icon {
+        position: relative;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+    }
+
+    .icon-file-pdf:before {
+        font-family: 'iconFont';
+        content: "\e0e8";
+    }
+
+    .icon-file-excel:before {
+        font-family: 'iconFont';
+        content: "\e0eb";
+    }
+    </style>
+</head>
+
+<body>
+    <div class="top_banner">
+        <div class="navigate">
+            <div class="logo" style="cursor:pointer;">
+                <img onclick="Com_openHomePageFunc();" alt="" src="http://cip.capol.cn/capol/homepage/resource/img/logo.png">
+            </div>
+            <div class="c_nav">
+                <ul>
+                    <li> <span class="personalspace c_nav_info">个人空间</span></li>
+                    <li> <span class="workspace c_nav_info active">工作空间</span></li>
+                    <li> <span class="knowledge">知识中心</span></li>
+                    <li> <span class="cultur">企业文化</span></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input id="fullSearch_input" type="text" placeholder="请输入关键字搜索全系统 ">
+                <span class="search-btn"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+        </div>
+    </div>
+    <div style="min-width: 1500px;">
+        <ul class="breadcrumb" role="tablist">
+            <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
+            <li><a href="#">工作空间</a></li>
+            <li>工程管理平台</li>
+        </ul>
+        <div style="height:42px;width:100%;display: inline-block;">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#">华阳设计</a></li>
+                <li role="presentation"><a href="#" class="disabled">华阳造价</a></li>
+                <li role="presentation"><a href="#" class="disabled">华泰盛</a></li>
+                <li role="presentation"><a href="#" class="disabled">润阳智造</a></li>
+            </ul>
+        </div>
+        <div class="nav nav-tree" style="width:200px;position: absolute;margin-left:20px;margin-top:10px;">
+            <ul>
+                <li><a href="#" class="lv1">工程管理<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                    <ul style="display: block;">
+                        <li><a href="./工程管理平台-工程台账.html">工程台账</a></li>
+                        <li><a href="#">项目关键节点控制一览表</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="lv1">运营管理<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                    <ul style="display: block;">
+                        <li><a href="工程管理平台-人员信息表.html">人员信息表</a></li>
+                        <li><a href="工程管理平台-人员架构表.html">人员架构表</a></li>
+                        <li><a href="工程管理平台-各设计阶段项目一览表.html">各设计阶段项目一览表</a></li>
+                        <li><a href="工程管理平台-人员项目表.html" class="active">人员项目表</a></li>
+                        <li><a href="工程管理平台-项目人员表.html">项目人员表</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div style="padding-left:240px;padding-right: 20px;margin-top:10px;">
+            <div style="width:100%;height:90px; border-bottom: 1px solid #ccc;">
+                <div style="width:100%;float: left;">
+                    <div style="height:48px;">
+                        <div class="select-item">
+                            <span>所属公司</span>
+                            <select id="filter-company" class="combobox" style="width:150px;">
+                                <option value="">不限</option>
+                                <option value="1491759803a76dbea2ee20b44d98b8a4">集团公司</option>
+                                <option value="1491759803a3796fedf4783400da64bf" selected="selected">深圳公司</option>
+                                <option value="1491759803a19c2f9a8c26942b2b7b17">广州公司</option>
+                                <option value="1491759803a76e732720b4b40208454d">长沙公司</option>
+                                <option value="1491759803a17bc0d9c18cc4a21b82d0">上海公司</option>
+                                <option value="149175980694ceb3beeb5474f56ac7fe">建筑产业化公司</option>
+                            </select>
+                        </div>
+                        <div class="select-item">
+                            <span>一级部门</span>
+                            <select id="filter-dept" class="combobox" style="width:150px;">
+                                <option value="">不限</option>
+                                <option value="" selected="selected">公建部</option>
+                                <option value="">国际部</option>
+                                <option value="">都市部</option>
+                                <option value="">结构部</option>
+                                <option value="">机电部</option>
+                            </select>
+                        </div>
+                        <div class="select-item">
+                            <span>二级部门</span>
+                            <select id="filter-dept" class="combobox" style="width:150px;">
+                                <option value="" selected="selected">不限</option>
+                                <option value="">方案</option>
+                                <option value="">建筑</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="checkbox" style="margin-left: 5px;">
+                        工程状态：&nbsp;&nbsp;
+                        <label>
+                            <input type="checkbox">全选&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">投标&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">规划&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">方案&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">初步设计&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">施工图&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">施工服务&nbsp;
+                        </label>
+                    </div>
+                </div>
+                
+            </div>
+            <div style="text-align: center;font-size: 18px; margin-top:20px; font-weight: bold;">人员项目表
+            </div>
+            <div style="height:30px;padding:5px 0px;">
+                <div class="btn-group" role="group" aria-label="..." style="float: left;">
+                    <button type="button" class="btn btn-default btn-xs"><span class="icon icon-file-excel"></span> 导出Excel</button>
+                    <button type="button" class="btn btn-default btn-xs"><span class="icon icon-file-pdf"></span> 导出PDF</button>
+                    <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-print"></span> 打印</button>
+                </div>
+                <span style="position: relative;float: right;font-size: 12px;font-weight: normal;margin: 5px 5px 0px 5px;">日期：2018-07-20</span>
+            </div>
+            <table class="table table-bordered table-condensed dataTable no-footer">
+                <thead>
+                    <tr>
+                        <th rowspan="2" style="width: 50px;">工号</th>
+                        <th rowspan="2" style="width: 50px;">姓名</th>
+                        <th rowspan="2" style="width: 50px;">所属公司</th>
+                        <th rowspan="2" style="width: 50px;">一级部门</th>
+                        <th rowspan="2" style="width: 50px;">二级部门</th>
+                        <th rowspan="2" style="width: 50px;">工程编号</th>
+                        <th rowspan="2" style="width: 200px;">工程名称</th>
+                        <th rowspan="2" style="width: 60px;">工程阶段</th>
+                        <th rowspan="2" style="width: 60px;">岗位</th>
+                        <th rowspan="2" style="width: 60px;">近三个月填报工时</th>
+                        <th rowspan="2" style="width: 60px;">累计填报工时</th>
+                        <th rowspan="2" style="width: 80px;">启动时间</th>
+                        <th rowspan="2" style="width: 80px;">计划出图时间</th>
+                        <th colspan="3" style="width: 240px;">调整出图时间</th>
+                        <th rowspan="2" style="width: 80px;">备注</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 80px;">1</th>
+                        <th style="width: 80px;">2</th>
+                        <th style="width: 80px;">3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="8">A01424</td>
+                        <td rowspan="8">李伟</td>
+                        <td rowspan="8">深圳公司</td>
+                        <td rowspan="8">公建部</td>
+                        <td rowspan="8">方案</td>
+                        <td>GC180168</td>
+                        <td style="text-align:left;"><a href="#">南山科技园创新中心工程（留仙洞六街坊）方案设计</td>
+                        <td>投标</td>
+                        <td>校对</td>
+                        <td>1.0</td>
+                        <td>1.0</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>GC180067</td>
+                        <td style="text-align:left;"><a href="#">福田区华富街道福安小区城市更新单元规划</td>
+                        <td>方案</td>
+                        <td>审核</td>
+                        <td></td>
+                        <td>0.5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>GC180066</td>
+                        <td style="text-align:left;"><a href="#">广州思科智慧城</td>
+                        <td>方案</td>
+                        <td>专业负责人</td>
+                        <td>556.5</td>
+                        <td>973.5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>GC170430</td>
+                        <td style="text-align:left;"><a href="#">郑州华南城12区项目</td>
+                        <td>方案</td>
+                        <td>审核</td>
+                        <td></td>
+                        <td>198.5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>GC160167</td>
+                        <td style="text-align:left;"><a href="#">梅林街道金龙工业片区更新单元项目</td>
+                        <td>初设</td>
+                        <td>专业负责人</td>
+                        <td>3.0</td>
+                        <td>448.5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>GC170418</td>
+                        <td style="text-align:left;"><a href="#">绿景凯威置业城市更新项目</td>
+                        <td>施工图</td>
+                        <td>设计</td>
+                        <td></td>
+                        <td>138.0</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>GC170156</td>
+                        <td style="text-align:left;"><a href="#">特建发尚智科园</td>
+                        <td>施工图</td>
+                        <td>审核</td>
+                        <td>11.5</td>
+                        <td>1001.0</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>GC130002</td>
+                        <td style="text-align:left;"><a href="#">莲塘口岸</td>
+                        <td>施工服务</td>
+                        <td>设计</td>
+                        <td></td>
+                        <td>3.0</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">A00081</td>
+                        <td rowspan="4">张胜</td>
+                        <td rowspan="4">深圳公司</td>
+                        <td rowspan="4">公建部</td>
+                        <td rowspan="4">方案</td>
+                        <td>GC160177</td>
+                        <td style="text-align:left;"><a href="#">蛇口医院项目</td>
+                        <td>方案</td>
+                        <td>专业负责人;设计</td>
+                        <td>317.0</td>
+                        <td>472.0</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>GC170193</td>
+                        <td style="text-align:left;"><a href="#">前海能源中心（补充协议一）</td>
+                        <td>施工服务</td>
+                        <td>专业负责人</td>
+                        <td>75.0</td>
+                        <td>1396.5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>GC140269</td>
+                        <td style="text-align:left;"><a href="#">太子湾总部商务广场</td>
+                        <td>施工服务</td>
+                        <td>专业负责人;设计;校对</td>
+                        <td></td>
+                        <td>1339.0</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>11S06SZ</td>
+                        <td style="text-align:left;"><a href="#">罗湖区中医院莲塘新院</td>
+                        <td>施工服务</td>
+                        <td>专业负责人;设计</td>
+                        <td>17.0</td>
+                        <td>587.5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">A03177</td>
+                        <td rowspan="3">黄智文</td>
+                        <td rowspan="3">深圳公司</td>
+                        <td rowspan="3">公建部</td>
+                        <td rowspan="3">方案</td>
+                        <td>GC180067</td>
+                        <td style="text-align:left;"><a href="#">福田区华富街道福安小区城市更新单元规划</td>
+                        <td>方案</td>
+                        <td>设计</td>
+                        <td>35.0</td>
+                        <td>35.0</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>GC170430</td>
+                        <td style="text-align:left;"><a href="#">郑州华南城12区项目</td>
+                        <td>方案</td>
+                        <td>设计</td>
+                        <td>106.0</td>
+                        <td>393.5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>GC160177</td>
+                        <td style="text-align:left;"><a href="#">蛇口医院项目</td>
+                        <td>方案</td>
+                        <td>专业负责人</td>
+                        <td></td>
+                        <td>332.0</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>……</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /container -->
+</body>
+
+</html>

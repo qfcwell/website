@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+    <title>CAPOL_WEB_UI</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready(function() {
+        $('#example1').DataTable({ "scrollY": "500px", "paging": true, "searching": false, "info": false });
+    });
+    $(document).ready(function() {
+        $('#all_project_project').DataTable({ "scrollY": "650px", "scrollCollapse": true, "paging": false, "searching": false, "info": false });
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#close").click(function() {
+            $("#window").hide();
+        });
+    });
+    $(document).ready(function() {
+        $("#open").click(function() {
+            $("#window").show();
+        });
+    });
+    </script>
+    <link rel="stylesheet" href="./CAPOL_WEB_UI.css">
+    <style type="text/css">
+    .table-bordered tbody tr td,
+    .table-bordered tbody tr th,
+    .table-bordered tfoot tr td,
+    .table-bordered tfoot tr th,
+    .table-bordered thead tr td,
+    .table-bordered thead tr th {
+        border: 1px solid #CCC;
+        font-size: 12px;
+        text-align: center;
+        vertical-align: middle;
+        padding: 3px;
+        height: 24px;
+        line-height: 1.4;
+    }
+
+    .blue-hover-red {
+        color: #337ab7;
+    }
+
+    .blue-hover-red:hover {
+        color: #A40000;
+    }
+    </style>
+    <style>
+    @font-face {
+        font-family: 'iconFont';
+        src: url('./fonts/iconFont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .icon {
+        position: relative;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+    }
+
+    .icon-file-pdf:before {
+        font-family: 'iconFont';
+        content: "\e0e8";
+    }
+
+    .icon-file-excel:before {
+        font-family: 'iconFont';
+        content: "\e0eb";
+    }
+    </style>
+</head>
+
+<body>
+    <div class="top_banner">
+        <div class="navigate">
+            <div class="logo" style="cursor:pointer;">
+                <img onclick="Com_openHomePageFunc();" alt="" src="http://cip.capol.cn/capol/homepage/resource/img/logo.png">
+            </div>
+            <div class="c_nav">
+                <ul>
+                    <li> <span class="personalspace c_nav_info">个人空间</span></li>
+                    <li> <span class="workspace c_nav_info active">工作空间</span></li>
+                    <li> <span class="knowledge">知识中心</span></li>
+                    <li> <span class="cultur">企业文化</span></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input id="fullSearch_input" type="text" placeholder="请输入关键字搜索全系统 ">
+                <span class="search-btn"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+        </div>
+    </div>
+    <div style="min-width: 1500px;">
+        <ul class="breadcrumb" role="tablist">
+            <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
+            <li><a href="#">工作空间</a></li>
+            <li>工程管理平台</li>
+        </ul>
+        <div style="height:42px;width:100%;display: inline-block;">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#">华阳设计</a></li>
+                <li role="presentation"><a href="#" class="disabled">华阳造价</a></li>
+                <li role="presentation"><a href="#" class="disabled">华泰盛</a></li>
+                <li role="presentation"><a href="#" class="disabled">润阳智造</a></li>
+            </ul>
+        </div>
+        <div class="nav nav-tree" style="width:200px;position: absolute;margin-left:20px;margin-top:10px;">
+            <ul>
+                <li><a href="#" class="lv1">工程管理<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                    <ul style="display: block;">
+                        <li><a href="./工程管理平台-工程台账.html">工程台账</a></li>
+                        <li><a href="#">项目关键节点控制一览表</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="lv1">运营管理<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                    <ul style="display: block;">
+                        <li><a href="工程管理平台-人员信息表.html">人员信息表</a></li>
+                        <li><a href="工程管理平台-人员架构表.html">人员架构表</a></li>
+                        <li><a href="工程管理平台-各设计阶段项目一览表.html">各设计阶段项目一览表</a></li>
+                        <li><a href="工程管理平台-人员项目表.html">人员项目表</a></li>
+                        <li><a href="工程管理平台-项目人员表.html" class="active">项目人员表</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div style="padding-left:240px;padding-right: 20px;margin-top:10px;">
+            <div style="width:100%;height:90px;border-bottom: 1px solid #ccc;">
+                <div style="width:50%;float: left;">
+                    <div style="height:48px;">
+                        <div class="select-item">
+                            <span>项目所属公司</span>
+                            <select id="filter-company" class="combobox" style="width:150px;">
+                                <option value="">不限</option>
+                                <option value="1491759803a76dbea2ee20b44d98b8a4">集团公司</option>
+                                <option value="1491759803a3796fedf4783400da64bf" selected="selected">深圳公司</option>
+                                <option value="1491759803a19c2f9a8c26942b2b7b17">广州公司</option>
+                                <option value="1491759803a76e732720b4b40208454d">长沙公司</option>
+                                <option value="1491759803a17bc0d9c18cc4a21b82d0">上海公司</option>
+                                <option value="149175980694ceb3beeb5474f56ac7fe">建筑产业化公司</option>
+                            </select>
+                        </div>
+                        <div class="select-item">
+                            <span>项目所属部门</span>
+                            <select id="filter-dept" class="combobox" style="width:150px;">
+                                <option value="">不限</option>
+                                <option value="" selected="selected">公建部</option>
+                                <option value="">国际部</option>
+                                <option value="">都市部</option>
+                                <option value="">结构部</option>
+                                <option value="">机电部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="checkbox" style="margin-left: 5px;">
+                        工程状态：&nbsp;&nbsp;
+                        <label>
+                            <input type="checkbox">全选&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">投标&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">规划&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">方案&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">初步设计&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">施工图&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">施工服务&nbsp;
+                        </label>
+                    </div>
+                </div>
+                <div style="width:50%;float: left;">
+                    <div class="checkbox" style="margin:18px 5px 10px 5px; height: 22px;">
+                        专业：&nbsp;&nbsp;
+                        <label>
+                            <input type="checkbox">全选&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true">建筑&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox">结构&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox">给排水&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox">暖通&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox">电气&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox">其他&nbsp;
+                        </label>
+                    </div>
+                    <div class="checkbox " style="margin:18px 5px 10px 5px;">
+                        人员状态：&nbsp;&nbsp;
+                        <label>
+                            <input type="checkbox">全选&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="true ">在职&nbsp;
+                        </label>
+                        <label>
+                            <input type="checkbox">离职&nbsp;
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center;font-size: 18px; margin-top:20px; font-weight: bold; ">项目人员表
+            </div>
+            <div style="height:30px;padding:5px 0px; ">
+                <div class="btn-group " role="group " aria-label="... " style="float: left; ">
+                    <button type="button " class="btn btn-default btn-xs "><span class="icon icon-file-excel "></span> 导出Excel</button>
+                    <button type="button " class="btn btn-default btn-xs "><span class="icon icon-file-pdf "></span> 导出PDF</button>
+                    <button type="button " class="btn btn-default btn-xs "><span class="glyphicon glyphicon-print "></span> 打印</button>
+                </div>
+                <span style="position: relative;float: right;font-size: 12px;font-weight: normal;margin: 5px 5px 0px 5px; ">日期：2018-07-20</span>
+            </div>
+            <table class="table table-bordered table-condensed dataTable no-footer ">
+                <thead>
+                    <tr style="text-align: right; ">
+                        <th rowspan="2" style="width:30px;">序号</th>
+                        <th rowspan="2" style="width:60px;">工程编号</th>
+                        <th rowspan="2" style="width:180px;">工程名称</th>
+                        <th rowspan="2" style="width:60px;">所属公司</th>
+                        <th rowspan="2" style="width:60px;">所属部门</th>
+                        <th rowspan="2" style="width:60px;">工程阶段</th>
+                        <th rowspan="2" style="width:50px;">规模</br>（万㎡）</th>
+                        <th rowspan="2" style="width:60px;">启动时间</th>
+                        <th rowspan="2" style="width:60px;">计划出图时间</th>
+                        <th colspan="3" style="width:180px;">调整出图时间</th>
+                        <th rowspan="2" style="width:60px;">项目负责人</th>
+                        <th rowspan="2" style="width:40px;">专业</th>
+                        <th rowspan="2" style="width:80px;">岗位</th>
+                        <th rowspan="2" style="width:60px;">工号</th>
+                        <th rowspan="2" style="width:60px;">姓名</th>
+                        <th rowspan="2" style="width:60px;">近三个月填报工时</th>
+                        <th rowspan="2" style="width:60px;">累计填报工时</th>
+                    </tr>
+                    <tr>
+                        <th style="width:60px;">1
+                        </th >
+                        <th style="width:60px;">2
+                        </th>
+                        <th style="width:60px;">3
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="3">1</td>
+                        <td rowspan="3">GC180229</td>
+                        <td rowspan="3">万科总部大厦</td>
+                        <td rowspan="3">深圳公司</td>
+                        <td rowspan="3">公建部</td>
+                        <td rowspan="3">投标</td>
+                        <td rowspan="3">20.000000</td>
+                        <td rowspan="3"></td>
+                        <td rowspan="3"></td>
+                        <td rowspan="3"></td>
+                        <td rowspan="3"></td>
+                        <td rowspan="3"></td>
+                        <td rowspan="3">张胜强</td>
+                        <td>建筑</td>
+                        <td>专业负责人</td>
+                        <td>A01563</td>
+                        <td>张胜强</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>建筑</td>
+                        <td>审核</td>
+                        <td>A00055</td>
+                        <td>吴昱</td>
+                        <td>16.5</td>
+                        <td>16.5</td>
+                    </tr>
+                    <tr>
+                        <td>建筑</td>
+                        <td>盖章注册人员</td>
+                        <td>A01563</td>
+                        <td>张胜强</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="15">2</td>
+                        <td rowspan="15">GC180171</td>
+                        <td rowspan="15">碧桂园广州白鹅潭项目</td>
+                        <td rowspan="15">深圳公司</td>
+                        <td rowspan="15">公建部</td>
+                        <td rowspan="15">投标</td>
+                        <td rowspan="15">29.082600</td>
+                        <td rowspan="15"></td>
+                        <td rowspan="15"></td>
+                        <td rowspan="15"></td>
+                        <td rowspan="15"></td>
+                        <td rowspan="15"></td>
+                        <td rowspan="15">赵晨</td>
+                        <td>建筑</td>
+                        <td>专业负责人</td>
+                        <td>A04894</td>
+                        <td>赵晨</td>
+                        <td>450.5</td>
+                        <td>450.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A01917</td>
+                        <td>郑大觉</td>
+                        <td>81.0</td>
+                        <td>81.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A01889</td>
+                        <td>李韵</td>
+                        <td>65.0</td>
+                        <td>65.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A02636</td>
+                        <td>王笙源</td>
+                        <td>64.0</td>
+                        <td>64.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A04817</td>
+                        <td>蔡丕快</td>
+                        <td>64.0</td>
+                        <td>64.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A04206</td>
+                        <td>牛玲</td>
+                        <td>57.5</td>
+                        <td>57.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A03636</td>
+                        <td>高攀</td>
+                        <td>47.0</td>
+                        <td>47.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A04600</td>
+                        <td>范新路</td>
+                        <td>543.9</td>
+                        <td>543.9</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>L00936</td>
+                        <td>赵珂</td>
+                        <td>387.5</td>
+                        <td>387.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A04938</td>
+                        <td>吴广强</td>
+                        <td>252.0</td>
+                        <td>252.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A02927</td>
+                        <td>郑天伦</td>
+                        <td>176.0</td>
+                        <td>176.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A05097</td>
+                        <td>千宇</td>
+                        <td>153.5</td>
+                        <td>153.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>L00998</td>
+                        <td>陈梓威</td>
+                        <td>61.0</td>
+                        <td>61.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A03443</td>
+                        <td>邓业营</td>
+                        <td>49.0</td>
+                        <td>49.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A01621</td>
+                        <td>何敏权</td>
+                        <td>12.0</td>
+                        <td>12.0</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="16">3</td>
+                        <td rowspan="16">GC180168</td>
+                        <td rowspan="16">南山科技园创新中心工程（留仙洞六街坊）方案设计</td>
+                        <td rowspan="16">深圳公司</td>
+                        <td rowspan="16">公建部</td>
+                        <td rowspan="16">投标</td>
+                        <td rowspan="16">100.000000</td>
+                        <td rowspan="16"></td>
+                        <td rowspan="16"></td>
+                        <td rowspan="16"></td>
+                        <td rowspan="16"></td>
+                        <td rowspan="16"></td>
+                        <td rowspan="16">张燕龙</td>
+                        <td>建筑</td>
+                        <td>专业负责人</td>
+                        <td>A04894</td>
+                        <td>赵晨</td>
+                        <td>73.5</td>
+                        <td>73.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A04903</td>
+                        <td>杜康佳</td>
+                        <td>492.5</td>
+                        <td>492.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A04736</td>
+                        <td>杨宁波</td>
+                        <td>467.5</td>
+                        <td>467.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A04902</td>
+                        <td>张燕龙</td>
+                        <td>343.0</td>
+                        <td>343.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A05098</td>
+                        <td>柳旻2</td>
+                        <td>307.5</td>
+                        <td>307.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A04494</td>
+                        <td>蔡国柱</td>
+                        <td>88.0</td>
+                        <td>88.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A02700</td>
+                        <td>孙鼎原</td>
+                        <td>36.0</td>
+                        <td>36.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A05625</td>
+                        <td>李世强</td>
+                        <td>32.0</td>
+                        <td>32.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A04600</td>
+                        <td>范新路</td>
+                        <td>22.5</td>
+                        <td>22.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A05622</td>
+                        <td>陈文军</td>
+                        <td>19.0</td>
+                        <td>19.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A04674</td>
+                        <td>马奕鸣</td>
+                        <td>14.0</td>
+                        <td>14.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A03134</td>
+                        <td>刘亚鑫</td>
+                        <td>12.5</td>
+                        <td>12.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A05097</td>
+                        <td>千宇</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>L00998</td>
+                        <td>陈梓威</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>校对</td>
+                        <td>A01424</td>
+                        <td>李伟</td>
+                        <td>1.0</td>
+                        <td>1.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>审核</td>
+                        <td>A00004</td>
+                        <td>田晓秋</td>
+                        <td>55.5</td>
+                        <td>55.5</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="21">4</td>
+                        <td rowspan="21">GC180067</td>
+                        <td rowspan="21">福田区华富街道福安小区城市更新单元规划</td>
+                        <td rowspan="21">深圳公司</td>
+                        <td rowspan="21">公建部</td>
+                        <td rowspan="21">方案</td>
+                        <td rowspan="21">9.909000</td>
+                        <td rowspan="21"></td>
+                        <td rowspan="21"></td>
+                        <td rowspan="21"></td>
+                        <td rowspan="21"></td>
+                        <td rowspan="21"></td>
+                        <td rowspan="21">李伟</td>
+                        <td>建筑</td>
+                        <td>专业负责人</td>
+                        <td>A02134</td>
+                        <td>肖睿</td>
+                        <td></td>
+                        <td>30.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A02636</td>
+                        <td>王笙源</td>
+                        <td></td>
+                        <td>76.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A01889</td>
+                        <td>李韵</td>
+                        <td></td>
+                        <td>72.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A03636</td>
+                        <td>高攀</td>
+                        <td></td>
+                        <td>69.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A03659</td>
+                        <td>邓林同</td>
+                        <td></td>
+                        <td>65.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A04331</td>
+                        <td>田凯文</td>
+                        <td></td>
+                        <td>65.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A03201</td>
+                        <td>罗启焕</td>
+                        <td></td>
+                        <td>61.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A04206</td>
+                        <td>牛玲</td>
+                        <td></td>
+                        <td>55.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A04422</td>
+                        <td>程广镇</td>
+                        <td></td>
+                        <td>50.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A02012</td>
+                        <td>徐军1</td>
+                        <td></td>
+                        <td>24.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>绘图</td>
+                        <td>A02473</td>
+                        <td>陈丽佳</td>
+                        <td></td>
+                        <td>18.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A01997</td>
+                        <td>倪耀</td>
+                        <td>583.5</td>
+                        <td>583.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A03398</td>
+                        <td>李鹏程1</td>
+                        <td>474.0</td>
+                        <td>561.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A01608</td>
+                        <td>陈惠平</td>
+                        <td>450.0</td>
+                        <td>450.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A01351</td>
+                        <td>曾德晓</td>
+                        <td>418.0</td>
+                        <td>620.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A03773</td>
+                        <td>张津铭1</td>
+                        <td>399.0</td>
+                        <td>590.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A05665</td>
+                        <td>谢凡</td>
+                        <td>81.5</td>
+                        <td>81.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A01279</td>
+                        <td>储波</td>
+                        <td>64.0</td>
+                        <td>64.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A05558</td>
+                        <td>李连辉</td>
+                        <td>42.5</td>
+                        <td>42.5</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A03177</td>
+                        <td>黄智文</td>
+                        <td>35.0</td>
+                        <td>35.0</td>
+                    </tr>
+                    <tr>
+                        
+                        <td>建筑</td>
+                        <td>设计</td>
+                        <td>A04434</td>
+                        <td>马骏</td>
+                        <td>26.0</td>
+                        <td>26.0</td>
+                    </tr>
+                    <tr>
+                        <td>……</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>合计</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>828.789489</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /container -->
+</body>
+
+</html>
