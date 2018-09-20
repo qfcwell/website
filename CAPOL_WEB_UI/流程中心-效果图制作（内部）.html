@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+    <title>CAPOL_WEB_UI</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready(function() {
+        $('#example1').DataTable({ "scrollY": "500px", "paging": true, "searching": false, "info": false });
+    });
+    $(document).ready(function() {
+        $('#example2').DataTable({ "scrollY": "500px", "scrollCollapse": true, "paging": false, "searching": false, "info": false });
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#close").click(function() {
+            $("#window").hide();
+        });
+    });
+    $(document).ready(function() {
+        $("#open").click(function() {
+            $("#window").show();
+        });
+    });
+    </script>
+    <link rel="stylesheet" href="./CAPOL_WEB_UI.css">
+    <style type="text/css">
+    form.table table.gdate {
+        table-layout: fixed;
+    }
+
+    form.table table.gdate tr td {
+        height: 20px;
+        padding: 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: left;
+        border-bottom-color: #777;
+        border-top-color: #777;
+    }
+
+    form.table table.gdate tr td.gmonth {
+        height: 24px;
+        padding: 0px;
+        background-color: #EEE;
+    }
+
+    form.table table.gdate tr td.gday {
+        min-width: 16px;
+        height: 24px;
+        padding: 0px;
+        background-color: #EEE;
+    }
+
+    form.table table.gdate tr td div.finished {
+        background-color: #DDD;
+    }
+
+    form.table table.gdate tr td div.inreview {
+        background-color: #ffebcc;
+        height: 12px;
+        border: 1px solid #FF9800;
+    }
+
+    form.table table.gdate tr td div.accepted {
+        background-color: #cfe8fc;
+        height: 12px;
+        border: 1px solid #2196F3;
+    }
+
+    form.table table.gdate tr.current {
+        background-color: #ffe5e5;
+    }
+
+    form.table table.gdate tr td.today {
+        background-color: #777;
+        color: #FFF;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="top_banner">
+        <div class="navigate">
+            <div class="logo" style="cursor:pointer;">
+                <img onclick="Com_openHomePageFunc();" alt="" src="http://cip.capol.cn/capol/homepage/resource/img/logo.png">
+            </div>
+            <div class="c_nav">
+                <ul>
+                    <li> <span class="personalspace c_nav_info">个人空间</span></li>
+                    <li> <span class="workspace c_nav_info active">工作空间</span></li>
+                    <li> <span class="knowledge">知识中心</span></li>
+                    <li> <span class="cultur">企业文化</span></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input id="fullSearch_input" type="text" placeholder="请输入关键字搜索全系统 ">
+                <span class="search-btn"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <ul class="breadcrumb" role="tablist">
+            <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
+            <li><a href="#">工作空间</a></li>
+            <li>流程中心</li>
+        </ul>
+        <div style="height:42px;width:50%;display: inline-block;">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#">华阳设计</a></li>
+                <li role="presentation"><a href="#" class="disabled">华阳造价</a></li>
+                <li role="presentation"><a href="#" class="disabled">华泰盛</a></li>
+                <li role="presentation"><a href="#" class="disabled">润阳智造</a></li>
+            </ul>
+        </div>
+        <div style="height:42px;width:50%;display: inline-block;float: right;">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="right"><a href="#" class="bordered">待完成 [1]</a></li>
+                <li role="presentation" class="right"><a href="#" class="bordered">待我审核 [0]</a></li>
+                <li role="presentation" class="right"><a href="#" class="bordered">我发起的 [2]</a></li>
+            </ul>
+        </div>
+        <div class="nav nav-tree" style="width:240px;position: absolute;margin-left:20px;margin-top:10px;">
+            <ul>
+                <li><a href="#" class="lv1">通用<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                    <ul style="display: block;">
+                        <li><a href="#">盖章申请流程</a></li>
+                        <li><a href="#">……</a></li>
+                        <li><a href="#">……</a></li>
+                    </ul>
+                </li>
+                <!--<li><a href="filemanager.html" class="gallery">File Manager</a></li>-->
+                <li><a href="#" class="lv1">运营<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                    <ul style="display: block;">
+                        <li><a href="#" class="active">效果图制作</a></li>
+                        <li><a href="#">……</a></li>
+                        <li><a href="#">……</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="lv1 disabled">经营<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">财务<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">人力资源<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">市场品牌推广<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">采购<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">知识产权<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">法务<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">其他<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+            </ul>
+        </div>
+        <div style="padding-left:280px;padding-right: 20px;">
+            <div style="height:33px;margin-top:10px;">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a class="sm" href="#">效果图制作</a></li>
+                    <li role="presentation"><a href="#" class="sm">3D打印</a></li>
+                    <li role="presentation"><a href="#" class="sm">航拍</a></li>
+                </ul>
+            </div>
+            <div style="height:48px;">
+                <div class="select-item" style="margin-right:40px;">
+                    <span>年份</span>
+                    <select id="filter-module" class="combobox" style="width:100px;">
+                        <option value="">不限</option>
+                        <option value="15d7e1c4ecea83be52b071c4cdd81eba">2018</option>
+                        <option value="1491759803a76dbea2ee20b44d98b8a4">2017</option>
+                        <option value="1491759803a3796fedf4783400da64bf">2016</option>
+                        <option value="1491759803a19c2f9a8c26942b2b7b17">2015</option>
+                        <option value="1491759803a76e732720b4b40208454d">2014</option>
+                        <option value="1491759803a6a6244ee9de04ec49ec29">2013</option>
+                        <option value="1491759803a17bc0d9c18cc4a21b82d0">2012</option>
+                        <option value="149175980694ceb3beeb5474f56ac7fe">2011</option>
+                        <option value="149175980b7b0364e4b1d4c4d00905eb">2010</option>
+                        <option value="154c950de0c711134548cf44cefbf3ef">2010以前</option>
+                    </select>
+                </div>
+                <div class="select-item">
+                    <span>公司</span>
+                    <select id="filter-company" class="combobox" style="width:150px;">
+                        <option value="">不限</option>
+                        <option value="15d7e1c4ecea83be52b071c4cdd81eba">华阳设计-润阳联合智造</option>
+                        <option value="1491759803a76dbea2ee20b44d98b8a4">华阳设计-集团公司</option>
+                        <option value="1491759803a3796fedf4783400da64bf">华阳设计-深圳公司</option>
+                        <option value="1491759803a19c2f9a8c26942b2b7b17">华阳设计-广州公司</option>
+                        <option value="1491759803a76e732720b4b40208454d">华阳设计-长沙公司</option>
+                        <option value="1491759803a6a6244ee9de04ec49ec29">华阳设计-重庆公司</option>
+                        <option value="1491759803a17bc0d9c18cc4a21b82d0">华阳设计-上海公司</option>
+                        <option value="149175980694ceb3beeb5474f56ac7fe">华阳设计-建筑产业化公司</option>
+                        <option value="149175980b7b0364e4b1d4c4d00905eb">华阳设计-BIM研究院</option>
+                        <option value="154c950de0c711134548cf44cefbf3ef">华阳设计-东莞产业园</option>
+                        <option value="1560375bed6e6826c54ebf3454b8e390">华阳设计-华泰盛工程建设公司</option>
+                        <option value="149175980498287068aec7d4f6b8efc5">华阳造价-深圳公司</option>
+                        <option value="14917598049b48a5b72e004480c81ea6">华阳造价-长沙公司</option>
+                        <option value="149175980b76c595c8093cb4637be624">华阳造价-佛山公司</option>
+                        <option value="16055532626ac259a0527a646fdaaeac">华阳设计-规划设计研究院</option>
+                    </select>
+                </div>
+                <div class="select-item">
+                    <span>部门</span>
+                    <select id="filter-dept" class="combobox" style="width:150px;">
+                        <option value="">不限</option>
+                    </select>
+                </div>
+                <div class="select-item disabled" style="padding-right: 40px;">
+                    <span>二级部门</span>
+                    <select id="filter-dept" class="combobox" style="width:150px;" disabled="disabled">
+                        <option value="">不限</option>
+                    </select>
+                </div>
+                <div class="select-item" id="so" style="margin-right: 10px;">
+                    <span class="float">关键字</span>
+                    <div class="input-group">
+                        <input class="form-control input-sm" type="text" placeholder="名称、内容、负责人……" style="width:200px;border-right:0px;">
+                        <span class="input-group-search-btn"> 搜索</span>
+                    </div>
+                </div>
+            </div>
+            <div class="table-title clearFix">效果图制作申请一览表
+                <button type="button" class="btn btn-default btn-xs btn-red right-buttons" id="open"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 发起流程</button>
+            </div>
+            <table class="table table-bordered" id="">
+                <thead>
+                    <tr style="text-align: right;">
+                        <th>序号</th>
+                        <th>申请编号</th>
+                        <th>制作类型</th>
+                        <th>工程编号</th>
+                        <th>工程名称</th>
+                        <th>所属公司</th>
+                        <th>所属部门</th>
+                        <th>预计开始时间</th>
+                        <th>预计结束时间</th>
+                        <th>实际开始时间</th>
+                        <th>实际结束时间</th>
+                        <th>预计张数</th>
+                        <th>预计费用</th>
+                        <th>实际张数</th>
+                        <th>实际费用</th>
+                        <th>申请人</th>
+                        <th>项目负责人</th>
+                        <th>效果图负责人</th>
+                        <th>部门负责人</th>
+                        <th>运营总监</th>
+                        <th>执行状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><a class="under-line">SQ-XGT-170265</a></td>
+                        <td>内部</td>
+                        <td>GC170019</td>
+                        <td>塘朗山F地块</td>
+                        <td>深圳公司</td>
+                        <td>国际部</td>
+                        <td>2017-12-21</td>
+                        <td>2017-12-27</td>
+                        <td></td>
+                        <td></td>
+                        <td>5</td>
+                        <td>5000</td>
+                        <td></td>
+                        <td></td>
+                        <td>吴庆贤</td>
+                        <td>孔辉</td>
+                        <td></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>待接受</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><a class="under-line">SQ-XGT-170264</a></td>
+                        <td>内部</td>
+                        <td>GC170248</td>
+                        <td>金樾美泰天玺</td>
+                        <td>深圳公司</td>
+                        <td>都市部</td>
+                        <td>2017-12-18</td>
+                        <td>2017-12-27</td>
+                        <td></td>
+                        <td></td>
+                        <td>6</td>
+                        <td>6600</td>
+                        <td></td>
+                        <td></td>
+                        <td>胡睿</td>
+                        <td>胡睿</td>
+                        <td>李韵</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>已接受</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><a class="under-line">SQ-XGT-170263</a></td>
+                        <td>外包</td>
+                        <td>GC150184</td>
+                        <td>清华大学深圳研究生院创新基地建设工程</td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>2017-12-21</td>
+                        <td>2017-12-24</td>
+                        <td></td>
+                        <td></td>
+                        <td>8</td>
+                        <td>9600</td>
+                        <td></td>
+                        <td></td>
+                        <td>孙鼎原</td>
+                        <td>孙鼎原</td>
+                        <td>李韵</td>
+                        <td></td>
+                        <td></td>
+                        <td>转外包待审</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><a class="under-line">SQ-XGT-170262</a></td>
+                        <td>内部</td>
+                        <td>GC150184</td>
+                        <td>清华大学深圳研究生院创新基地建设工程</td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>2017-12-21</td>
+                        <td>2017-12-24</td>
+                        <td></td>
+                        <td></td>
+                        <td>8</td>
+                        <td>9600</td>
+                        <td></td>
+                        <td></td>
+                        <td>孙鼎原</td>
+                        <td>孙鼎原</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>已撤销</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><a class="under-line">SQ-XGT-170261</a></td>
+                        <td>内部</td>
+                        <td>GC170280</td>
+                        <td>清华研究院</td>
+                        <td>深圳公司</td>
+                        <td>公建部</td>
+                        <td>2017-12-21</td>
+                        <td>2017-12-22</td>
+                        <td>2017-12-21</td>
+                        <td>2017-12-22</td>
+                        <td>7</td>
+                        <td>8400</td>
+                        <td>8.0</td>
+                        <td>9600.0</td>
+                        <td>肖睿</td>
+                        <td>肖睿</td>
+                        <td>李韵</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>已完成</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /container style="display: none;"-->
+        <div class="form-window" id="window">
+            <div class="form-window-title">
+                <h4>
+                <span class="title">效果图制作申请（内部）</span>
+                <span id="close" class="glyphicon glyphicon-remove close-button"></span>  
+                </h4>
+            </div>
+            <div class="form-window-content">
+                <form class="table" method="post" action="" style="padding:10px;">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr class="title">
+                                <th colspan="8" style="background:url(http://cip.capol.cn/capol/homepage/resource/img/logo.png)no-repeat;">效果图制作申请单（内部）</th>
+                            </tr>
+                            <tr>
+                                <td class="bold" style="width:12%">工程编号</td>
+                                <td style="width:12%">
+                                    <input class="form-control select" type="text" id="prjno" value="GC180066">
+                                </td>
+                                <td class="bold" style="width:12%">工程名称</td>
+                                <td style="width:64%" colspan="5">
+                                    <input class="form-control select" type="text" id="prjname" value="广州思科智慧城">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="bold" style="width:12%">所属公司</td>
+                                <td style="width:12%">深圳公司</td>
+                                <td class="bold" style="width:12%">所属部门</td>
+                                <td style="width:12%">公建部</td>
+                                <td class="bold" style="width:12%">申请人</td>
+                                <td style="width:12%">漆枋晨1</td>
+                                <td class="bold" style="width:12%">申请日期</td>
+                                <td style="width:16%">2018-6-14</td>
+                            </tr>
+                            <tr>
+                                <td class="bold">效果图类型</td>
+                                <td class="bold" style="text-align:left;padding-left:10px;" colspan="7">
+                                    <label class="radio-inline">
+                                        <input class="sm" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">单体</label>
+                                    <label class="radio-inline">
+                                        <input class="sm" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">群体</label>
+                                    <label class="radio-inline">
+                                        <input class="sm" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">规划</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="bold" style="width:12%">数量及费用</td>
+                                <td colspan="7" style="padding:5px;">
+                                    <table class="table table-bordered" style="margin-bottom: 0px;">
+                                        <tbody>
+                                            <tr style="background-color: #EEE;">
+                                                <td class="bold" style="width:12%">类别</td>
+                                                <td class="bold" style="width:12%">新图（张）</td>
+                                                <td class="bold" style="width:12%">修改（张）</td>
+                                                <td class="bold" style="width:12%">修改量</td>
+                                                <td class="bold" style="width:12%">单价</td>
+                                                <td class="bold" style="width:40%">预计费用（元）</td>
+                                            </tr>
+                                            <tr>
+                                                <td>鸟瞰图</td>
+                                                <td>
+                                                    <div class="input-group spinner">
+                                                        <input type="text" class="form-control" value="1">
+                                                        <div class="input-group-btn-vertical">
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-up"></span></button>
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-down"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group spinner">
+                                                        <input type="text" class="form-control" value="1">
+                                                        <div class="input-group-btn-vertical">
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-up"></span></button>
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-down"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <select id="filter-dept" class="combobox" style="width:100%;">
+                                                        <option value="">0%</option>
+                                                        <option value="">10%</option>
+                                                        <option value="">20%</option>
+                                                        <option value="">30%</option>
+                                                        <option value="">40%</option>
+                                                        <option value="" selected="selected">50%</option>
+                                                        <option value="">60%</option>
+                                                        <option value="">70%</option>
+                                                        <option value="">80%</option>
+                                                        <option value="">90%</option>
+                                                        <option value="">100%</option>
+                                                    </select>
+                                                </td>
+                                                <td>3500</td>
+                                                <td style="text-align: right;">5250</td>
+                                            </tr>
+                                            <tr>
+                                                <td>半鸟瞰</td>
+                                                <td>
+                                                    <div class="input-group spinner">
+                                                        <input type="text" class="form-control" value="1">
+                                                        <div class="input-group-btn-vertical">
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-up"></span></button>
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-down"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group spinner">
+                                                        <input type="text" class="form-control" value="1">
+                                                        <div class="input-group-btn-vertical">
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-up"></span></button>
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-down"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <select id="filter-dept" class="combobox" style="width:100%;">
+                                                        <option value="">0%</option>
+                                                        <option value="">10%</option>
+                                                        <option value="">20%</option>
+                                                        <option value="">30%</option>
+                                                        <option value="">40%</option>
+                                                        <option value="" selected="selected">50%</option>
+                                                        <option value="">60%</option>
+                                                        <option value="">70%</option>
+                                                        <option value="">80%</option>
+                                                        <option value="">90%</option>
+                                                        <option value="">100%</option>
+                                                    </select>
+                                                </td>
+                                                <td>2500</td>
+                                                <td style="text-align: right;">3750</td>
+                                            </tr>
+                                            <tr>
+                                                <td>人视图</td>
+                                                <td>
+                                                    <div class="input-group spinner">
+                                                        <input type="text" class="form-control" value="1">
+                                                        <div class="input-group-btn-vertical">
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-up"></span></button>
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-down"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group spinner">
+                                                        <input type="text" class="form-control" value="0">
+                                                        <div class="input-group-btn-vertical">
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-up"></span></button>
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-down"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <select id="filter-dept" class="combobox" style="width:100%;">
+                                                        <option value="">0%</option>
+                                                        <option value="">10%</option>
+                                                        <option value="">20%</option>
+                                                        <option value="">30%</option>
+                                                        <option value="">40%</option>
+                                                        <option value="">50%</option>
+                                                        <option value="">60%</option>
+                                                        <option value="">70%</option>
+                                                        <option value="">80%</option>
+                                                        <option value="">90%</option>
+                                                        <option value="" selected="selected">100%</option>
+                                                    </select>
+                                                </td>
+                                                <td>1400</td>
+                                                <td style="text-align: right;">1400</td>
+                                            </tr>
+                                            <tr>
+                                                <td>小透视</td>
+                                                <td>
+                                                    <div class="input-group spinner">
+                                                        <input type="text" class="form-control" value="0">
+                                                        <div class="input-group-btn-vertical">
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-up"></span></button>
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-down"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group spinner">
+                                                        <input type="text" class="form-control" value="0">
+                                                        <div class="input-group-btn-vertical">
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-up"></span></button>
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-down"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <select id="filter-dept" class="combobox" style="width:100%;">
+                                                        <option value="">0%</option>
+                                                        <option value="">10%</option>
+                                                        <option value="">20%</option>
+                                                        <option value="">30%</option>
+                                                        <option value="">40%</option>
+                                                        <option value="">50%</option>
+                                                        <option value="">60%</option>
+                                                        <option value="">70%</option>
+                                                        <option value="">80%</option>
+                                                        <option value="">90%</option>
+                                                        <option value="" selected="selected">100%</option>
+                                                    </select>
+                                                </td>
+                                                <td>500</td>
+                                                <td style="text-align: right;">0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>立面图</td>
+                                                <td>
+                                                    <div class="input-group spinner">
+                                                        <input type="text" class="form-control" value="4">
+                                                        <div class="input-group-btn-vertical">
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-up"></span></button>
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-down"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group spinner">
+                                                        <input type="text" class="form-control" value="0">
+                                                        <div class="input-group-btn-vertical">
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-up"></span></button>
+                                                            <button class="btn btn-default btn-spinner" type="button"><span class="caret caret-down"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <select id="filter-dept" class="combobox" style="width:100%;">
+                                                        <option value="">0%</option>
+                                                        <option value="">10%</option>
+                                                        <option value="">20%</option>
+                                                        <option value="">30%</option>
+                                                        <option value="">40%</option>
+                                                        <option value="">50%</option>
+                                                        <option value="">60%</option>
+                                                        <option value="">70%</option>
+                                                        <option value="">80%</option>
+                                                        <option value="">90%</option>
+                                                        <option value="" selected="selected">100%</option>
+                                                    </select>
+                                                </td>
+                                                <td>100</td>
+                                                <td style="text-align: right;">400</td>
+                                            </tr>
+                                            <tr style="background-color: #EEE;">
+                                                <td>合计</td>
+                                                <td>
+                                                    0
+                                                </td>
+                                                <td>
+                                                    0
+                                                </td>
+                                                <td>
+                                                    -
+                                                </td>
+                                                <td>-</td>
+                                                <td>10800</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="bold">预计开始时间</td>
+                                <td colspan="3">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar" style="font-size:12px;"></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="exampleInputAmount">
+                                    </div>
+                                </td>
+                                <td class="bold">预计结束时间</td>
+                                <td colspan="3">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar" style="font-size:12px;"></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="exampleInputAmount">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="bold">备注</td>
+                                <td colspan="7">
+                                    <input class="form-control select" type="text" id="prjname" value="">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="table-title clearFix">效果图制作（内部）预约情况
+                    </div>
+                    <table class="table table-bordered gdate">
+                        <tbody>
+                            <tr>
+                                <td class="bold gmonth" colspan="27">6月</td>
+                                <td class="bold gmonth" colspan="31">7月</td>
+                                <td class="bold gmonth" colspan="2">8月</td>
+                            </tr>
+                            <tr>
+                                <td class="gday">4</td>
+                                <td class="gday">5</td>
+                                <td class="gday">6</td>
+                                <td class="gday">7</td>
+                                <td class="gday">8</td>
+                                <td class="gday">9</td>
+                                <td class="gday">10</td>
+                                <td class="gday">11</td>
+                                <td class="gday">12</td>
+                                <td class="gday">13</td>
+                                <td class="gday today">14</td>
+                                <td class="gday">15</td>
+                                <td class="gday">16</td>
+                                <td class="gday">17</td>
+                                <td class="gday">18</td>
+                                <td class="gday">19</td>
+                                <td class="gday">20</td>
+                                <td class="gday">21</td>
+                                <td class="gday">22</td>
+                                <td class="gday">23</td>
+                                <td class="gday">24</td>
+                                <td class="gday">25</td>
+                                <td class="gday">26</td>
+                                <td class="gday">27</td>
+                                <td class="gday">28</td>
+                                <td class="gday">29</td>
+                                <td class="gday">30</td>
+                                <td class="gday">1</td>
+                                <td class="gday">2</td>
+                                <td class="gday">3</td>
+                                <td class="gday">4</td>
+                                <td class="gday">5</td>
+                                <td class="gday">6</td>
+                                <td class="gday">7</td>
+                                <td class="gday">8</td>
+                                <td class="gday">9</td>
+                                <td class="gday">10</td>
+                                <td class="gday">11</td>
+                                <td class="gday">12</td>
+                                <td class="gday">13</td>
+                                <td class="gday">14</td>
+                                <td class="gday">15</td>
+                                <td class="gday">16</td>
+                                <td class="gday">17</td>
+                                <td class="gday">18</td>
+                                <td class="gday">19</td>
+                                <td class="gday">20</td>
+                                <td class="gday">21</td>
+                                <td class="gday">22</td>
+                                <td class="gday">23</td>
+                                <td class="gday">24</td>
+                                <td class="gday">25</td>
+                                <td class="gday">26</td>
+                                <td class="gday">27</td>
+                                <td class="gday">28</td>
+                                <td class="gday">29</td>
+                                <td class="gday">30</td>
+                                <td class="gday">31</td>
+                                <td class="gday">1</td>
+                                <td class="gday">2</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="10">
+                                    <div class="accepted"></div>
+                                </td>
+                                <td colspan="48">GC170019 塘朗山F地块</td>
+                            </tr>
+                            <tr>
+                                <td colspan="10"></td>
+                                <td colspan="3">
+                                    <div class="accepted"></div>
+                                </td>
+                                <td colspan="47">GC170248 金樾美泰天玺</td>
+                            </tr>
+                            <tr class="current">
+                                <td colspan="12"></td>
+                                <td colspan="4">
+                                    <div class="inreview"></div>
+                                </td>
+                                <td colspan="44">GC180066 广州思科智慧城</td>
+                            </tr>
+                            <tr>
+                                <td colspan="16"></td>
+                                <td colspan="6">
+                                    <div class="inreview"></div>
+                                </td>
+                                <td colspan="38">GC150184 清华大学深圳研究生院创新基地建设工程</td>
+                            </tr>
+                            <tr>
+                                <td colspan="18"></td>
+                                <td colspan="14">
+                                    <div class="inreview"></div>
+                                </td>
+                                <td colspan="28">GC170280 清华研究院</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="text-align:center;">
+                        <div class="nodes-inline nodes-inline-node">
+                            <div class="nodes nodes-green"><span class="nodes-icon glyphicon glyphicon-ok" aria-hidden="true"></span></div><span class="node_name">发起</span><span class="node_name person">漆枋晨1</span></div>
+                        <div class="nodes-inline">
+                            <div class="nodes-arrow"><span class="nodes-icon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></div>
+                        </div>
+                        <div class="nodes-inline nodes-inline-node">
+                            <div class="nodes nodes-orange"></div><span class="node_name">项目负责人</span><span class="node_name person">肖睿</span></div>
+                        <div class="nodes-inline">
+                            <div class="nodes-arrow"><span class="nodes-icon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></div>
+                        </div>
+                        <div class="nodes-inline nodes-inline-node">
+                            <div class="nodes nodes-blue"></div><span class="node_name">效果图负责人</span><span class="node_name person">李韵</span></div>
+                        <div class="nodes-inline">
+                            <div class="nodes-arrow"><span class="nodes-icon glyphicon glyphicon-arrow-right" aria-hidden="true"></span></div>
+                        </div>
+                        <div class="nodes-inline nodes-inline-node">
+                            <div class="nodes nodes-blue"></div><span class="node_name">完成制作</span><span class="node_name person">李韵</span></div>
+                    </div>
+                    <div style="text-align:center;">
+                        <button class="btn btn-default btn-submit" type="submit">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>
+
+</html>

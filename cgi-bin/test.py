@@ -11,14 +11,11 @@ print ('<body>')
 print ('<h2>Hello Word! This is my first CGI program</h2>')
 
 
-print("""<div class="file-box"> 
-<form action="test2.py" method="post" enctype="multipart/form-data"> 
-<input type='text' name='textfield' id='textfield' class='txt' /> 
-<input type='button' class='btn' value='浏览...' /> 
-<input type="file" name="fileField" class="file" id="fileField" size="28" onchange="document.getElementById('textfield').value=this.value" /> 
-<input type="submit" name="submit" class="btn" value="上传" /> 
-</form> 
-</div> """)
+print("""<form method="post">
+        <input type="text" name="path">
+        <input type="file" name="myfile"><br>
+        <input type="submit" value="上传">
+    </form> """)
 try:
     post=cgi.FieldStorage()
     result = post["fileField"].value

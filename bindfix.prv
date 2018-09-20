@@ -1,0 +1,12 @@
+;;; Visual LISP 生成文件 [V1.0] bindfix saved to:[D:/GitHub/website] at:[9/13/18] 
+(PRV-DEF (:target . "bindfix.VLX")
+	 (:active-x . T)
+	 (:separate-namespace)
+	 (:protected . T)
+	 (:load-file-list (:lsp "bindfix.lsp"))
+	 (:require-file-list)
+	 (:ob-directory)
+	 (:tmp-directory)
+	 (:optimization . st)
+)
+;; EOF
