@@ -36,6 +36,10 @@
     </script>
     <link rel="stylesheet" href="./CAPOL_WEB_UI.css">
     <style type="text/css">
+    div.form-window {
+        top: 50px;
+    }
+
     form.table table.gdate {
         table-layout: fixed;
     }
@@ -87,6 +91,10 @@
     form.table table.gdate tr td.today {
         background-color: #777;
         color: #FFF;
+    }
+
+    form.table tr.sm td {
+        height: 36px;
     }
     </style>
 </head>
@@ -170,9 +178,12 @@
         <div style="padding-left:280px;padding-right: 20px;">
             <div style="height:33px;margin-top:10px;">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a class="sm" href="#">效果图制作</a></li>
-                    <li role="presentation"><a href="#" class="sm">3D打印</a></li>
-                    <li role="presentation"><a href="#" class="sm">航拍</a></li>
+                    <li role="presentation" class="active"><a class="sm" href="./流程中心-效果图制作（内部）.html">效果图制作（内部）</a></li>
+                    <li role="presentation"><a class="sm" href="./流程中心-效果图制作（外包）.html">效果图制作（外包）</a></li>
+                    <li role="presentation"><a class="sm" href="./流程中心-3D打印（工程）.html">3D打印（工程）</a></li>
+                    <li role="presentation"><a class="sm" href="./流程中心-航拍（工程）.html">航拍（工程）</a></li>
+                    <li role="presentation"><a class="sm" href="./流程中心-3D打印（部门）.html">3D打印（部门）</a></li>
+                    <li role="presentation"><a class="sm" href="./流程中心-航拍（部门）.html">航拍（部门）</a></li>
                 </ul>
             </div>
             <div style="height:48px;">
@@ -193,35 +204,26 @@
                     </select>
                 </div>
                 <div class="select-item">
-                    <span>公司</span>
+                    <span>所属公司</span>
                     <select id="filter-company" class="combobox" style="width:150px;">
                         <option value="">不限</option>
-                        <option value="15d7e1c4ecea83be52b071c4cdd81eba">华阳设计-润阳联合智造</option>
-                        <option value="1491759803a76dbea2ee20b44d98b8a4">华阳设计-集团公司</option>
-                        <option value="1491759803a3796fedf4783400da64bf">华阳设计-深圳公司</option>
-                        <option value="1491759803a19c2f9a8c26942b2b7b17">华阳设计-广州公司</option>
-                        <option value="1491759803a76e732720b4b40208454d">华阳设计-长沙公司</option>
-                        <option value="1491759803a6a6244ee9de04ec49ec29">华阳设计-重庆公司</option>
-                        <option value="1491759803a17bc0d9c18cc4a21b82d0">华阳设计-上海公司</option>
-                        <option value="149175980694ceb3beeb5474f56ac7fe">华阳设计-建筑产业化公司</option>
-                        <option value="149175980b7b0364e4b1d4c4d00905eb">华阳设计-BIM研究院</option>
-                        <option value="154c950de0c711134548cf44cefbf3ef">华阳设计-东莞产业园</option>
-                        <option value="1560375bed6e6826c54ebf3454b8e390">华阳设计-华泰盛工程建设公司</option>
-                        <option value="149175980498287068aec7d4f6b8efc5">华阳造价-深圳公司</option>
-                        <option value="14917598049b48a5b72e004480c81ea6">华阳造价-长沙公司</option>
-                        <option value="149175980b76c595c8093cb4637be624">华阳造价-佛山公司</option>
-                        <option value="16055532626ac259a0527a646fdaaeac">华阳设计-规划设计研究院</option>
+                        <option value="15d7e1c4ecea83be52b071c4cdd81eba">润阳联合智造</option>
+                        <option value="1491759803a76dbea2ee20b44d98b8a4">集团公司</option>
+                        <option value="1491759803a3796fedf4783400da64bf">深圳公司</option>
+                        <option value="1491759803a19c2f9a8c26942b2b7b17">广州公司</option>
+                        <option value="1491759803a76e732720b4b40208454d">长沙公司</option>
+                        <option value="1491759803a6a6244ee9de04ec49ec29">重庆公司</option>
+                        <option value="1491759803a17bc0d9c18cc4a21b82d0">上海公司</option>
+                        <option value="149175980694ceb3beeb5474f56ac7fe">建筑产业化公司</option>
+                        <option value="149175980b7b0364e4b1d4c4d00905eb">BIM研究院</option>
+                        <option value="154c950de0c711134548cf44cefbf3ef">东莞产业园</option>
+                        <option value="1560375bed6e6826c54ebf3454b8e390">华泰盛工程建设公司</option>
+                        <option value="16055532626ac259a0527a646fdaaeac">规划设计研究院</option>
                     </select>
                 </div>
-                <div class="select-item">
-                    <span>部门</span>
+                <div class="select-item"  style="padding-right: 40px;">
+                    <span>所属部门</span>
                     <select id="filter-dept" class="combobox" style="width:150px;">
-                        <option value="">不限</option>
-                    </select>
-                </div>
-                <div class="select-item disabled" style="padding-right: 40px;">
-                    <span>二级部门</span>
-                    <select id="filter-dept" class="combobox" style="width:150px;" disabled="disabled">
                         <option value="">不限</option>
                     </select>
                 </div>
@@ -233,7 +235,8 @@
                     </div>
                 </div>
             </div>
-            <div class="table-title clearFix">效果图制作申请一览表
+            <div class="table-title clearFix">效果图制作申请一览表（内部） 
+                <a class="under-line" style="font-weight: normal;font-size: 12px;">查看预约情况</a>
                 <button type="button" class="btn btn-default btn-xs btn-red right-buttons" id="open"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 发起流程</button>
             </div>
             <table class="table table-bordered" id="">
@@ -241,7 +244,6 @@
                     <tr style="text-align: right;">
                         <th>序号</th>
                         <th>申请编号</th>
-                        <th>制作类型</th>
                         <th>工程编号</th>
                         <th>工程名称</th>
                         <th>所属公司</th>
@@ -257,18 +259,15 @@
                         <th>申请人</th>
                         <th>项目负责人</th>
                         <th>效果图负责人</th>
-                        <th>部门负责人</th>
-                        <th>运营总监</th>
                         <th>执行状态</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td><a class="under-line">SQ-XGT-170265</a></td>
-                        <td>内部</td>
+                        <td><a class="under-line">SQ-XGT1-170265</a></td>
                         <td>GC170019</td>
-                        <td>塘朗山F地块</td>
+                        <td style="text-align: left;">塘朗山F地块</td>
                         <td>深圳公司</td>
                         <td>国际部</td>
                         <td>2017-12-21</td>
@@ -282,16 +281,14 @@
                         <td>吴庆贤</td>
                         <td>孔辉</td>
                         <td></td>
-                        <td>-</td>
-                        <td>-</td>
+                        
                         <td>待接受</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td><a class="under-line">SQ-XGT-170264</a></td>
-                        <td>内部</td>
+                        <td><a class="under-line">SQ-XGT1-170264</a></td>
                         <td>GC170248</td>
-                        <td>金樾美泰天玺</td>
+                        <td style="text-align: left;">金樾美泰天玺</td>
                         <td>深圳公司</td>
                         <td>都市部</td>
                         <td>2017-12-18</td>
@@ -305,16 +302,13 @@
                         <td>胡睿</td>
                         <td>胡睿</td>
                         <td>李韵</td>
-                        <td>-</td>
-                        <td>-</td>
                         <td>已接受</td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td><a class="under-line">SQ-XGT-170263</a></td>
-                        <td>外包</td>
+                        <td><a class="under-line">SQ-XGT1-170263</a></td>
                         <td>GC150184</td>
-                        <td>清华大学深圳研究生院创新基地建设工程</td>
+                        <td style="text-align: left;">清华大学深圳研究生院创新基地建设工程</td>
                         <td>深圳公司</td>
                         <td>公建部</td>
                         <td>2017-12-21</td>
@@ -328,16 +322,13 @@
                         <td>孙鼎原</td>
                         <td>孙鼎原</td>
                         <td>李韵</td>
-                        <td></td>
-                        <td></td>
-                        <td>转外包待审</td>
+                        <td>已拒绝</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td><a class="under-line">SQ-XGT-170262</a></td>
-                        <td>内部</td>
+                        <td><a class="under-line">SQ-XGT1-170262</a></td>
                         <td>GC150184</td>
-                        <td>清华大学深圳研究生院创新基地建设工程</td>
+                        <td style="text-align: left;">清华大学深圳研究生院创新基地建设工程</td>
                         <td>深圳公司</td>
                         <td>公建部</td>
                         <td>2017-12-21</td>
@@ -351,16 +342,13 @@
                         <td>孙鼎原</td>
                         <td>孙鼎原</td>
                         <td></td>
-                        <td></td>
-                        <td></td>
                         <td>已撤销</td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td><a class="under-line">SQ-XGT-170261</a></td>
-                        <td>内部</td>
+                        <td><a class="under-line">SQ-XGT1-170261</a></td>
                         <td>GC170280</td>
-                        <td>清华研究院</td>
+                        <td style="text-align: left;">清华研究院</td>
                         <td>深圳公司</td>
                         <td>公建部</td>
                         <td>2017-12-21</td>
@@ -369,20 +357,18 @@
                         <td>2017-12-22</td>
                         <td>7</td>
                         <td>8400</td>
-                        <td>8.0</td>
+                        <td>8</td>
                         <td>9600.0</td>
                         <td>肖睿</td>
                         <td>肖睿</td>
-                        <td>李韵</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td>李韵</td>                  
                         <td>已完成</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <!-- /container style="display: none;"-->
-        <div class="form-window" id="window">
+        <div class="form-window" id="window" style="display: none;" >
             <div class="form-window-title">
                 <h4>
                 <span class="title">效果图制作申请（内部）</span>
@@ -396,7 +382,7 @@
                             <tr class="title">
                                 <th colspan="8" style="background:url(http://cip.capol.cn/capol/homepage/resource/img/logo.png)no-repeat;">效果图制作申请单（内部）</th>
                             </tr>
-                            <tr>
+                            <tr class="sm">
                                 <td class="bold" style="width:12%">工程编号</td>
                                 <td style="width:12%">
                                     <input class="form-control select" type="text" id="prjno" value="GC180066">
@@ -406,7 +392,7 @@
                                     <input class="form-control select" type="text" id="prjname" value="广州思科智慧城">
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="sm">
                                 <td class="bold" style="width:12%">所属公司</td>
                                 <td style="width:12%">深圳公司</td>
                                 <td class="bold" style="width:12%">所属部门</td>
@@ -416,7 +402,7 @@
                                 <td class="bold" style="width:12%">申请日期</td>
                                 <td style="width:16%">2018-6-14</td>
                             </tr>
-                            <tr>
+                            <tr class="sm">
                                 <td class="bold">效果图类型</td>
                                 <td class="bold" style="text-align:left;padding-left:10px;" colspan="7">
                                     <label class="radio-inline">
@@ -426,8 +412,9 @@
                                     <label class="radio-inline">
                                         <input class="sm" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">规划</label>
                                 </td>
+
                             </tr>
-                            <tr>
+                            <tr class="sm">
                                 <td class="bold" style="width:12%">数量及费用</td>
                                 <td colspan="7" style="padding:5px;">
                                     <table class="table table-bordered" style="margin-bottom: 0px;">
@@ -440,7 +427,7 @@
                                                 <td class="bold" style="width:12%">单价</td>
                                                 <td class="bold" style="width:40%">预计费用（元）</td>
                                             </tr>
-                                            <tr>
+                                            <tr class="sm">
                                                 <td>鸟瞰图</td>
                                                 <td>
                                                     <div class="input-group spinner">
@@ -478,7 +465,7 @@
                                                 <td>3500</td>
                                                 <td style="text-align: right;">5250</td>
                                             </tr>
-                                            <tr>
+                                            <tr class="sm">
                                                 <td>半鸟瞰</td>
                                                 <td>
                                                     <div class="input-group spinner">
@@ -516,7 +503,7 @@
                                                 <td>2500</td>
                                                 <td style="text-align: right;">3750</td>
                                             </tr>
-                                            <tr>
+                                            <tr class="sm">
                                                 <td>人视图</td>
                                                 <td>
                                                     <div class="input-group spinner">
@@ -554,7 +541,7 @@
                                                 <td>1400</td>
                                                 <td style="text-align: right;">1400</td>
                                             </tr>
-                                            <tr>
+                                            <tr class="sm">
                                                 <td>小透视</td>
                                                 <td>
                                                     <div class="input-group spinner">
@@ -592,7 +579,7 @@
                                                 <td>500</td>
                                                 <td style="text-align: right;">0</td>
                                             </tr>
-                                            <tr>
+                                            <tr class="sm">
                                                 <td>立面图</td>
                                                 <td>
                                                     <div class="input-group spinner">
@@ -648,7 +635,7 @@
                                     </table>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="sm">
                                 <td class="bold">预计开始时间</td>
                                 <td colspan="3">
                                     <div class="input-group">
@@ -668,7 +655,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="sm">
                                 <td class="bold">备注</td>
                                 <td colspan="7">
                                     <input class="form-control select" type="text" id="prjname" value="">

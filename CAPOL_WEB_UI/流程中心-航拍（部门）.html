@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+    <title>CAPOL_WEB_UI</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready(function() {
+        $('#example1').DataTable({ "scrollY": "500px", "paging": true, "searching": false, "info": false });
+    });
+    $(document).ready(function() {
+        $('#example2').DataTable({ "scrollY": "500px", "scrollCollapse": true, "paging": false, "searching": false, "info": false });
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#close").click(function() {
+            $("#window").hide();
+        });
+    });
+    $(document).ready(function() {
+        $("#open").click(function() {
+            $("#window").show();
+        });
+    });
+    </script>
+    <link rel="stylesheet" href="./CAPOL_WEB_UI.css">
+    <style type="text/css">
+    form.table table.gdate {
+        table-layout: fixed;
+    }
+
+    form.table table.gdate tr td {
+        height: 20px;
+        padding: 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: left;
+        border-bottom-color: #777;
+        border-top-color: #777;
+    }
+
+    form.table table.gdate tr td.gmonth {
+        height: 24px;
+        padding: 0px;
+        background-color: #EEE;
+    }
+
+    form.table table.gdate tr td.gday {
+        min-width: 16px;
+        height: 24px;
+        padding: 0px;
+        background-color: #EEE;
+    }
+
+    form.table table.gdate tr td div.finished {
+        background-color: #DDD;
+    }
+
+    form.table table.gdate tr td div.inreview {
+        background-color: #ffebcc;
+        height: 12px;
+        border: 1px solid #FF9800;
+    }
+
+    form.table table.gdate tr td div.accepted {
+        background-color: #cfe8fc;
+        height: 12px;
+        border: 1px solid #2196F3;
+    }
+
+    form.table table.gdate tr.current {
+        background-color: #ffe5e5;
+    }
+
+    form.table table.gdate tr td.today {
+        background-color: #777;
+        color: #FFF;
+    }
+
+    form.table tr. td {
+        height: 36px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="top_banner">
+        <div class="navigate">
+            <div class="logo" style="cursor:pointer;">
+                <img onclick="Com_openHomePageFunc();" alt="" src="http://cip.capol.cn/capol/homepage/resource/img/logo.png">
+            </div>
+            <div class="c_nav">
+                <ul>
+                    <li> <span class="personalspace c_nav_info">个人空间</span></li>
+                    <li> <span class="workspace c_nav_info active">工作空间</span></li>
+                    <li> <span class="knowledge">知识中心</span></li>
+                    <li> <span class="cultur">企业文化</span></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input id="fullSearch_input" type="text" placeholder="请输入关键字搜索全系统 ">
+                <span class="search-btn"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <ul class="breadcrumb" role="tablist">
+            <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页</a></li>
+            <li><a href="#">工作空间</a></li>
+            <li>流程中心</li>
+        </ul>
+        <div style="height:42px;width:50%;display: inline-block;">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#">华阳设计</a></li>
+                <li role="presentation"><a href="#" class="disabled">华阳造价</a></li>
+                <li role="presentation"><a href="#" class="disabled">华泰盛</a></li>
+                <li role="presentation"><a href="#" class="disabled">润阳智造</a></li>
+            </ul>
+        </div>
+        <div style="height:42px;width:50%;display: inline-block;float: right;">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="right"><a href="#" class="bordered">待完成 [1]</a></li>
+                <li role="presentation" class="right"><a href="#" class="bordered">待我审核 [0]</a></li>
+                <li role="presentation" class="right"><a href="#" class="bordered">我发起的 [2]</a></li>
+            </ul>
+        </div>
+        <div class="nav nav-tree" style="width:240px;position: absolute;margin-left:20px;margin-top:10px;">
+            <ul>
+                <li><a href="#" class="lv1">通用<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                    <ul style="display: block;">
+                        <li><a href="#">盖章申请流程</a></li>
+                        <li><a href="#">……</a></li>
+                        <li><a href="#">……</a></li>
+                    </ul>
+                </li>
+                <!--<li><a href="filemanager.html" class="gallery">File Manager</a></li>-->
+                <li><a href="#" class="lv1">运营<span class="glyphicon glyphicon-triangle-bottom triangle-bottom"></span></a>
+                    <ul style="display: block;">
+                        <li><a href="#" class="active">效果图制作</a></li>
+                        <li><a href="#">……</a></li>
+                        <li><a href="#">……</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="lv1 disabled">经营<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">财务<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">人力资源<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">市场品牌推广<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">采购<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">知识产权<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">法务<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+                <li><a href="#" class="lv1 disabled">其他<span class="glyphicon glyphicon-triangle-bottom triangle-bottom" style="display: none;"></span></a>
+                </li>
+            </ul>
+        </div>
+        <div style="padding-left:280px;padding-right: 20px;">
+            <div style="height:33px;margin-top:10px;">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"><a class="sm" href="./流程中心-效果图制作（内部）.html">效果图制作（内部）</a></li>
+                    <li role="presentation"><a class="sm" href="./流程中心-效果图制作（外包）.html">效果图制作（外包）</a></li>
+                    <li role="presentation"><a class="sm" href="./流程中心-3D打印（工程）.html">3D打印（工程）</a></li>
+                    <li role="presentation"><a class="sm" href="./流程中心-航拍（工程）.html">航拍（工程）</a></li>
+                    <li role="presentation"><a class="sm" href="./流程中心-3D打印（部门）.html">3D打印（部门）</a></li>
+                    <li role="presentation" class="active"><a class="sm" href="./流程中心-航拍（部门）.html">航拍（部门）</a></li>
+                </ul>
+            </div>
+            <div style="height:48px;">
+                <div class="select-item" style="margin-right:40px;">
+                    <span>年份</span>
+                    <select id="filter-module" class="combobox" style="width:100px;">
+                        <option value="">不限</option>
+                        <option value="15d7e1c4ecea83be52b071c4cdd81eba">2018</option>
+                        <option value="1491759803a76dbea2ee20b44d98b8a4">2017</option>
+                        <option value="1491759803a3796fedf4783400da64bf">2016</option>
+                        <option value="1491759803a19c2f9a8c26942b2b7b17">2015</option>
+                        <option value="1491759803a76e732720b4b40208454d">2014</option>
+                        <option value="1491759803a6a6244ee9de04ec49ec29">2013</option>
+                        <option value="1491759803a17bc0d9c18cc4a21b82d0">2012</option>
+                        <option value="149175980694ceb3beeb5474f56ac7fe">2011</option>
+                        <option value="149175980b7b0364e4b1d4c4d00905eb">2010</option>
+                        <option value="154c950de0c711134548cf44cefbf3ef">2010以前</option>
+                    </select>
+                </div>
+                <div class="select-item">
+                    <span>所属公司</span>
+                    <select id="filter-company" class="combobox" style="width:150px;">
+                        <option value="">不限</option>
+                        <option value="15d7e1c4ecea83be52b071c4cdd81eba">润阳联合智造</option>
+                        <option value="1491759803a76dbea2ee20b44d98b8a4">集团公司</option>
+                        <option value="1491759803a3796fedf4783400da64bf">深圳公司</option>
+                        <option value="1491759803a19c2f9a8c26942b2b7b17">广州公司</option>
+                        <option value="1491759803a76e732720b4b40208454d">长沙公司</option>
+                        <option value="1491759803a6a6244ee9de04ec49ec29">重庆公司</option>
+                        <option value="1491759803a17bc0d9c18cc4a21b82d0">上海公司</option>
+                        <option value="149175980694ceb3beeb5474f56ac7fe">建筑产业化公司</option>
+                        <option value="149175980b7b0364e4b1d4c4d00905eb">BIM研究院</option>
+                        <option value="154c950de0c711134548cf44cefbf3ef">东莞产业园</option>
+                        <option value="1560375bed6e6826c54ebf3454b8e390">华泰盛工程建设公司</option>
+                        <option value="16055532626ac259a0527a646fdaaeac">规划设计研究院</option>
+                    </select>
+                </div>
+                <div class="select-item" style="padding-right: 40px;">
+                    <span>所属部门</span>
+                    <select id="filter-dept" class="combobox" style="width:150px;">
+                        <option value="">不限</option>
+                    </select>
+                </div>
+                <div class="select-item" id="so" style="margin-right: 10px;">
+                    <span class="float">关键字</span>
+                    <div class="input-group">
+                        <input class="form-control input-sm" type="text" placeholder="名称、内容、负责人……" style="width:200px;border-right:0px;">
+                        <span class="input-group-search-btn"> 搜索</span>
+                    </div>
+                </div>
+            </div>
+            <div class="table-title clearFix">航拍申请一览表（部门）
+                <!--a class="under-line" style="font-weight: normal;font-size: 12px;">查看预约情况</a-->
+                <button type="button" class="btn btn-default btn-xs btn-red right-buttons" id="open"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 发起流程</button>
+            </div>
+            <table class="table table-bordered" id="">
+                <thead>
+                    <tr style="text-align: right;">
+                        <th style="width:4%">序号</th>
+                        <th style="width:8%">申请编号</th>
+                        <th style="width:8%">预约航拍日期</th>
+                        <th style="width:20%">计划航拍内容</th>
+                        <th style="width:6%">申请人</th>
+                        <th style="width:6%">所属公司</th>
+                        <th style="width:6%">所属部门</th>
+                        <th style="width:6%">部门负责人</th>
+                        <th style="width:6%">航拍负责人</th>
+                        <th style="width:6%">航拍人</th>
+                        <th style="width:10%">航拍内容</th>
+                        <th style="width:6%">航拍费用</th>
+                        <th style="width:8%">执行状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><a class="under-line">SQ-3D2-170001</a></td>
+                        <td>2017-12-3</td>
+                        <td style="text-align: left;">东莞产业园</td>
+                        <td>陈忱</td>
+                        <td>深圳公司</td>
+                        <td>市场品牌推广部</td>
+                        <td>严明</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>3000</td>
+                        <td>待接受</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /container style="display: none;"-->
+        <div class="form-window" id="window" style="display: none;">
+            <div class="form-window-title">
+                <h4>
+                <span class="title">航拍申请单（部门）</span>
+                <span id="close" class="glyphicon glyphicon-remove close-button"></span>  
+                </h4>
+            </div>
+            <div class="form-window-content">
+                <form class="table" method="post" action="" style="padding:10px;">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr class="title">
+                                <th colspan="8" style="background:url(http://cip.capol.cn/capol/homepage/resource/img/logo.png)no-repeat;">航拍申请单（部门）</th>
+                            </tr>
+                            <tr>
+                                <td class="bold">预约航拍日期</td>
+                                <td colspan="7">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar" style="font-size:12px;"></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="exampleInputAmount">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="height:80px;">
+                                <td class="bold ">计划航拍内容</td>
+                                <td colspan="7">
+                                    <input class="form-control select " type="text" id="prjname " value="" style="height:69px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="bold" style="width:12%">申请人</td>
+                                <td style="width:12%">漆枋晨1</td>
+                                <td class="bold" style="width:12%">所属公司</td>
+                                <td style="width:12%">深圳公司</td>
+                                <td class="bold" style="width:12%">所属部门</td>
+                                <td style="width:12%">公建部</td>
+                                <td class="bold" style="width:12%">申请日期</td>
+                                <td style="width:16%">2017-12-3</td>
+                            </tr>
+                            <tr style="height:80px;">
+                                <td class="bold ">备注</td>
+                                <td colspan="7">
+                                    <input class="form-control select " type="text" id="prjname " value="" style="height:69px;">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  
+                    <div style="text-align:center; ">
+                        <div class="nodes-inline nodes-inline-node ">
+                            <div class="nodes nodes-green "><span class="nodes-icon glyphicon glyphicon-ok " aria-hidden="true "></span></div><span class="node_name ">发起</span><span class="node_name person ">漆枋晨1</span></div>
+                        <div class="nodes-inline ">
+                            <div class="nodes-arrow "><span class="nodes-icon glyphicon glyphicon-arrow-right " aria-hidden="true "></span></div>
+                        </div>
+                        <div class="nodes-inline nodes-inline-node ">
+                            <div class="nodes nodes-orange "></div><span class="node_name ">部门负责人</span><span class="node_name person ">漆枋晨1</span></div>
+                        <div class="nodes-inline ">
+                            <div class="nodes-arrow "><span class="nodes-icon glyphicon glyphicon-arrow-right " aria-hidden="true "></span></div>
+                        </div>
+                        <div class="nodes-inline nodes-inline-node ">
+                            <div class="nodes nodes-blue "></div><span class="node_name ">航拍负责人</span><span class="node_name person ">李韵</span></div>
+                        <div class="nodes-inline ">
+                            <div class="nodes-arrow "><span class="nodes-icon glyphicon glyphicon-arrow-right " aria-hidden="true "></span></div>
+                        </div>
+                        <div class="nodes-inline nodes-inline-node ">
+                            <div class="nodes nodes-blue "></div><span class="node_name ">航拍完成</span><span class="node_name person ">李韵</span></div>
+                            
+                    </div>
+                    <div style="text-align:center; ">
+                        <button class="btn btn-default btn-submit " type="submit ">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>
+
+</html>
